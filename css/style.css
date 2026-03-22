@@ -6,8 +6,6 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
 
 /* ===== HERO ===== */
 .hero{position:relative;height:100vh;display:flex;flex-direction:column;overflow:hidden;scroll-snap-align:start;}
-#hero-video{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);min-width:100%;min-height:100%;width:auto;height:auto;z-index:0;opacity:0;object-fit:cover;pointer-events:none;filter:blur(2px);transition:opacity 1s ease;}
-
 /* Animated gradient background */
 .hero-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
   background:linear-gradient(135deg,#f0f0ff 0%,#e0e7ff 20%,#f5eeff 40%,#dff5ef 60%,#ede5ff 80%,#f0f0ff 100%);
