@@ -12,6 +12,9 @@
 
 <section class="hero">
   <div class="hero-bg"></div>
+  <video autoplay muted loop playsinline preload="metadata" id="hero-video">
+    <source src="images/hero-bg.mp4" type="video/mp4">
+  </video>
 
   <nav class="nav">
     <a href="#" class="nav-logo"><em>S</em>hri</a>
@@ -480,6 +483,9 @@
 </section>
 
 <script>
+// Hero video fade-in
+document.getElementById('hero-video').addEventListener('canplay',function(){this.style.opacity='0.10';});
+
 // Scroll-triggered reveal - fires when section snaps into view
 var revealObserver = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
