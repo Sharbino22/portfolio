@@ -2,6 +2,7 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;scroll-snap-type:y proximity;}
 body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1E1B4B;-webkit-font-smoothing:antialiased;overflow-x:hidden;background:#f0f0ff;padding-top:68px;}
+body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px;opacity:0.03;mix-blend-mode:multiply;}
 
 /* ===== HERO ===== */
 .hero{position:relative;height:100vh;display:flex;flex-direction:column;overflow:hidden;scroll-snap-align:start;}
@@ -19,7 +20,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1E1B4B;-webkit-
   100%{background-position:0% 50%}
 }
 
-/* Globe halo — dual glow rings */
+/* Globe halo - dual glow rings */
 .globe-halo{position:absolute;width:700px;height:700px;top:50%;left:50%;transform:translate(-50%,-50%);
   background:radial-gradient(circle,rgba(99,102,241,0.1) 0%,rgba(99,102,241,0.04) 35%,transparent 60%);
   pointer-events:none;z-index:0;}
@@ -110,7 +111,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1E1B4B;-webkit-
   .globe-dot.active{width:24px;padding:12px 4px;}
 }
 
-/* Location card — fixed height to prevent layout shift */
+/* Location card - fixed height to prevent layout shift */
 #card-box{max-width:320px;width:100%;margin:0 auto;z-index:10;padding:0;min-height:140px;}
 .loc-card{background:rgba(255,255,255,0.8);backdrop-filter:blur(20px) saturate(1.2);-webkit-backdrop-filter:blur(20px) saturate(1.2);border-radius:12px;padding:14px 18px;border:1px solid rgba(255,255,255,0.5);box-shadow:0 8px 32px rgba(30,27,75,0.08),0 1px 4px rgba(30,27,75,0.03);animation:cardIn 0.35s cubic-bezier(0.16,1,0.3,1) forwards;opacity:0;}
 .loc-card.hiding{animation:cardOut 0.15s ease forwards;}
@@ -158,7 +159,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1E1B4B;-webkit-
 /* Below-fold elements: start hidden, animate in when section snaps into view */
 .section .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1);}
 .section .reveal.active{opacity:1;transform:translateY(0);}
-/* data-delay stagger — cascading entrance */
+/* data-delay stagger - cascading entrance */
 .reveal[data-delay="1"]{transition-delay:0.1s;}
 .reveal[data-delay="2"]{transition-delay:0.2s;}
 .reveal[data-delay="3"]{transition-delay:0.3s;}
@@ -192,7 +193,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1E1B4B;-webkit-
 /* Global card hover lift */
 .bento-cell:hover,.bridge-map.animated .bridge-role:hover,.stat-river:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.06);}
 
-/* ===== MY STORY — ANIMATED ROADMAP ===== */
+/* ===== MY STORY - ANIMATED ROADMAP ===== */
 .rm-label{font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#6366F1;text-align:center;margin-bottom:10px;}
 .rm-heading{font-size:36px;font-weight:800;color:#1E1B4B;text-align:center;letter-spacing:-0.04em;margin-bottom:40px;}
 
@@ -288,7 +289,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1E1B4B;-webkit-
   .proj-title{font-size:16px;}
 }
 
-/* ===== EXPERIENCE — BRIDGE MAP ===== */
+/* ===== EXPERIENCE - BRIDGE MAP ===== */
 .exp-label{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#6366F1;text-align:center;margin-bottom:10px;}
 .exp-heading{font-size:36px;font-weight:800;color:#1E1B4B;text-align:center;letter-spacing:-0.04em;margin-bottom:44px;}
 
@@ -298,7 +299,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1E1B4B;-webkit-
 .bridge-lines .ribbon-glow{stroke-width:6;}
 .bridge-lines .ribbon-edge{stroke-width:1;}
 
-/* Left column — pillar pills */
+/* Left column - pillar pills */
 .bridge-left{width:30%;display:flex;flex-direction:column;justify-content:space-around;padding:10px 0;position:relative;z-index:2;}
 .bridge-pill{display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:32px;background:rgba(255,255,255,0.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(99,102,241,0.08);width:190px;opacity:0;transform:translateX(-20px);transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1);}
 .bridge-map.animated .bridge-pill{opacity:1;transform:translateX(0);}
@@ -308,7 +309,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1E1B4B;-webkit-
 .bp-name{font-size:13px;font-weight:700;color:#1E1B4B;line-height:1.3;}
 .bp-count{font-size:11px;color:#94A3B8;font-weight:500;}
 
-/* Right column — role cards */
+/* Right column - role cards */
 .bridge-right{width:65%;margin-left:auto;display:flex;flex-direction:column;gap:5px;position:relative;z-index:2;}
 .bridge-role{padding:8px 14px;border-radius:10px;background:rgba(255,255,255,0.7);backdrop-filter:blur(16px);border:1px solid rgba(99,102,241,0.05);border-left:3px solid transparent;opacity:0;transform:translateX(20px);transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1),transform 0.5s cubic-bezier(0.16,1,0.3,1);}
 .bridge-map.animated .bridge-role{opacity:1;transform:translateX(0);}
@@ -349,7 +350,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1E1B4B;-webkit-
   .bridge-summary{margin-top:20px;}
 }
 
-/* ===== RESEARCH & PUBLICATIONS — BENTO GRID ===== */
+/* ===== RESEARCH & PUBLICATIONS - BENTO GRID ===== */
 .res-label{font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#6366F1;text-align:center;margin-bottom:10px;}
 .res-heading{font-size:36px;font-weight:800;color:#1E1B4B;text-align:center;letter-spacing:-0.04em;margin-bottom:32px;}
 
@@ -423,7 +424,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1E1B4B;-webkit-
   .stat-item:nth-child(4),.stat-item:nth-child(5){width:50%;}
 }
 
-/* ===== BEYOND WORK — BENTO ===== */
+/* ===== BEYOND WORK - BENTO ===== */
 .bw-label{font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#6366F1;text-align:center;margin-bottom:10px;}
 .bw-heading{font-size:36px;font-weight:800;color:#1E1B4B;text-align:center;letter-spacing:-0.04em;margin-bottom:32px;}
 

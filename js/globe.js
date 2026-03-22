@@ -98,7 +98,7 @@ function startGlobe(){
     markerRings.push(ring);
   });
 
-  // Permanent arc connections — complete loop, always visible, pink
+  // Permanent arc connections - complete loop, always visible, pink
   [[0,1],[1,2],[2,3],[3,4],[4,0]].forEach(function(pair){
     var pts=greatCircleArc(pair[0],pair[1],80);
     earth.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:0xF472B6,transparent:true,opacity:0.7})));
@@ -146,7 +146,7 @@ function startGlobe(){
   function updateFlight(){
     if(!flightArcPts){flightLine.visible=false;arrowMesh.visible=false;return;}
 
-    // Fading out phase — only arrowhead fades, arc lines are permanent
+    // Fading out phase - only arrowhead fades, arc lines are permanent
     if(flightFadeout>=0){
       flightFadeout+=0.016;
       var fadeT=flightFadeout/0.3;
@@ -316,7 +316,7 @@ function startGlobe(){
     }
 
     earthGroup.rotation.y=curRY;earthGroup.rotation.x=curRX;camera.position.z=curZ;
-    // Smooth marker + ring highlighting — per-marker lerp, no flicker
+    // Smooth marker + ring highlighting - per-marker lerp, no flicker
     var SM=0.04;
     for(var mi=0;mi<locs.length;mi++){
       var isActive=(mi===tIdx&&state!==ROTATING);
