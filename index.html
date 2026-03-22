@@ -14,8 +14,9 @@
   <div class="hero-bg"></div>
 
   <nav class="nav">
-    <div class="nav-logo"><em>S</em>.Ramaswamy</div>
+    <a href="#" class="nav-logo"><em>S</em>ridharan</a>
     <div class="nav-links">
+      <a href="#">Home</a>
       <a href="#story">My Story</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
@@ -521,12 +522,16 @@ var sectionObserver = new IntersectionObserver(function(entries) {
     if (entry.isIntersecting) {
       var id = entry.target.getAttribute('id');
       navLinks.forEach(function(link) {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        var href = link.getAttribute('href');
+        link.classList.toggle('active', href === '#' + id || (id === 'hero' && href === '#'));
       });
     }
   });
 }, { threshold: 0.4 });
 document.querySelectorAll('section[id]').forEach(function(s) { sectionObserver.observe(s); });
+// Also observe hero for Home link
+var heroEl = document.querySelector('.hero');
+if (heroEl) { heroEl.setAttribute('id', 'hero'); sectionObserver.observe(heroEl); }
 
 // Bridge map — flowing ribbon connecting lines
 (function(){
