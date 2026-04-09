@@ -36,7 +36,7 @@ function startGlobe(){
   for(var i=-180;i<=180;i+=15){var x=(i+180)/360*txW;tx.beginPath();tx.moveTo(x,0);tx.lineTo(x,txH);tx.stroke();}
 
   var earthTex=new THREE.CanvasTexture(txCv);
-  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json').then(function(r){return r.json();}).then(function(world){
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/land-50m.json').then(function(r){return r.json();}).then(function(world){
     var land=topojson.feature(world,world.objects.land);
     land.features.forEach(function(f){
       var dr=function(ring){tx.beginPath();ring.forEach(function(c,i){var px=(c[0]+180)/360*txW;var py=(90-c[1])/180*txH;i===0?tx.moveTo(px,py):tx.lineTo(px,py);});tx.closePath();tx.fillStyle='#ece8e2';tx.fill();tx.strokeStyle='rgba(200,195,185,0.3)';tx.lineWidth=0.8;tx.stroke();};
@@ -206,7 +206,7 @@ function startGlobe(){
 
   var ROTATING=0,ZOOMING_IN=1,DWELLING=2,ZOOMING_OUT=3;
   var state=ROTATING,tIdx=0,frame=0;
-  var DWELL_TIME=450,ZO=3.0,ZI=2.5;
+  var DWELL_TIME=450,ZO=3.0,ZI=2.7;
   var clickInitiated=false;
   var curRY=getTargetRotY(locs[0].lng)+0.8,curRX=0,curZ=ZO;
   var tRY=getTargetRotY(locs[0].lng),tRX=getTargetRotX(locs[0].lat);
