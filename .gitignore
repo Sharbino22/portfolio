@@ -10,3 +10,7 @@ Thumbs.db
 Projects/nhanes-cancer-survival/data/*.XPT
 Projects/nhanes-cancer-survival/data/*.dat
 Projects/nhanes-cancer-survival/data/analytic_cohort.csv
+
+# Medicare claims data (too large for git, download via download_data.py)
+Projects/medicare-claims-analysis/data/raw/
+Projects/medicare-claims-analysis/data/processed/
