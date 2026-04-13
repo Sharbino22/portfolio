@@ -1,5 +1,13 @@
 # Shri's Portfolio Website
 
+## DEPLOYMENT RULES (READ FIRST)
+- **Netlify deploys from `main` only.** Every push to `main` costs 1 build credit. Credits are limited (300/month on the free plan).
+- **NEVER push directly to `main` during a work session.** Always work on a feature branch (e.g. `redesign`, `feature/dashboards`).
+- **Workflow:** `git checkout -b <branch>` at the start of work. Commit freely to the branch (free, no credits). When the user says "push" or "go live", merge the branch into `main` and push once. That's 1 credit for all the accumulated work.
+- **NEVER run `git push origin main` after every small change.** Batch everything into one push.
+- **If already on `main`:** create a branch immediately with `git checkout -b work-session` before making any changes. Merge back at the end.
+- **Ask before pushing.** Even when the user says "commit", confirm whether they also want to push to main (which triggers a deploy and costs a credit) or just commit locally.
+
 ## CURRENT STATE
 - **Dark theme** with animated gradient background (#08080C base)
 - **File structure:**
