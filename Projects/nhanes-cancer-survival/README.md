@@ -45,6 +45,18 @@ Among US adults with a cancer history, are cardiometabolic comorbidities (diabet
 - Proportional hazards tested via Schoenfeld residuals
 - Sensitivity analyses: alternative exposure definitions, excluding early deaths, sex-stratified, time-period stratified
 
+## Interactive Dashboard
+
+**`dashboard.html`** — single-file Plotly.js explorer (~133 KB) with embedded JSON. Survey-weighted KM curves and Cox HRs precomputed in Python via `lifelines`, then rendered client-side. Includes:
+- Kaplan-Meier survival curves with project palette (cancer pink, non-cancer indigo)
+- Stratifier dropdown (overall / age group / sex / race / smoking / diabetes / hypertension / obesity) — redraws KM curves and the subgroup HR forest plot live
+- Follow-up window slider (1-20 years) that zooms the time axis on the fly
+- Risk table panel showing weighted survival % at 0/1/2/5/10/15/20-year horizons
+- Subgroup forest plot of cancer-vs-non-cancer hazard ratios with 95% CIs, color-coded by significance, log-scale x-axis
+- Reachable from `survival-analysis.html` via the "Launch Interactive Dashboard" button under the hero subtitle, and from the homepage card via the indigo "Live Dashboard" badge
+
+Forms a paired NHANES interactive series with the CV Risk Gaps dashboard, which uses the same upstream cohort.
+
 ## Figures
 
 | Figure | Description |

@@ -9,117 +9,120 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1E1B4B;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:68px;}
-body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px;opacity:0.03;mix-blend-mode:multiply;}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1E1B4B;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:68px;background:#F5F0EA;}
+body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(0,0,0,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.04) 1px,transparent 1px);
+  background-size:40px 40px;}
 
-/* Animated gradient background */
-.page-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:linear-gradient(135deg,#f0f0ff 0%,#e0e7ff 20%,#f5eeff 40%,#dff5ef 60%,#ede5ff 80%,#f0f0ff 100%);
-  background-size:500% 500%;animation:gradShift 20s ease infinite;}
-@keyframes gradShift{0%{background-position:0% 50%}25%{background-position:50% 0%}50%{background-position:100% 50%}75%{background-position:50% 100%}100%{background-position:0% 50%}}
-
-/* Nav */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 3rem;backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);background:rgba(255,255,255,0.5);border-bottom:1px solid rgba(255,255,255,0.5);transition:background 0.3s,box-shadow 0.3s;}
-.nav.scrolled{background:rgba(255,255,255,0.82);box-shadow:0 1px 16px rgba(0,0,0,0.04);}
-.nav-logo{font-size:15px;font-weight:700;color:#1E1B4B;letter-spacing:-0.02em;text-decoration:none;}
-.nav-logo em{font-style:normal;color:#4338CA;}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 3rem;backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);background:rgba(245,240,234,0.8);border-bottom:1px solid rgba(0,0,0,0.06);transition:background 0.3s,box-shadow 0.3s;}
+.nav.scrolled{background:rgba(245,240,234,0.95);box-shadow:0 1px 16px rgba(0,0,0,0.04);}
+.nav-logo{font-size:15px;font-weight:700;color:#0F0F14;letter-spacing:-0.02em;text-decoration:none;}
 .nav-links{display:flex;gap:2.5rem;align-items:center;}
-.nav-links a{font-size:13px;font-weight:500;color:#64748B;text-decoration:none;transition:color 0.2s;}
-.nav-links a:hover{color:#1E1B4B;}
+.nav-links a{font-size:13px;font-weight:500;color:#6B6880;text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:#0F0F14;}
 .nav-cta{font-size:11px;font-weight:600;padding:6px 16px;background:transparent;color:#6366F1;border:1.5px solid #6366F1;border-radius:18px;text-decoration:none;transition:all 0.2s ease;letter-spacing:0.3px;}
 .nav-cta:hover{background:#6366F1;color:#fff;transform:translateY(-1px);}
 
-/* Scroll reveal */
 .rv{opacity:0;transform:translateY(20px);transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1);}
 .rv.vis{opacity:1;transform:translateY(0);}
 
-/* Hero */
-.cs-hero{position:relative;z-index:2;background:linear-gradient(135deg,#04342C,#085041);padding:60px 2rem 40px;}
+/* Hero - deep emerald */
+.cs-hero{position:relative;z-index:2;background:linear-gradient(135deg,#04342C,#0A4F3F);padding:60px 2rem 40px;}
 .cs-hero-inner{max-width:800px;margin:0 auto;}
-.cs-back{font-size:13px;color:#9FE1CB;text-decoration:none;display:inline-block;margin-bottom:20px;transition:text-decoration 0.2s;}
-.cs-back:hover{text-decoration:underline;}
-.cs-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,0.1);margin-bottom:12px;}
+.cs-back{font-size:13px;color:#6EE7B7;text-decoration:none;display:inline-block;margin-bottom:20px;transition:opacity 0.2s;}
+.cs-back:hover{opacity:0.7;}
+.cs-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,0.08);margin-bottom:12px;}
 .cs-badge-dot{width:6px;height:6px;border-radius:50%;background:#10B981;}
-.cs-badge span{font-size:12px;color:#9FE1CB;font-weight:600;}
-.cs-title{font-size:48px;font-weight:800;color:#E1F5EE;letter-spacing:-0.03em;margin-bottom:12px;}
-.cs-subtitle{font-size:16px;color:#9FE1CB;line-height:1.5;max-width:560px;margin-bottom:12px;}
-.cs-meta{font-size:13px;color:#5DCAA5;font-weight:500;}
+.cs-badge span{font-size:12px;color:#6EE7B7;font-weight:600;}
+.cs-title{font-size:44px;font-weight:800;color:#ECFDF5;letter-spacing:-0.03em;margin-bottom:12px;line-height:1.1;}
+.cs-subtitle{font-size:16px;color:#6EE7B7;line-height:1.55;max-width:580px;margin-bottom:12px;}
+.cs-meta{font-size:13px;color:#34D399;font-weight:500;}
 
-/* Stats row */
-.cs-stats{max-width:800px;margin:0 auto;padding:24px 2rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;position:relative;z-index:2;}
-.cs-stat{background:rgba(255,255,255,0.85);backdrop-filter:blur(24px);border:1px solid rgba(99,102,241,0.06);border-radius:16px;padding:20px;text-align:center;}
-.cs-stat-n{font-size:32px;font-weight:800;color:#1E1B4B;}
-.cs-stat-l{font-size:12px;color:#6B7280;margin-top:4px;}
+.cs-content{position:relative;z-index:2;max-width:800px;margin:0 auto;padding:0 2rem;}
 
-/* Problem + Solution */
-.cs-ps{max-width:800px;margin:0 auto;padding:0 2rem 40px;display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative;z-index:2;}
-.cs-ps-card{background:#E1F5EE;border-radius:16px;padding:24px;}
-.cs-ps-label{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0F6E56;margin-bottom:8px;}
-.cs-ps-title{font-size:20px;font-weight:700;color:#04342C;margin-bottom:8px;}
-.cs-ps-text{font-size:14px;color:#085041;line-height:1.5;}
+.cs-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:24px 0;}
+.cs-stat{background:rgba(255,255,255,0.8);border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:20px;text-align:center;backdrop-filter:blur(12px);}
+.cs-stat-n{font-size:28px;font-weight:800;color:#0F0F14;}
+.cs-stat-l{font-size:11px;color:#6B6880;margin-top:4px;font-weight:500;}
 
-/* My Role */
-.cs-role{max-width:800px;margin:0 auto;padding:40px 2rem;border-top:1px solid rgba(99,102,241,0.06);position:relative;z-index:2;}
-.cs-label{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0F6E56;}
-.cs-role-title{font-size:24px;font-weight:700;color:#1E1B4B;margin:8px 0 12px;}
-.cs-role-text{font-size:15px;color:#4B5563;line-height:1.6;}
-.cs-pullquote{border-left:3px solid #10B981;background:#E1F5EE;border-radius:0 12px 12px 0;padding:16px 20px;margin-top:16px;}
-.cs-pullquote p{font-size:16px;font-weight:600;color:#04342C;line-height:1.4;}
+.cs-section{padding:40px 0;border-top:1px solid rgba(0,0,0,0.06);}
+.cs-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#10B981;}
+.cs-section-title{font-size:24px;font-weight:700;color:#0F0F14;margin:8px 0 14px;letter-spacing:-0.01em;}
+.cs-text{font-size:15px;color:#4B5563;line-height:1.65;}
 
-/* Skills + Tech */
-.cs-skills{max-width:800px;margin:0 auto;padding:24px 2rem;border-top:1px solid rgba(99,102,241,0.06);display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative;z-index:2;}
-.cs-skill-col{padding-right:24px;}
-.cs-skill-col+.cs-skill-col{padding-left:24px;padding-right:0;border-left:1px solid rgba(99,102,241,0.06);}
+.cs-highlight{background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border-radius:14px;padding:24px;margin:16px 0;}
+.cs-highlight-title{font-size:18px;font-weight:700;color:#064E3B;margin-bottom:8px;}
+.cs-highlight-text{font-size:14px;color:#065F46;line-height:1.55;}
+
+.cs-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.cs-card{background:rgba(255,255,255,0.8);border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:20px;}
+.cs-card-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#10B981;margin-bottom:6px;}
+.cs-card-title{font-size:16px;font-weight:700;color:#0F0F14;margin-bottom:6px;}
+.cs-card-text{font-size:13px;color:#4B5563;line-height:1.55;}
+
+.cs-three-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+
+.cs-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;}
+.cs-table th{text-align:left;padding:10px 14px;background:rgba(16,185,129,0.08);color:#064E3B;font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid rgba(16,185,129,0.15);}
+.cs-table td{padding:10px 14px;border-bottom:1px solid rgba(0,0,0,0.05);color:#4B5563;line-height:1.45;}
+.cs-table tr:last-child td{border-bottom:none;}
+
 .cs-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
-.cs-pill{padding:6px 14px;border-radius:8px;background:rgba(255,255,255,0.85);border:1px solid rgba(99,102,241,0.06);font-size:13px;color:#4B5563;}
+.cs-pill{padding:6px 14px;border-radius:8px;background:rgba(255,255,255,0.85);border:1px solid rgba(0,0,0,0.06);font-size:12px;color:#4B5563;font-weight:500;}
 
-/* Journey */
-.cs-journey{max-width:800px;margin:0 auto;padding:40px 2rem;border-top:1px solid rgba(99,102,241,0.06);position:relative;z-index:2;}
-.cs-journey-title{font-size:24px;font-weight:700;color:#1E1B4B;margin:8px 0 20px;}
-.cs-phase{margin-bottom:20px;}
-.cs-phase-date{font-size:12px;font-weight:600;color:#0F6E56;}
-.cs-phase-name{font-size:16px;font-weight:600;color:#1E1B4B;margin:2px 0 4px;}
-.cs-phase-desc{font-size:14px;color:#6B7280;line-height:1.5;}
-.cs-bar{height:4px;border-radius:2px;background:#E1F5EE;margin-top:8px;overflow:hidden;}
-.cs-bar-fill{height:100%;border-radius:2px;background:#10B981;width:0;transition:width 1s cubic-bezier(0.16,1,0.3,1);}
-.cs-bar-partial{background:#5DCAA5;}
+/* Quote */
+.cs-quote{border-left:3px solid #10B981;background:rgba(255,255,255,0.6);border-radius:0 12px 12px 0;padding:18px 22px;margin:16px 0;}
+.cs-quote p{font-size:16px;font-weight:600;color:#064E3B;line-height:1.45;font-style:italic;}
 
-/* Learnings */
-.cs-learn{max-width:800px;margin:0 auto;padding:40px 2rem;border-top:1px solid rgba(99,102,241,0.06);position:relative;z-index:2;}
-.cs-learn-cards{display:flex;flex-direction:column;gap:16px;margin-top:16px;}
-.cs-learn-card{background:#FAEEDA;border-radius:16px;padding:24px;}
-.cs-learn-num{font-size:28px;font-weight:800;color:#854F0B;margin-bottom:6px;}
-.cs-learn-text{font-size:15px;color:#633806;line-height:1.6;}
+/* Journey timeline */
+.cs-timeline{margin:20px 0;}
+.cs-phase{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid rgba(0,0,0,0.04);}
+.cs-phase:last-child{border-bottom:none;}
+.cs-phase-marker{width:40px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;}
+.cs-phase-dot{width:10px;height:10px;border-radius:50%;background:#10B981;margin-top:4px;}
+.cs-phase-line{width:2px;flex:1;background:rgba(16,185,129,0.2);margin-top:4px;}
+.cs-phase-content{flex:1;}
+.cs-phase-date{font-size:11px;font-weight:600;color:#10B981;letter-spacing:0.5px;}
+.cs-phase-name{font-size:15px;font-weight:700;color:#0F0F14;margin:2px 0 4px;}
+.cs-phase-desc{font-size:13px;color:#6B6880;line-height:1.5;}
 
-/* CTA */
-.cs-cta{max-width:800px;margin:0 auto;padding:40px 2rem 60px;text-align:center;position:relative;z-index:2;}
-.cs-cta-text{font-size:16px;color:#6B7280;margin-bottom:16px;}
-.cs-cta-btn{display:inline-block;padding:14px 32px;border-radius:12px;background:#085041;color:#E1F5EE;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.3s cubic-bezier(0.16,1,0.3,1);}
-.cs-cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(8,80,65,0.25);}
+/* Competitor grid */
+.cs-comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0;}
+.cs-comp{background:rgba(255,255,255,0.6);border:1px solid rgba(0,0,0,0.05);border-radius:10px;padding:14px;display:flex;align-items:center;gap:10px;}
+.cs-comp-icon{width:32px;height:32px;border-radius:8px;background:rgba(0,0,0,0.04);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.cs-comp-info{flex:1;}
+.cs-comp-name{font-size:13px;font-weight:600;color:#0F0F14;}
+.cs-comp-gap{font-size:11px;color:#6B6880;}
+
+.cs-cta{padding:48px 0 60px;text-align:center;}
+.cs-cta-text{font-size:15px;color:#6B6880;margin-bottom:16px;}
+.cs-cta-btn{display:inline-block;padding:14px 32px;border-radius:12px;background:#04342C;color:#6EE7B7;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.3s cubic-bezier(0.16,1,0.3,1);}
+.cs-cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(4,52,44,0.3);}
 .cs-footer{font-size:12px;color:#9CA3AF;margin-top:24px;}
 
-/* Responsive */
 @media(max-width:768px){
-  .nav{padding:1rem 1.25rem;}
-  .nav-links{display:none;}
-  .cs-hero{padding:40px 1.25rem 30px;}
-  .cs-title{font-size:32px;}
-  .cs-subtitle{font-size:14px;}
-  .cs-stats{grid-template-columns:1fr;padding:16px 1.25rem;}
-  .cs-ps{grid-template-columns:1fr;padding:0 1.25rem 30px;}
-  .cs-role,.cs-journey,.cs-learn,.cs-cta{padding-left:1.25rem;padding-right:1.25rem;}
-  .cs-skills{grid-template-columns:1fr;padding:24px 1.25rem;}
-  .cs-skill-col+.cs-skill-col{padding-left:0;border-left:none;margin-top:16px;}
-  .cs-role-title,.cs-journey-title{font-size:20px;}
+  .nav{padding:1rem 1.25rem;}.nav-links{display:none;}
+  .cs-hero{padding:40px 1.25rem 30px;}.cs-title{font-size:30px;}
+  .cs-content{padding:0 1.25rem;}
+  .cs-stats{grid-template-columns:1fr 1fr;}
+  .cs-cards{grid-template-columns:1fr;}
+  .cs-three-cards{grid-template-columns:1fr;}
+  .cs-comp-grid{grid-template-columns:1fr;}
+  .cs-section-title{font-size:20px;}
+  .cs-phase{flex-direction:column;gap:8px;}
+  .cs-phase-marker{flex-direction:row;width:auto;gap:8px;}
+  .cs-phase-line{display:none;}
 }
+.js-transitions body{opacity:0;transition:opacity 380ms cubic-bezier(0.16,1,0.3,1);}
+.js-transitions body.page-ready{opacity:1;}
+.js-transitions body.page-leaving{opacity:0;transition:opacity 220ms cubic-bezier(0.4,0,1,1);}
 </style>
+<script src="js/transitions.js"></script>
 </head>
 <body>
 
-<div class="page-bg"></div>
-
 <nav class="nav">
-  <a href="index.html" class="nav-logo"><em>S</em>hri</a>
+  <a href="index.html" class="nav-logo">Shri</a>
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="index.html#projects">Projects</a>
@@ -130,127 +133,218 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
 <section class="cs-hero">
   <div class="cs-hero-inner">
     <a href="index.html#projects" class="cs-back rv">&larr; Back to projects</a>
-    <div class="cs-badge rv"><div class="cs-badge-dot"></div><span>In development</span></div>
+    <div class="cs-badge rv"><div class="cs-badge-dot"></div><span>Health Tech &middot; Graduate Venture</span></div>
     <h1 class="cs-title rv">Nyrocare</h1>
-    <p class="cs-subtitle rv">AI-powered health companion for chronic disease self-management. Developed as a graduate venture through WashU Skandalaris Center.</p>
-    <p class="cs-meta rv">Graduate Venture Project · May 2024 to present</p>
+    <p class="cs-subtitle rv">AI-powered chronic disease companion for medication adherence, nutrition tracking, and clinical decision support. Built from zero to working product through WashU Skandalaris Center.</p>
+    <p class="cs-meta rv">Graduate Venture Project &middot; May 2024 to present</p>
   </div>
 </section>
 
-<div class="cs-stats">
-  <div class="cs-stat rv"><div class="cs-stat-n">18</div><div class="cs-stat-l">App screens</div></div>
-  <div class="cs-stat rv" style="transition-delay:0.1s;"><div class="cs-stat-n">19</div><div class="cs-stat-l">Integrated services</div></div>
-  <div class="cs-stat rv" style="transition-delay:0.2s;"><div class="cs-stat-n">0</div><div class="cs-stat-l">Audit errors</div></div>
-</div>
-
-<div class="cs-ps">
-  <div class="cs-ps-card rv">
-    <div class="cs-ps-label">THE PROBLEM</div>
-    <div class="cs-ps-title">$300B/year lost</div>
-    <p class="cs-ps-text">Medication non-adherence in chronic disease costs the U.S. healthcare system over $300 billion a year. Nearly half of adults with hypertension don't have their blood pressure under control. Not because they don't care. Because they're overwhelmed, unsupported, and left alone between clinic visits with generic tools that are either too clinical or too generic.</p>
+<div class="cs-content">
+  <div class="cs-stats">
+    <div class="cs-stat rv"><div class="cs-stat-n">50+</div><div class="cs-stat-l">User interviews</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.1s"><div class="cs-stat-n">19</div><div class="cs-stat-l">Integrated services</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.2s"><div class="cs-stat-n">18</div><div class="cs-stat-l">App screens</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.3s"><div class="cs-stat-n">0</div><div class="cs-stat-l">Audit errors</div></div>
   </div>
-  <div class="cs-ps-card rv" style="transition-delay:0.15s;">
-    <div class="cs-ps-label">THE SOLUTION</div>
-    <div class="cs-ps-title">Clinical depth meets empathetic design</div>
-    <p class="cs-ps-text">Nyrocare combines evidence-based clinical guidance from trusted medical sources, personalized medication and lifestyle tracking, and Nora, a voice-enabled AI health companion. Proprietary features combine medication, nutrition, and biometric data in ways no competitor currently offers.</p>
-  </div>
-</div>
 
-<div class="cs-role rv">
-  <div class="cs-label">MY ROLE</div>
-  <h2 class="cs-role-title">Full product lifecycle ownership</h2>
-  <p class="cs-role-text">Led the complete product lifecycle as a graduate venture: problem research and competitive analysis across 7+ digital health platforms, clinical hypothesis development, research design (qualitative interviews and quantitative survey targeting 100+ respondents), customer persona creation grounded in real patient journeys, value proposition canvas, MVP scope definition, technical architecture, app development, brand identity, and go-to-market strategy.</p>
-  <div class="cs-pullquote">
-    <p>From clinical hypothesis to working app. Research, product, engineering, brand, and strategy in one seat.</p>
-  </div>
-</div>
-
-<div class="cs-skills rv">
-  <div class="cs-skill-col">
-    <div class="cs-label">SKILLS APPLIED</div>
-    <div class="cs-pills">
-      <span class="cs-pill">User research</span>
-      <span class="cs-pill">Product strategy</span>
-      <span class="cs-pill">Technical architecture</span>
-      <span class="cs-pill">App development</span>
-      <span class="cs-pill">Competitive analysis</span>
-      <span class="cs-pill">Brand design</span>
-      <span class="cs-pill">Clinical research</span>
+  <!-- THE PROBLEM -->
+  <div class="cs-section rv">
+    <div class="cs-label">THE PROBLEM</div>
+    <h2 class="cs-section-title">$300B lost to medication non-adherence every year</h2>
+    <p class="cs-text">Nearly half of US adults with hypertension don't have their blood pressure under control. Not because they don't care, but because they're overwhelmed, unsupported, and left alone between clinic visits. Existing digital health tools fall into two camps: too clinical (medication reminders with no context) or too generic (wellness apps that ignore the complexity of chronic disease management).</p>
+    <div class="cs-cards">
+      <div class="cs-card rv">
+        <div class="cs-card-label">The gap</div>
+        <div class="cs-card-title">No one connects the dots</div>
+        <div class="cs-card-text">Patients track medications in one app, food in another, and vitals in a third. No tool combines all three with clinical intelligence that actually understands drug-nutrient interactions or condition-specific thresholds.</div>
+      </div>
+      <div class="cs-card rv" style="transition-delay:0.1s">
+        <div class="cs-card-label">The opportunity</div>
+        <div class="cs-card-title">Clinical depth + empathetic design</div>
+        <div class="cs-card-text">What if a chronic disease companion could combine evidence-based clinical guidance, personalized tracking, and an AI health companion that understands your specific conditions?</div>
+      </div>
     </div>
   </div>
-  <div class="cs-skill-col">
-    <div class="cs-label">TECH STACK</div>
-    <div class="cs-pills">
-      <span class="cs-pill">React Native</span>
-      <span class="cs-pill">Expo</span>
-      <span class="cs-pill">Node.js</span>
-      <span class="cs-pill">Vector DB</span>
-      <span class="cs-pill">Voice AI</span>
-      <span class="cs-pill">Vision ML</span>
-      <span class="cs-pill">GitHub</span>
+
+  <!-- COMPETITIVE LANDSCAPE -->
+  <div class="cs-section rv">
+    <div class="cs-label">COMPETITIVE ANALYSIS</div>
+    <h2 class="cs-section-title">7 platforms analyzed, one clear gap</h2>
+    <p class="cs-text">I evaluated the major digital health platforms for chronic disease management. Each has strengths, but none combines medication intelligence, condition-aware nutrition, and conversational AI in a single experience.</p>
+    <div class="cs-comp-grid rv">
+      <div class="cs-comp">
+        <div class="cs-comp-icon">💊</div>
+        <div class="cs-comp-info"><div class="cs-comp-name">Medisafe</div><div class="cs-comp-gap">Strong reminders, no nutrition or AI companion</div></div>
+      </div>
+      <div class="cs-comp">
+        <div class="cs-comp-icon">🍎</div>
+        <div class="cs-comp-info"><div class="cs-comp-name">MyFitnessPal</div><div class="cs-comp-gap">Generic nutrition, no clinical awareness</div></div>
+      </div>
+      <div class="cs-comp">
+        <div class="cs-comp-icon">🩺</div>
+        <div class="cs-comp-info"><div class="cs-comp-name">Livongo/Teladoc</div><div class="cs-comp-gap">B2B payer model, limited self-serve</div></div>
+      </div>
+      <div class="cs-comp">
+        <div class="cs-comp-icon">🤖</div>
+        <div class="cs-comp-info"><div class="cs-comp-name">Ada / Babylon</div><div class="cs-comp-gap">Symptom triage, no ongoing chronic management</div></div>
+      </div>
+    </div>
+    <div class="cs-highlight rv">
+      <div class="cs-highlight-title">Nyrocare's moat</div>
+      <div class="cs-highlight-text">The real competitive advantage isn't code. It's clinical domain expertise: deep knowledge of treatment protocols, drug-nutrient interactions, and condition-specific thresholds, combined with empathetic design that makes people feel supported rather than surveilled.</div>
     </div>
   </div>
-</div>
 
-<div class="cs-journey rv">
-  <div class="cs-label">JOURNEY</div>
-  <h2 class="cs-journey-title">10 months, 4 phases</h2>
-  <div class="cs-phase rv">
-    <div class="cs-phase-date">May to Oct 2024</div>
-    <div class="cs-phase-name">Research and discovery</div>
-    <p class="cs-phase-desc">Problem research, competitive analysis across 7+ platforms, clinical literature review, persona creation, 12-section living document built through structured research</p>
-    <div class="cs-bar"><div class="cs-bar-fill" data-width="100"></div></div>
-  </div>
-  <div class="cs-phase rv" style="transition-delay:0.15s;">
-    <div class="cs-phase-date">Nov 2024 to Jan 2025</div>
-    <div class="cs-phase-name">Brand and architecture</div>
-    <p class="cs-phase-desc">Brand setup (domain, logo, LinkedIn, YouTube), developer recruitment, technical architecture decisions, infrastructure planning</p>
-    <div class="cs-bar"><div class="cs-bar-fill" data-width="100"></div></div>
-  </div>
-  <div class="cs-phase rv" style="transition-delay:0.3s;">
-    <div class="cs-phase-date">Feb to Mar 2025</div>
-    <div class="cs-phase-name">Build and ship</div>
-    <p class="cs-phase-desc">Voice AI companion, clinical knowledge engine, intelligent food logging, pharmaceutical data integration, full app audit passed with 0 errors</p>
-    <div class="cs-bar"><div class="cs-bar-fill" data-width="100"></div></div>
-  </div>
-  <div class="cs-phase rv" style="transition-delay:0.45s;">
-    <div class="cs-phase-date">Current</div>
-    <div class="cs-phase-name">Polish and pilot</div>
-    <p class="cs-phase-desc">Knowledge retrieval system, onboarding flow, dashboard polish, preparing for pilot launch</p>
-    <div class="cs-bar"><div class="cs-bar-fill cs-bar-partial" data-width="40"></div></div>
-  </div>
-</div>
-
-<div class="cs-learn rv">
-  <div class="cs-label">WHAT I LEARNED</div>
-  <div class="cs-learn-cards">
-    <div class="cs-learn-card rv">
-      <div class="cs-learn-num">01</div>
-      <p class="cs-learn-text">The real competitive moat in digital health is not code. It's clinical domain expertise, regulatory credibility, and evidence-based design. Anyone can build a reminder app with AI. What's hard to replicate is deep knowledge of treatment protocols and the trust that comes from grounding every feature in peer-reviewed science.</p>
-    </div>
-    <div class="cs-learn-card rv" style="transition-delay:0.15s;">
-      <div class="cs-learn-num">02</div>
-      <p class="cs-learn-text">Empathy is a product feature, not a nice-to-have. The tone of a notification, the timing of a nudge, and whether the app makes someone feel supported or surveilled are design decisions that directly drive adherence and retention.</p>
+  <!-- THE SOLUTION -->
+  <div class="cs-section rv">
+    <div class="cs-label">THE SOLUTION</div>
+    <h2 class="cs-section-title">Three pillars in one app</h2>
+    <div class="cs-three-cards rv">
+      <div class="cs-card">
+        <div class="cs-card-label">Nora</div>
+        <div class="cs-card-title">AI Health Companion</div>
+        <div class="cs-card-text">Voice-enabled AI that answers health questions grounded in peer-reviewed evidence. Understands your conditions, medications, and history. Not a chatbot. A clinical copilot.</div>
+      </div>
+      <div class="cs-card" style="transition-delay:0.1s">
+        <div class="cs-card-label">Clinical Engine</div>
+        <div class="cs-card-title">Smart Medication Tracking</div>
+        <div class="cs-card-text">Integrated pharmaceutical database with drug interaction alerts, adherence patterns, and condition-specific medication intelligence from trusted clinical sources.</div>
+      </div>
+      <div class="cs-card" style="transition-delay:0.2s">
+        <div class="cs-card-label">Nutrition AI</div>
+        <div class="cs-card-title">Condition-Aware Food Logging</div>
+        <div class="cs-card-text">Vision ML food recognition with condition-specific nutritional analysis. Knows that potassium matters differently for someone on ACE inhibitors vs metformin.</div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="cs-cta rv">
-  <p class="cs-cta-text">Want to discuss Nyrocare or digital health product strategy?</p>
-  <a href="mailto:g.sridharan@wustl.edu" class="cs-cta-btn">Get in touch</a>
-  <div class="cs-footer">Shri 2026</div>
+  <!-- MY ROLE -->
+  <div class="cs-section rv">
+    <div class="cs-label">MY ROLE</div>
+    <h2 class="cs-section-title">Full product lifecycle, one seat</h2>
+    <p class="cs-text">This wasn't a team project where I owned one slice. I led every phase: problem research, competitive analysis, clinical hypothesis development, customer persona creation, research design (qualitative interviews + quantitative survey targeting 100+ respondents), value proposition canvas, MVP scope, technical architecture, app development, brand identity, and go-to-market strategy.</p>
+    <div class="cs-quote rv">
+      <p>From clinical hypothesis to working app. Research, product, engineering, brand, and strategy in one seat.</p>
+    </div>
+    <div class="cs-cards rv">
+      <div class="cs-card">
+        <div class="cs-card-label">Skills Applied</div>
+        <div class="cs-pills" style="margin-top:8px;">
+          <span class="cs-pill">User research</span>
+          <span class="cs-pill">Product strategy</span>
+          <span class="cs-pill">Technical architecture</span>
+          <span class="cs-pill">App development</span>
+          <span class="cs-pill">Competitive analysis</span>
+          <span class="cs-pill">Brand design</span>
+          <span class="cs-pill">Clinical research</span>
+        </div>
+      </div>
+      <div class="cs-card" style="transition-delay:0.1s">
+        <div class="cs-card-label">Tech Stack</div>
+        <div class="cs-pills" style="margin-top:8px;">
+          <span class="cs-pill">React Native</span>
+          <span class="cs-pill">Expo</span>
+          <span class="cs-pill">Node.js</span>
+          <span class="cs-pill">Vector DB</span>
+          <span class="cs-pill">Voice AI</span>
+          <span class="cs-pill">Vision ML</span>
+          <span class="cs-pill">GitHub</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JOURNEY -->
+  <div class="cs-section rv">
+    <div class="cs-label">JOURNEY</div>
+    <h2 class="cs-section-title">10 months, 4 phases</h2>
+    <div class="cs-timeline">
+      <div class="cs-phase rv">
+        <div class="cs-phase-marker"><div class="cs-phase-dot"></div><div class="cs-phase-line"></div></div>
+        <div class="cs-phase-content">
+          <div class="cs-phase-date">May to Oct 2024</div>
+          <div class="cs-phase-name">Research and discovery</div>
+          <div class="cs-phase-desc">Problem research, competitive analysis across 7+ platforms, clinical literature review, persona creation, 50+ user interviews, 12-section living research document</div>
+        </div>
+      </div>
+      <div class="cs-phase rv" style="transition-delay:0.1s">
+        <div class="cs-phase-marker"><div class="cs-phase-dot"></div><div class="cs-phase-line"></div></div>
+        <div class="cs-phase-content">
+          <div class="cs-phase-date">Nov 2024 to Jan 2025</div>
+          <div class="cs-phase-name">Brand and architecture</div>
+          <div class="cs-phase-desc">Brand setup (domain, logo, LinkedIn, YouTube), developer recruitment, technical architecture decisions, infrastructure planning, database schema</div>
+        </div>
+      </div>
+      <div class="cs-phase rv" style="transition-delay:0.2s">
+        <div class="cs-phase-marker"><div class="cs-phase-dot"></div><div class="cs-phase-line"></div></div>
+        <div class="cs-phase-content">
+          <div class="cs-phase-date">Feb to Mar 2025</div>
+          <div class="cs-phase-name">Build and ship</div>
+          <div class="cs-phase-desc">Voice AI companion, clinical knowledge engine, intelligent food logging, pharmaceutical data integration, 19 integrated services, full app audit passed with 0 errors</div>
+        </div>
+      </div>
+      <div class="cs-phase rv" style="transition-delay:0.3s">
+        <div class="cs-phase-marker"><div class="cs-phase-dot" style="background:#34D399;"></div></div>
+        <div class="cs-phase-content">
+          <div class="cs-phase-date">Current</div>
+          <div class="cs-phase-name">Polish and pilot</div>
+          <div class="cs-phase-desc">Knowledge retrieval system, onboarding flow, dashboard polish, preparing for pilot launch with target users</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USER RESEARCH -->
+  <div class="cs-section rv">
+    <div class="cs-label">USER RESEARCH</div>
+    <h2 class="cs-section-title">What 50+ interviews taught me</h2>
+    <p class="cs-text">The research phase wasn't a checkbox. It fundamentally changed the product direction. Three insights reshaped every design decision:</p>
+    <div class="cs-three-cards rv">
+      <div class="cs-card">
+        <div class="cs-card-title" style="font-size:32px;font-weight:800;color:#10B981;margin-bottom:10px;">01</div>
+        <div class="cs-card-text"><strong>Trust requires clinical grounding.</strong> Users rejected generic AI health advice instantly. They trusted the app only when answers cited specific clinical sources they could verify.</div>
+      </div>
+      <div class="cs-card" style="transition-delay:0.1s">
+        <div class="cs-card-title" style="font-size:32px;font-weight:800;color:#10B981;margin-bottom:10px;">02</div>
+        <div class="cs-card-text"><strong>Tone is a feature.</strong> The difference between "You missed your medication" and "Ready for your evening dose?" is the difference between surveillance and support. Retention depends on this.</div>
+      </div>
+      <div class="cs-card" style="transition-delay:0.2s">
+        <div class="cs-card-title" style="font-size:32px;font-weight:800;color:#10B981;margin-bottom:10px;">03</div>
+        <div class="cs-card-text"><strong>Integration, not features.</strong> Users didn't want more apps. They wanted one place that connects medications, food, and vitals with intelligence about how they interact for their specific conditions.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SO WHAT -->
+  <div class="cs-section rv">
+    <div class="cs-label">SO WHAT</div>
+    <h2 class="cs-section-title">What this demonstrates</h2>
+    <table class="cs-table">
+      <tr><th>Dimension</th><th>What I did</th></tr>
+      <tr><td>Problem discovery</td><td>50+ user interviews, competitive analysis of 7 platforms, clinical literature review</td></tr>
+      <tr><td>Product strategy</td><td>Persona creation, value proposition canvas, MVP scoping, go-to-market planning</td></tr>
+      <tr><td>Technical execution</td><td>React Native app, 19 integrated services, voice AI, vision ML, vector DB for clinical knowledge</td></tr>
+      <tr><td>Clinical rigor</td><td>Evidence-based design grounded in treatment protocols, drug interaction databases, condition-specific thresholds</td></tr>
+      <tr><td>Brand and launch</td><td>Full brand identity, domain, social presence, audit passed with 0 errors, pilot in preparation</td></tr>
+    </table>
+    <div class="cs-highlight rv">
+      <div class="cs-highlight-title">F-1 compliance note</div>
+      <div class="cs-highlight-text">Nyrocare was developed as a graduate venture project through the WashU Skandalaris Center for Entrepreneurial Studies, fully compliant with F-1 visa curricular practical training requirements.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cs-cta rv">
+    <p class="cs-cta-text">Want to discuss digital health product strategy or chronic disease management?</p>
+    <a href="mailto:g.sridharan@wustl.edu" class="cs-cta-btn">Get in touch</a>
+    <div class="cs-footer">Shri 2026</div>
+  </div>
 </div>
 
 <script>
-// Scroll reveal
-var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:0.15});
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:0.1});
 document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
-
-// Progress bar animation
-var barObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var fill=e.target.querySelector('.cs-bar-fill');if(fill)fill.style.width=fill.getAttribute('data-width')+'%';barObs.unobserve(e.target);}});},{threshold:0.3});
-document.querySelectorAll('.cs-phase').forEach(function(el){barObs.observe(el);});
-
-// Nav scroll
 var nav=document.querySelector('.nav');
 window.addEventListener('scroll',function(){if(window.scrollY>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled');},{passive:true});
 </script>

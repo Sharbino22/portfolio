@@ -49,6 +49,7 @@ medicare-claims-analysis/
   CLAUDE.md               ← You are here. Read this first every session.
   download_data.py        ← Run once to get data
   README.md               ← Public-facing project summary
+  dashboard.html          ← Single-file Plotly.js interactive explorer (embedded JSON)
   data/
     raw/                  ← Downloaded CSVs (do not commit to GitHub)
     processed/            ← Cleaned files output by 01_data_prep
@@ -98,5 +99,7 @@ medicare-claims-analysis/
 - [x] case_study.docx created in /docs/
 - [x] Portfolio HTML (index.html) updated with new project card
 - [x] README.md finalized
+- [x] Standalone case-study page (`medicare-analysis.html`) live
+- [x] Interactive Plotly dashboard (`dashboard.html`) shipped, linked from case-study hero and homepage card via amber "Live Dashboard" badge
 - [ ] GitHub repo pushed
 - [ ] sridharanshri.com project card live

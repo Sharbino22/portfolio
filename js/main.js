@@ -107,45 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
   updateActive();
 })();
 
-// ===== PROJECTS DRAG SCROLL =====
-
-(function () {
-  const grid = document.querySelector('.projects-grid');
-  if (!grid) return;
-
-  let isDown = false;
-  let startX;
-  let scrollLeft;
-
-  grid.addEventListener('mousedown', (e) => {
-    isDown = true;
-    startX = e.pageX - grid.offsetLeft;
-    scrollLeft = grid.scrollLeft;
-  });
-
-  grid.addEventListener('mouseleave', () => { isDown = false; });
-  grid.addEventListener('mouseup', () => { isDown = false; });
-
-  grid.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - grid.offsetLeft;
-    const walk = (x - startX) * 2;
-    grid.scrollLeft = scrollLeft - walk;
-  });
-
-  // Hide scroll hint when scrolled to end
-  const hint = document.querySelector('.projects-scroll-hint');
-  if (hint) {
-    const updateHint = () => {
-      const atEnd = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 10;
-      hint.classList.toggle('hidden', atEnd);
-    };
-    grid.addEventListener('scroll', updateHint);
-    window.addEventListener('resize', updateHint);
-    updateHint();
-  }
-})();
+// ===== PROJECTS GRID =====
+// (Previously horizontal scroll with drag - now a static grid, no JS needed)
 
 // ===== RESEARCH COUNTER ANIMATION =====
 
@@ -210,4 +173,78 @@ document.addEventListener('DOMContentLoaded', () => {
   );
 
   reveals.forEach((el) => observer.observe(el));
+})();
+
+// ===== Poster lightbox =====
+(function () {
+  const cards = Array.from(document.querySelectorAll('.research-poster-card[data-poster]'));
+  if (!cards.length) return;
+
+  const lb = document.getElementById('poster-lightbox');
+  const img = document.getElementById('lb-image');
+  const typeEl = document.getElementById('lb-type');
+  const titleEl = document.getElementById('lb-title');
+  const subEl = document.getElementById('lb-subtitle');
+  const venueEl = document.getElementById('lb-venue');
+  const dl = document.getElementById('lb-download');
+  const closeBtn = document.getElementById('lb-close');
+  const prevBtn = document.getElementById('lb-prev');
+  const nextBtn = document.getElementById('lb-next');
+
+  let currentIndex = 0;
+
+  function render(i) {
+    const card = cards[i];
+    if (!card) return;
+    currentIndex = i;
+    img.src = card.dataset.full;
+    img.alt = card.dataset.title;
+    typeEl.textContent = card.dataset.type;
+    typeEl.style.color = card.dataset.typecolor || '#A5B4FC';
+    titleEl.textContent = card.dataset.title;
+    subEl.textContent = card.dataset.subtitle || '';
+    venueEl.textContent = card.dataset.venue || '';
+    dl.href = card.dataset.pdf;
+    dl.setAttribute('download', '');
+    prevBtn.style.visibility = cards.length > 1 ? 'visible' : 'hidden';
+    nextBtn.style.visibility = cards.length > 1 ? 'visible' : 'hidden';
+  }
+
+  function open(i) {
+    render(i);
+    lb.classList.add('is-open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lb-open');
+  }
+  function close() {
+    lb.classList.remove('is-open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lb-open');
+  }
+  function next() { render((currentIndex + 1) % cards.length); }
+  function prev() { render((currentIndex - 1 + cards.length) % cards.length); }
+
+  cards.forEach((card, i) => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      open(i);
+    });
+  });
+
+  closeBtn.addEventListener('click', close);
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+
+  // Click on backdrop closes
+  lb.addEventListener('click', (e) => {
+    if (e.target === lb) close();
+  });
+
+  // Keyboard nav
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
 })();

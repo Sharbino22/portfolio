@@ -18,7 +18,7 @@ function startGlobe(){
   var camera=new THREE.PerspectiveCamera(45,1,0.1,1000);
   camera.position.set(0,0,3.0);
   var renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
-  renderer.setSize(GS,GS);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setSize(GS,GS);renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setClearColor(0x000000,0);renderer.domElement.style.cursor='pointer';
   gw.appendChild(renderer.domElement);
 
@@ -26,7 +26,7 @@ function startGlobe(){
   var dl=new THREE.DirectionalLight(0xfff8f0,0.48);dl.position.set(-2,1.5,3);scene.add(dl);
   var fl=new THREE.DirectionalLight(0x8090b0,0.15);fl.position.set(2,-0.5,-1);scene.add(fl);
 
-  var txW=2048,txH=1024,txCv=document.createElement('canvas');txCv.width=txW;txCv.height=txH;
+  var txW=8192,txH=4096,txCv=document.createElement('canvas');txCv.width=txW;txCv.height=txH;
   var tx=txCv.getContext('2d');
   var og=tx.createLinearGradient(0,0,0,txH);
   og.addColorStop(0,'#1a3a6e');og.addColorStop(0.25,'#224e92');og.addColorStop(0.5,'#2d60a8');og.addColorStop(0.75,'#224e92');og.addColorStop(1,'#1a3a6e');
@@ -36,10 +36,10 @@ function startGlobe(){
   for(var i=-180;i<=180;i+=15){var x=(i+180)/360*txW;tx.beginPath();tx.moveTo(x,0);tx.lineTo(x,txH);tx.stroke();}
 
   var earthTex=new THREE.CanvasTexture(txCv);
-  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/land-50m.json').then(function(r){return r.json();}).then(function(world){
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/land-10m.json').then(function(r){return r.json();}).then(function(world){
     var land=topojson.feature(world,world.objects.land);
     land.features.forEach(function(f){
-      var dr=function(ring){tx.beginPath();ring.forEach(function(c,i){var px=(c[0]+180)/360*txW;var py=(90-c[1])/180*txH;i===0?tx.moveTo(px,py):tx.lineTo(px,py);});tx.closePath();tx.fillStyle='#ece8e2';tx.fill();tx.strokeStyle='rgba(200,195,185,0.3)';tx.lineWidth=0.8;tx.stroke();};
+      var dr=function(ring){tx.beginPath();ring.forEach(function(c,i){var px=(c[0]+180)/360*txW;var py=(90-c[1])/180*txH;i===0?tx.moveTo(px,py):tx.lineTo(px,py);});tx.closePath();tx.fillStyle='#ece8e2';tx.fill();tx.strokeStyle='rgba(200,195,185,0.35)';tx.lineWidth=1.0;tx.stroke();};
       if(f.geometry.type==='Polygon')f.geometry.coordinates.forEach(function(r){dr(r);});
       else if(f.geometry.type==='MultiPolygon')f.geometry.coordinates.forEach(function(p){p.forEach(function(r){dr(r);});});
     });
@@ -47,7 +47,7 @@ function startGlobe(){
   });
 
   var earthGroup=new THREE.Group();scene.add(earthGroup);
-  var earth=new THREE.Mesh(new THREE.SphereGeometry(1,96,96),new THREE.MeshPhongMaterial({map:earthTex,specular:0x3060a0,shininess:6,emissive:0x080e1a,emissiveIntensity:0.06}));
+  var earth=new THREE.Mesh(new THREE.SphereGeometry(1,128,128),new THREE.MeshPhongMaterial({map:earthTex,specular:0x3060a0,shininess:6,emissive:0x080e1a,emissiveIntensity:0.06}));
   earthGroup.add(earth);
   earthGroup.add(new THREE.Mesh(new THREE.SphereGeometry(1.04,64,64),new THREE.ShaderMaterial({vertexShader:'varying vec3 vN;void main(){vN=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',fragmentShader:'varying vec3 vN;void main(){float i=pow(0.58-dot(vN,vec3(0,0,1)),3.0);gl_FragColor=vec4(0.3,0.5,0.85,1.0)*i*0.6;}',blending:THREE.AdditiveBlending,side:THREE.BackSide,transparent:true})));
   earthGroup.add(new THREE.Mesh(new THREE.SphereGeometry(1.10,64,64),new THREE.ShaderMaterial({vertexShader:'varying vec3 vN;void main(){vN=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',fragmentShader:'varying vec3 vN;void main(){float i=pow(0.4-dot(vN,vec3(0,0,1)),2.0);gl_FragColor=vec4(0.35,0.55,0.88,1.0)*i*0.18;}',blending:THREE.AdditiveBlending,side:THREE.BackSide,transparent:true})));
@@ -116,12 +116,48 @@ function startGlobe(){
   flightLine.visible=false;
   earthGroup.add(flightLine);
 
-  // FIX 1: Hot pink/magenta arrowhead
-  var arrowGeom=new THREE.ConeGeometry(0.015,0.04,4);
-  var arrowMat=new THREE.MeshBasicMaterial({color:0xEC4899,transparent:true,opacity:1.0,depthWrite:false});
-  var arrowMesh=new THREE.Mesh(arrowGeom,arrowMat);
-  arrowMesh.visible=false;
-  earthGroup.add(arrowMesh);
+  // Flat 2D airplane silhouette (top-down view)
+  var planeShape=new THREE.Shape();
+  // Nose
+  planeShape.moveTo(0,0.024);
+  // Right fuselage to wing
+  planeShape.lineTo(0.003,0.012);
+  // Right wing tip
+  planeShape.lineTo(0.022,0.004);
+  planeShape.lineTo(0.022,0.001);
+  // Right fuselage after wing
+  planeShape.lineTo(0.003,-0.002);
+  // Right tail
+  planeShape.lineTo(0.012,-0.018);
+  planeShape.lineTo(0.012,-0.022);
+  // Tail center
+  planeShape.lineTo(0.002,-0.016);
+  planeShape.lineTo(0,-0.018);
+  // Left tail
+  planeShape.lineTo(-0.002,-0.016);
+  planeShape.lineTo(-0.012,-0.022);
+  planeShape.lineTo(-0.012,-0.018);
+  // Left fuselage after wing
+  planeShape.lineTo(-0.003,-0.002);
+  // Left wing tip
+  planeShape.lineTo(-0.022,0.001);
+  planeShape.lineTo(-0.022,0.004);
+  // Left fuselage to nose
+  planeShape.lineTo(-0.003,0.012);
+  planeShape.lineTo(0,0.024);
+  var planeGeom=new THREE.ShapeGeometry(planeShape);
+  var planeMat=new THREE.MeshBasicMaterial({color:0xF472B6,transparent:true,opacity:1.0,side:THREE.DoubleSide,depthWrite:false});
+  var planeMesh=new THREE.Mesh(planeGeom,planeMat);
+  var planeGroup=new THREE.Group();
+  planeGroup.add(planeMesh);
+  // Soft glow behind the plane
+  var planeGlow=new THREE.Mesh(new THREE.CircleGeometry(0.018,16),new THREE.MeshBasicMaterial({color:0xEC4899,transparent:true,opacity:0.3,side:THREE.DoubleSide,depthWrite:false}));
+  planeGroup.add(planeGlow);
+  planeGroup.visible=false;
+  earthGroup.add(planeGroup);
+  var arrowMesh=planeGroup;
+  var arrowMat=planeMat;
+  var prevPlaneQuat=new THREE.Quaternion();
 
   var flightArcPts=null;
   var flightInitialDiff=1;
@@ -139,18 +175,21 @@ function startGlobe(){
     flightLine.visible=true;
     flightMat.opacity=0.8;
     arrowMesh.visible=true;
-    arrowMat.opacity=1.0;
+    arrowMat.opacity=0.95;
+    prevPlaneQuat.identity();
     flightGeom.setDrawRange(0,0);
   }
 
   function updateFlight(){
     if(!flightArcPts){flightLine.visible=false;arrowMesh.visible=false;return;}
 
-    // Fading out phase - only arrowhead fades, arc lines are permanent
+    // Fading out phase
     if(flightFadeout>=0){
       flightFadeout+=0.016;
-      var fadeT=flightFadeout/0.3;
-      arrowMat.opacity=Math.max(0,1.0*(1-fadeT));
+      var fadeT=flightFadeout/0.4;
+      var fo=Math.max(0,1-fadeT);
+      arrowMat.opacity=fo*0.95;
+      planeGlow.material.opacity=fo*0.4;
       if(fadeT>=1){arrowMesh.visible=false;flightLine.visible=false;flightArcPts=null;flightFadeout=-1;}
       return;
     }
@@ -189,24 +228,34 @@ function startGlobe(){
     flightGeom.attributes.position.needsUpdate=true;
     flightGeom.setDrawRange(0,drawCount);
 
-    // Position arrowhead along great circle path
+    // Position plane along great circle path with smooth orientation
     var aIdx=Math.min(Math.round(arrowProgress*flightPts),flightPts);
     if(aIdx>0&&aIdx<=flightPts){
       arrowMesh.visible=true;
       arrowMesh.position.copy(flightArcPts[aIdx]);
-      // Orient along tangent
+      // Normal = away from globe center (plane faces outward)
+      var normal=flightArcPts[aIdx].clone().normalize();
+      // Tangent = flight direction
       var prevIdx=Math.max(0,aIdx-1);
       var nextIdx=Math.min(flightPts,aIdx+1);
       var tangent=new THREE.Vector3().subVectors(flightArcPts[nextIdx],flightArcPts[prevIdx]).normalize();
-      var lookTarget=new THREE.Vector3().addVectors(flightArcPts[aIdx],tangent);
-      arrowMesh.lookAt(lookTarget);
-      arrowMesh.rotateX(Math.PI/2);
+      // Right = perpendicular to both
+      var right=new THREE.Vector3().crossVectors(tangent,normal).normalize();
+      // Recalculate tangent to be perfectly orthogonal
+      tangent.crossVectors(normal,right).normalize();
+      // Matrix: X=right, Y=tangent(nose), Z=normal(outward)
+      var rotMat=new THREE.Matrix4().makeBasis(right,tangent,normal);
+      var targetQuat=new THREE.Quaternion().setFromRotationMatrix(rotMat);
+      // Smooth slerp to avoid flicker
+      if(prevPlaneQuat.dot(targetQuat)<0)targetQuat.set(-targetQuat.x,-targetQuat.y,-targetQuat.z,-targetQuat.w);
+      prevPlaneQuat.slerp(targetQuat,0.12);
+      arrowMesh.quaternion.copy(prevPlaneQuat);
     }
   }
 
   var ROTATING=0,ZOOMING_IN=1,DWELLING=2,ZOOMING_OUT=3;
   var state=ROTATING,tIdx=0,frame=0;
-  var DWELL_TIME=450,ZO=3.0,ZI=2.7;
+  var DWELL_TIME=450,ZO=3.0,ZI=2.8;
   var clickInitiated=false;
   var curRY=getTargetRotY(locs[0].lng)+0.8,curRX=0,curZ=ZO;
   var tRY=getTargetRotY(locs[0].lng),tRX=getTargetRotX(locs[0].lat);
@@ -229,8 +278,14 @@ function startGlobe(){
   });
 
   function showCard(loc){
-    var counter='<div style="position:absolute;top:12px;right:14px;text-align:right;"><div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(99,102,241,0.3);margin-bottom:1px;">MY JOURNEY</div><div style="font-size:11px;font-weight:600;color:rgba(99,102,241,0.45);font-variant-numeric:tabular-nums;">'+(tIdx+1)+' / '+locs.length+'</div></div>';
-    var html='<div class="loc-card" style="--marker-color:rgb('+loc.hex+');position:relative;">'+counter+'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:7px;height:7px;border-radius:50%;background:rgb('+loc.hex+');flex-shrink:0;box-shadow:0 0 6px rgba('+loc.hex+',0.3);"></div><span style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border-radius:4px;background:'+loc.tagBg+';color:'+loc.tagCol+';">'+loc.tag+'</span></div><div style="font-size:18px;font-weight:700;color:#1E1B4B;margin-bottom:2px;letter-spacing:-0.01em;">'+loc.name+'</div><div style="font-size:12px;font-weight:600;color:#6366F1;margin-bottom:5px;">'+loc.proj+'</div><div style="font-size:13px;color:#4B5563;line-height:1.45;">'+loc.desc+'</div></div>';
+    var step='<span class="card-step">'+(tIdx+1)+' / '+locs.length+'</span>';
+    var html='<div class="loc-card" style="--marker-color:rgb('+loc.hex+');--marker-rgb:'+loc.hex+';">'
+      +'<div class="card-header"><span class="card-tag">'+loc.tag+'</span>'+step+'</div>'
+      +'<div class="card-name">'+loc.name+'</div>'
+      +'<div class="card-role">'+loc.proj+'</div>'
+      +'<div class="card-divider"></div>'
+      +'<div class="card-desc">'+loc.desc+'</div>'
+      +'</div>';
     // Decouple DOM swap from render frame to prevent flicker
     cardBox.style.opacity='0';
     requestAnimationFrame(function(){requestAnimationFrame(function(){
@@ -316,18 +371,18 @@ function startGlobe(){
     }
 
     earthGroup.rotation.y=curRY;earthGroup.rotation.x=curRX;camera.position.z=curZ;
-    // Smooth marker + ring highlighting - per-marker lerp, no flicker
-    var SM=0.04;
+    // Smooth marker + ring highlighting - only active during DWELLING
+    var SM=0.06;
     for(var mi=0;mi<locs.length;mi++){
-      var isActive=(mi===tIdx&&state!==ROTATING);
+      var isActive=(mi===tIdx&&(state===DWELLING||state===ZOOMING_OUT));
       var mDot=markerMeshes[mi];
       var mRing=markerRings[mi];
-      // Marker dot opacity
+      // Marker dot opacity - smooth lerp prevents flicker
       var dotTarget=isActive?1.0:0.35;
       mDot.material.opacity+=(dotTarget-mDot.material.opacity)*SM;
       // Ring: smooth pulse for active, smooth dim for inactive
-      var rScaleTarget=isActive?1+Math.sin(t*2+mi*1.2)*0.25:1;
-      var rOpTarget=isActive?0.2+Math.sin(t*2+mi*1.2)*0.12:0.08;
+      var rScaleTarget=isActive?1+Math.sin(t*2)*0.2:1;
+      var rOpTarget=isActive?0.25+Math.sin(t*2)*0.1:0.08;
       var rs=mRing.scale.x+(rScaleTarget-mRing.scale.x)*SM;
       mRing.scale.set(rs,rs,rs);
       mRing.material.opacity+=(rOpTarget-mRing.material.opacity)*SM;
@@ -342,7 +397,7 @@ function startGlobe(){
     clearTimeout(resizeTimer);
     resizeTimer=setTimeout(function(){
       var r=gw.getBoundingClientRect();var ns=Math.round(r.width);
-      renderer.setSize(ns,ns);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+      renderer.setSize(ns,ns);renderer.setPixelRatio(window.devicePixelRatio);
       camera.updateProjectionMatrix();
     },150);
   });

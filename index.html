@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script src="js/transitions.js"></script>
 </head>
 <body>
 
@@ -30,20 +31,22 @@
   <div class="hero-right">
     <div id="globe-container">
       <div id="gw"></div>
-      <div id="globe-dots">
-        <div class="globe-dot active" data-loc="0"></div>
-        <div class="globe-dot" data-loc="1"></div>
-        <div class="globe-dot" data-loc="2"></div>
-        <div class="globe-dot" data-loc="3"></div>
-        <div class="globe-dot" data-loc="4"></div>
-      </div>
-      <div id="card-box"></div>
+    </div>
+  </div>
+
+  <div id="globe-ui">
+    <div id="card-box"></div>
+    <div id="globe-dots">
+      <div class="globe-dot active" data-loc="0"></div>
+      <div class="globe-dot" data-loc="1"></div>
+      <div class="globe-dot" data-loc="2"></div>
+      <div class="globe-dot" data-loc="3"></div>
+      <div class="globe-dot" data-loc="4"></div>
     </div>
   </div>
 
   <div class="hero-left">
     <div class="hero-photo-row">
-      <img src="images/profile.jpeg" alt="Shri" class="hero-photo">
       <h1 class="hero-name">Shri</h1>
     </div>
     <p class="label-sm hero-label">
@@ -75,65 +78,69 @@
 <section id="story">
 
   <div class="story-inner">
-    <div class="story-header reveal">
-      <p class="label-sm" style="color: var(--accent-pink)">
-        THE TURNING POINT
-      </p>
-      <h2 class="heading-lg" style="margin-top: 16px">
-        Why I left the clinic.
-      </h2>
-    </div>
-    <div class="story-content reveal-group">
-      <div class="story-photo reveal-left stagger-1">
+
+    <div class="story-intro reveal">
+      <div class="story-photo-wrap">
         <img src="images/profile.jpeg" alt="Shri" class="story-img">
       </div>
-      <div class="story-text reveal-right stagger-2">
-        <p class="body-lg">
-          I practiced medicine for a year after graduating in India.
-          Saw patients, wrote prescriptions, ran a clinic. And
-          somewhere in that year, I noticed something: the most
-          important decisions about my patients weren't made by me.
-          They were made by the systems around me.
-        </p>
-        <p class="body-lg" style="margin-top: 20px">
-          Who gets screened. What gets covered. How data flows
-          between a hospital and an insurer. The doctor is one node
-          in a much larger network. I wanted to understand that
-          network. So I left clinical practice, moved to St. Louis,
-          and started a dual MPH/MBA at Washington University.
-        </p>
-        <p class="body-lg" style="margin-top: 20px">
-          Since then, I've worked on cancer survival research at
-          Siteman, built a health tech product from scratch, helped
-          a struggling hospital find $24M in opportunities, and
-          presented at ASCO. Every project comes back to the same
-          question: how do we make the system work better for the
-          people inside it?
-        </p>
+      <div class="story-hi">
+        <h2 class="story-greeting">Hi, I'm Shri.</h2>
+        <p class="story-oneliner">Physician turned healthcare strategist. I use epidemiology, data, and strategy to redesign the systems that shape care.</p>
       </div>
     </div>
-    <div class="story-milestones reveal-group">
-      <div class="milestone reveal">
-        <span class="milestone-year">2022</span>
-        <span class="milestone-divider"></span>
-        <span class="milestone-label">Clinical Practice</span>
+
+    <div class="story-body reveal">
+      <p class="story-lead">
+        I practiced medicine for a year in India. Saw patients, wrote prescriptions, redesigned a clinic's EHR. And somewhere in that year, I noticed something: the most important decisions about my patients weren't made by me. They were made by the systems around me.
+      </p>
+      <p>
+        Who gets screened. What gets covered. How data flows between a hospital and an insurer. The doctor is one node in a much larger network. I wanted to understand that network. So I left clinical practice, moved to St. Louis, and started a dual MPH/MBA at Washington University.
+      </p>
+      <p>
+        Since then, I've worked on cancer survival research at Siteman Cancer Center, built a health tech product from scratch, helped a struggling hospital find $24M in opportunities, and presented at ASCO 2026. Every project comes back to the same question: how do we make the system work better for the people inside it?
+      </p>
+    </div>
+
+    <div class="story-journey reveal">
+      <div class="journey-step">
+        <span class="journey-year">2022</span>
+        <span class="journey-dot"></span>
+        <span class="journey-text">Clinical practice in India</span>
       </div>
-      <div class="milestone reveal">
-        <span class="milestone-year">2023</span>
-        <span class="milestone-divider"></span>
-        <span class="milestone-label">WashU MPH/MBA</span>
+      <div class="journey-line"></div>
+      <div class="journey-step">
+        <span class="journey-year">2023</span>
+        <span class="journey-dot"></span>
+        <span class="journey-text">Moved to St. Louis for WashU MPH/MBA</span>
       </div>
-      <div class="milestone reveal">
-        <span class="milestone-year">2024</span>
-        <span class="milestone-divider"></span>
-        <span class="milestone-label">Research + Strategy</span>
+      <div class="journey-line"></div>
+      <div class="journey-step">
+        <span class="journey-year">2024</span>
+        <span class="journey-dot"></span>
+        <span class="journey-text">Research, strategy, and product</span>
       </div>
-      <div class="milestone reveal">
-        <span class="milestone-year">2026</span>
-        <span class="milestone-divider"></span>
-        <span class="milestone-label">What's next</span>
+      <div class="journey-line"></div>
+      <div class="journey-step">
+        <span class="journey-year">2026</span>
+        <span class="journey-dot" style="background: #10B981;"></span>
+        <span class="journey-text">Graduating. Ready for what's next.</span>
       </div>
     </div>
+
+    <div class="story-traits reveal">
+      <p class="story-traits-label">Beyond the resume</p>
+      <div class="story-trait-pills">
+        <span class="story-trait">Stargazer</span>
+        <span class="story-trait">Fitness every morning</span>
+        <span class="story-trait">5 languages</span>
+        <span class="story-trait">High emotional intelligence</span>
+        <span class="story-trait">Team-first mindset</span>
+        <span class="story-trait">Deeply caring</span>
+        <span class="story-trait">2x Yoga champion</span>
+        <span class="story-trait">Fragrance collector</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -143,15 +150,10 @@
   <div class="projects-inner">
 
     <div class="projects-header reveal">
-      <p class="label-sm" style="color: var(--accent-indigo)">
-        SELECTED WORK
-      </p>
-      <h2 class="heading-lg" style="margin-top: 16px">
-        Case Studies
-      </h2>
+      <h2 class="heading-lg">From clinical questions to working products.</h2>
+      <p class="projects-sub">Every project here started with a real problem and ended with something I built from scratch.</p>
     </div>
 
-    <div class="projects-scroll-wrapper">
     <div class="projects-grid reveal-group">
 
       <a href="nyrocare.html" class="case-card reveal-scale stagger-1">
@@ -176,6 +178,10 @@
             AI-powered chronic disease companion. Built from 0 to 50+ user interviews
             through WashU Skandalaris Center.
           </p>
+          <div class="case-card-roles">
+            <span class="case-card-role">Health Tech PM</span>
+            <span class="case-card-role">Digital Health</span>
+          </div>
         </div>
       </a>
 
@@ -198,11 +204,19 @@
             Identified $24M in operational and financial opportunities for a rural
             California hospital system facing financial distress.
           </p>
+          <div class="case-card-roles">
+            <span class="case-card-role">Healthcare Consulting</span>
+            <span class="case-card-role">Strategy</span>
+          </div>
         </div>
       </div>
 
-      <div class="case-card reveal-scale stagger-3">
-        <div class="case-card-image" style="background: linear-gradient(135deg, #1A1540 0%, #0F0D2A 100%)">
+      <a href="survival-analysis.html" class="case-card reveal-scale stagger-3">
+        <div class="case-card-image" style="background: linear-gradient(135deg, #1A1540 0%, #0F0D2A 100%);">
+          <div class="interactive-badge" style="--badge-from:#A5B4FC;--badge-to:#818CF8;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+            Live Dashboard
+          </div>
           <svg class="case-card-svg" viewBox="0 0 600 360" fill="none">
             <path d="M0,180 L100,180 L100,155 L200,155 L200,130 L300,130 L300,105 L400,105 L400,85 L600,85" fill="none" stroke="#818CF8" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
             <path d="M0,180 L100,180 L100,155 L200,155 L200,130 L300,130 L300,105 L400,105 L400,85 L600,85 L600,360 L0,360 Z" fill="url(#researchFill)" opacity="0.3"/>
@@ -223,11 +237,65 @@
             Cox regression and survival modeling on 20 years of NHANES data
             at a top-10 NCI-designated cancer center.
           </p>
+          <div class="case-card-roles">
+            <span class="case-card-role">HEOR</span>
+            <span class="case-card-role">Life Sciences</span>
+            <span class="case-card-role">Research</span>
+          </div>
         </div>
-      </div>
+      </a>
 
-      <div class="case-card reveal-scale stagger-1">
-        <div class="case-card-image" style="background: linear-gradient(135deg, #0C1B2E 0%, #081420 100%)">
+      <a href="cv-risk-gaps.html" class="case-card reveal-scale stagger-1">
+        <div class="case-card-image" style="background: linear-gradient(135deg, #0A2A20 0%, #061A14 100%);">
+          <div class="interactive-badge" style="--badge-from:#34D399;--badge-to:#10B981;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+            Live Dashboard
+          </div>
+          <svg class="case-card-svg" viewBox="0 0 600 360" fill="none">
+            <!-- Forest plot: 3 ORs with CIs, dashed reference at OR=1 -->
+            <line x1="300" y1="60" x2="300" y2="320" stroke="#34D399" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+            <text x="300" y="48" text-anchor="middle" fill="#34D399" font-size="11" font-weight="600" opacity="0.5">OR = 1.0</text>
+
+            <!-- BP control: OR 1.26 (1.10, 1.44) -->
+            <text x="80" y="115" fill="#A7F3D0" font-size="12" font-weight="600" opacity="0.85">BP control</text>
+            <line x1="330" y1="125" x2="432" y2="125" stroke="#34D399" stroke-width="2.2" opacity="0.65"/>
+            <circle cx="378" cy="125" r="8" fill="#34D399" opacity="0.95" stroke="#061A14" stroke-width="2"/>
+            <text x="448" y="130" fill="#A7F3D0" font-size="12" font-weight="700" opacity="0.85">1.26</text>
+
+            <!-- A1c control: OR 1.33 (1.03, 1.72) -->
+            <text x="80" y="195" fill="#F9A8D4" font-size="12" font-weight="600" opacity="0.85">A1c control</text>
+            <line x1="309" y1="205" x2="516" y2="205" stroke="#F472B6" stroke-width="2.2" opacity="0.65"/>
+            <circle cx="399" cy="205" r="8" fill="#F472B6" opacity="0.95" stroke="#061A14" stroke-width="2"/>
+            <text x="532" y="210" fill="#F9A8D4" font-size="12" font-weight="700" opacity="0.85">1.33</text>
+
+            <!-- High cholesterol: OR 0.86 (0.71, 1.04), crosses 1.0 -->
+            <text x="80" y="275" fill="#C7D2FE" font-size="12" font-weight="600" opacity="0.85">High chol</text>
+            <line x1="213" y1="285" x2="312" y2="285" stroke="#818CF8" stroke-width="2.2" opacity="0.65"/>
+            <circle cx="258" cy="285" r="8" fill="#818CF8" opacity="0.95" stroke="#061A14" stroke-width="2"/>
+            <text x="328" y="290" fill="#C7D2FE" font-size="12" font-weight="700" opacity="0.85">0.86</text>
+          </svg>
+        </div>
+        <div class="case-card-text">
+          <p class="case-card-cat" style="color: #10B981">SURVIVORSHIP CARE</p>
+          <h3 class="case-card-title">CV Risk in Cancer Survivors</h3>
+          <p class="case-card-desc">
+            Survey-weighted logistic regression on 51,168 NHANES adults.
+            Cancer survivors have 26% better BP control and 33% better A1c control.
+          </p>
+          <div class="case-card-roles">
+            <span class="case-card-role">Survivorship</span>
+            <span class="case-card-role">RWE</span>
+            <span class="case-card-role">Research</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="medicare-analysis.html" class="case-card reveal-scale stagger-1">
+        <div class="case-card-image" style="background: linear-gradient(135deg, #0C1B2E 0%, #081420 100%);">
+          <div class="interactive-badge" style="--badge-from:#FCD34D;--badge-to:#F59E0B;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+            Live Dashboard
+          </div>
           <svg class="case-card-svg" viewBox="0 0 600 360" fill="none">
             <!-- Stacked bars: charges vs payment across states -->
             <text x="300" y="40" text-anchor="middle" fill="#3B82F6" font-size="16" font-weight="700" opacity="0.7">9.5x MARKUP SPREAD</text>
@@ -258,10 +326,14 @@
             Payment vs. charges across 3,015 hospitals and 9.7M claims.
             Exposed a 9.5x markup spread between states using CMS public data.
           </p>
+          <div class="case-card-roles">
+            <span class="case-card-role">Health Plan Analytics</span>
+            <span class="case-card-role">Consulting</span>
+          </div>
         </div>
-      </div>
+      </a>
 
-      <div class="case-card reveal-scale stagger-2">
+      <a href="propensity-analysis.html" class="case-card reveal-scale stagger-2">
         <div class="case-card-image" style="background: linear-gradient(135deg, #1A0C2E 0%, #120820 100%)">
           <svg class="case-card-svg" viewBox="0 0 600 360" fill="none">
             <!-- Forest plot: HR arrows converging to 1.0 -->
@@ -294,10 +366,47 @@
             Antihypertensive treatment effect on CV mortality in 18,129 adults.
             HR 2.86 collapsed to 1.02 after IPTW adjustment.
           </p>
+          <div class="case-card-roles">
+            <span class="case-card-role">HEOR</span>
+            <span class="case-card-role">Life Sciences</span>
+          </div>
         </div>
-      </div>
+      </a>
 
-      <div class="case-card reveal-scale stagger-3">
+      <a href="i2db-datathon.html" class="case-card reveal-scale stagger-3">
+        <div class="case-card-image" style="background: linear-gradient(135deg, #451A03 0%, #78350F 100%)">
+          <svg class="case-card-svg" viewBox="0 0 600 360" fill="none">
+            <!-- ROC curve simplified -->
+            <text x="300" y="35" text-anchor="middle" fill="#F59E0B" font-size="14" font-weight="700" opacity="0.6">AUC = 0.852</text>
+            <!-- Axes -->
+            <line x1="80" y1="300" x2="520" y2="300" stroke="#F59E0B" stroke-width="1" opacity="0.3"/>
+            <line x1="80" y1="300" x2="80" y2="60" stroke="#F59E0B" stroke-width="1" opacity="0.3"/>
+            <!-- Diagonal -->
+            <line x1="80" y1="300" x2="520" y2="60" stroke="#F59E0B" stroke-width="1" stroke-dasharray="6,4" opacity="0.15"/>
+            <!-- ROC curve -->
+            <path d="M80,300 Q100,100 200,85 Q350,65 520,60" fill="none" stroke="#F59E0B" stroke-width="2.5" opacity="0.8"/>
+            <!-- Fill under curve -->
+            <path d="M80,300 Q100,100 200,85 Q350,65 520,60 L520,300 Z" fill="#F59E0B" opacity="0.08"/>
+            <!-- Labels -->
+            <text x="300" y="325" text-anchor="middle" fill="#F59E0B" font-size="10" opacity="0.4">False Positive Rate</text>
+            <text x="50" y="180" text-anchor="middle" fill="#F59E0B" font-size="10" opacity="0.4" transform="rotate(-90,50,180)">True Positive Rate</text>
+          </svg>
+        </div>
+        <div class="case-card-text">
+          <p class="case-card-cat" style="color: var(--accent-amber)">PREDICTIVE MODELING</p>
+          <h3 class="case-card-title">I2DB Diabetes Prediction</h3>
+          <p class="case-card-desc">
+            XGBoost model predicting A1c decompensation in 62,425 patients.
+            AUC 0.852, 97% NPV, built from EHR data with 20 engineered features.
+          </p>
+          <div class="case-card-roles">
+            <span class="case-card-role">ML / Predictive</span>
+            <span class="case-card-role">Health Analytics</span>
+          </div>
+        </div>
+      </a>
+
+      <div class="case-card reveal-scale stagger-1">
         <div class="case-card-image" style="background: linear-gradient(135deg, #2A1E08 0%, #1A1405 100%)">
           <svg class="case-card-svg" viewBox="0 0 600 360" fill="none">
             <circle cx="180" cy="180" r="8" fill="#F59E0B" opacity="0.9"/>
@@ -319,18 +428,15 @@
             Full market entry strategy for a US food brand expanding into Spain.
             Site selection, consumer research, and 3-year financial model.
           </p>
+          <div class="case-card-roles">
+            <span class="case-card-role">Strategy</span>
+            <span class="case-card-role">Market Entry</span>
+          </div>
         </div>
       </div>
 
     </div>
 
-    <button class="projects-scroll-hint" aria-label="Scroll for more projects" onclick="document.querySelector('.projects-grid').scrollBy({left:300,behavior:'smooth'})">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="9 18 15 12 9 6"/>
-      </svg>
-    </button>
-
-    </div>
   </div>
 </section>
 
@@ -340,76 +446,85 @@
   <div class="exp-inner">
 
     <div class="exp-header reveal">
-      <p class="label-sm" style="color: var(--accent-green)">EXPERIENCE</p>
-      <h2 class="heading-lg" style="margin-top: 16px">Three tracks. One career.</h2>
-      <p class="exp-subtitle">I've worked across research, product, and consulting. Each one sharpened a different edge. Together, they're the reason I can move between a Cox model, a product roadmap, and a boardroom deck in the same week.</p>
+      <h2 class="heading-lg">Three tracks. One career.</h2>
+      <p class="section-sub">Research, product, and consulting. Each one sharpened a different edge. Together, they're the reason I can move between a Cox model, a product roadmap, and a boardroom deck in the same week.</p>
     </div>
 
-    <div class="exp-tracks reveal-group">
+    <p class="exp-hint reveal">Click a card to expand</p>
 
-      <div class="exp-track-card reveal-scale stagger-1">
-        <div class="exp-track-accent" style="background: var(--accent-indigo)"></div>
-        <div class="exp-track-content">
-          <div class="exp-track-icon" style="color: var(--accent-indigo)">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M8 7h6"/><path d="M8 11h8"/></svg>
+    <div class="exp-cards reveal-group">
+
+      <div class="exp-card reveal-scale stagger-1" onclick="this.classList.toggle('open')">
+        <div class="exp-card-accent" style="background: #4F46E5;"></div>
+        <div class="exp-card-header">
+          <h3 class="exp-card-title">Research & Analytics</h3>
+          <p class="exp-card-summary">Cancer epidemiology, biostatistics, survival modeling, and claims research at an NCI-designated center.</p>
+          <span class="exp-card-toggle">+</span>
+        </div>
+        <div class="exp-card-body">
+          <div class="exp-card-role">
+            <span class="exp-card-date">Jun 2024 - Present</span>
+            <strong>Cancer Epi Research Fellow</strong>
+            <span class="exp-card-org">Siteman Cancer Center</span>
+            <p>Cox regression and survival modeling on 20 years of NHANES data. Presented at ASCO 2026.</p>
           </div>
-          <h3 class="exp-track-title">Research & Analytics</h3>
-          <p class="exp-track-desc">Cancer epidemiology, biostatistics, survival modeling, and claims-based research at an NCI-designated center.</p>
-          <div class="exp-track-roles">
-            <div class="exp-track-role">
-              <span class="exp-track-role-title">Cancer Epi Research Fellow</span>
-              <span class="exp-track-role-org">Siteman Cancer Center</span>
-            </div>
-            <div class="exp-track-role">
-              <span class="exp-track-role-title">Healthcare Research Analyst</span>
-              <span class="exp-track-role-org">Stats Lab, WashU</span>
-            </div>
-            <div class="exp-track-role">
-              <span class="exp-track-role-title">Teaching Assistant</span>
-              <span class="exp-track-role-org">Public Health Seminar II</span>
-            </div>
+          <div class="exp-card-role">
+            <span class="exp-card-date">Jul 2024 - Present</span>
+            <strong>Healthcare Research Analyst</strong>
+            <span class="exp-card-org">Stats Lab, WashU</span>
+            <p>Claims data analysis, biostatistics consulting, and methodology support for public health faculty.</p>
+          </div>
+          <div class="exp-card-role">
+            <span class="exp-card-date">Spring 2026</span>
+            <strong>Teaching Assistant</strong>
+            <span class="exp-card-org">Public Health Seminar II</span>
+            <p>Graduate-level seminars on research methods and evidence-based practice.</p>
           </div>
         </div>
       </div>
 
-      <div class="exp-track-card reveal-scale stagger-2">
-        <div class="exp-track-accent" style="background: var(--accent-pink)"></div>
-        <div class="exp-track-content">
-          <div class="exp-track-icon" style="color: var(--accent-pink)">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
-          </div>
-          <h3 class="exp-track-title">Health Tech & Product</h3>
-          <p class="exp-track-desc">Built an AI chronic disease companion from zero. Product discovery, 50+ user interviews, clinical validation, go-to-market.</p>
-          <div class="exp-track-roles">
-            <div class="exp-track-role">
-              <span class="exp-track-role-title">Graduate Venture Project</span>
-              <span class="exp-track-role-org">Nyrocare, Skandalaris Center</span>
-            </div>
+      <div class="exp-card reveal-scale stagger-2" onclick="this.classList.toggle('open')">
+        <div class="exp-card-accent" style="background: #DB2777;"></div>
+        <div class="exp-card-header">
+          <h3 class="exp-card-title">Health Tech & Product</h3>
+          <p class="exp-card-summary">Built an AI chronic disease companion from zero. Product discovery, clinical validation, go-to-market.</p>
+          <span class="exp-card-toggle">+</span>
+        </div>
+        <div class="exp-card-body">
+          <div class="exp-card-role">
+            <span class="exp-card-date">May 2024 - Present</span>
+            <strong>Graduate Venture Project Lead</strong>
+            <span class="exp-card-org">Nyrocare, Skandalaris Center</span>
+            <p>50+ user interviews, 19 integrated services, React Native app, voice AI companion. Full product lifecycle ownership from research to working product.</p>
           </div>
         </div>
       </div>
 
-      <div class="exp-track-card reveal-scale stagger-3">
-        <div class="exp-track-accent" style="background: var(--accent-green)"></div>
-        <div class="exp-track-content">
-          <div class="exp-track-icon" style="color: var(--accent-green)">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20"/><path d="M5 20V10l7-7 7 7v10"/><path d="M9 20v-6h6v6"/></svg>
+      <div class="exp-card reveal-scale stagger-3" onclick="this.classList.toggle('open')">
+        <div class="exp-card-accent" style="background: #059669;"></div>
+        <div class="exp-card-header">
+          <h3 class="exp-card-title">Consulting & Strategy</h3>
+          <p class="exp-card-summary">Hospital turnaround, board governance, and clinical practice. $24M in identified opportunities.</p>
+          <span class="exp-card-toggle">+</span>
+        </div>
+        <div class="exp-card-body">
+          <div class="exp-card-role">
+            <span class="exp-card-date">Oct 2023 - Oct 2024</span>
+            <strong>Strategy Consultant</strong>
+            <span class="exp-card-org">Madera Hospital, California</span>
+            <p>Identified $24M in operational and financial opportunities for a rural hospital system facing financial distress.</p>
           </div>
-          <h3 class="exp-track-title">Consulting & Strategy</h3>
-          <p class="exp-track-desc">Hospital turnaround strategy, board governance, and clinical practice. From $24M in identified impact to FQHC oversight.</p>
-          <div class="exp-track-roles">
-            <div class="exp-track-role">
-              <span class="exp-track-role-title">Strategy Consultant</span>
-              <span class="exp-track-role-org">Madera Hospital</span>
-            </div>
-            <div class="exp-track-role">
-              <span class="exp-track-role-title">Board Member</span>
-              <span class="exp-track-role-org">Community Care Center IL</span>
-            </div>
-            <div class="exp-track-role">
-              <span class="exp-track-role-title">Medical Officer</span>
-              <span class="exp-track-role-org">ANR Poly Clinic</span>
-            </div>
+          <div class="exp-card-role">
+            <span class="exp-card-date">Jan 2024 - Jan 2026</span>
+            <strong>Board Member</strong>
+            <span class="exp-card-org">Community Care Center, Illinois</span>
+            <p>Governance oversight for an FQHC. Reviewed financials, strategic plans, and quality metrics.</p>
+          </div>
+          <div class="exp-card-role">
+            <span class="exp-card-date">Jun 2022 - Jun 2023</span>
+            <strong>Medical Officer</strong>
+            <span class="exp-card-org">ANR Poly Clinic, India</span>
+            <p>1 year clinical practice. Redesigned clinic EHR workflows. Founded 800+ member mentoring community.</p>
           </div>
         </div>
       </div>
@@ -424,19 +539,19 @@
   <div class="research-inner">
 
     <div class="research-header reveal">
-      <p class="label-sm" style="color: var(--accent-indigo)">RESEARCH</p>
-      <h2 class="heading-lg" style="margin-top: 16px">Published, presented, peer-reviewed.</h2>
+      <h2 class="heading-lg">Published, presented, peer-reviewed.</h2>
+      <p class="section-sub">Conference posters at WashU and an ASCO 2026 acceptance, with publications in progress and peer reviewerships across cancer epidemiology and health services research.</p>
     </div>
 
     <div class="research-stats reveal-scale">
       <div class="research-stat-item">
-        <span class="research-stat-num" data-count="4" style="color: var(--accent-indigo)">0</span>
+        <span class="research-stat-num" data-count="2" style="color: var(--accent-indigo)">0</span>
         <span class="research-stat-label">Conference Posters</span>
       </div>
       <div class="research-stat-divider"></div>
       <div class="research-stat-item">
-        <span class="research-stat-num" data-count="3" style="color: var(--accent-green)">0</span>
-        <span class="research-stat-label">Publications</span>
+        <span class="research-stat-num" data-count="1" style="color: var(--accent-amber)">0</span>
+        <span class="research-stat-label">ASCO 2026 Accepted</span>
       </div>
       <div class="research-stat-divider"></div>
       <div class="research-stat-item">
@@ -447,70 +562,45 @@
 
     <div class="research-cards-grid reveal-group">
 
-      <div class="research-poster-card reveal-scale stagger-1">
-        <div class="poster-image-area">
-          <!-- Replace src with actual poster image -->
-          <div class="poster-placeholder">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
-            </svg>
-            <span>Poster coming soon</span>
-          </div>
+      <button class="research-poster-card reveal-scale stagger-1"
+              data-poster="grs"
+              data-full="Posters/full/grs.png"
+              data-pdf="Posters/grs.pdf"
+              data-title="Lipid-lowering therapy in cancer survivors"
+              data-subtitle="A real-world cohort study using NHANES 1999-2018 linked mortality data"
+              data-venue="Graduate Research Symposium · Washington University in St. Louis"
+              data-type="POSTER · GRS"
+              data-typecolor="#818CF8">
+        <div class="poster-image-area poster-portrait">
+          <img src="Posters/thumbs/grs.png" alt="GRS poster: lipid-lowering therapy in cancer survivors" loading="lazy">
         </div>
         <div class="poster-info">
-          <span class="poster-type" style="color: var(--accent-indigo)">POSTER</span>
-          <h4 class="poster-title">Oncology outcomes research</h4>
-          <p class="poster-venue">Siteman Cancer Center</p>
-        </div>
-      </div>
-
-      <div class="research-poster-card reveal-scale stagger-2">
-        <div class="poster-image-area">
-          <div class="poster-placeholder">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
-            </svg>
-            <span>Poster coming soon</span>
-          </div>
-        </div>
-        <div class="poster-info">
-          <span class="poster-type" style="color: var(--accent-indigo)">POSTER</span>
-          <h4 class="poster-title">Healthcare systems and access research</h4>
-          <p class="poster-venue">WashU School of Public Health</p>
-        </div>
-      </div>
-
-      <div class="research-poster-card reveal-scale stagger-3">
-        <div class="poster-image-area">
-          <div class="poster-placeholder">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
-            </svg>
-            <span>Poster coming soon</span>
-          </div>
-        </div>
-        <div class="poster-info">
-          <span class="poster-type" style="color: var(--accent-indigo)">POSTER</span>
-          <h4 class="poster-title">Public health epidemiology</h4>
-          <p class="poster-venue">Regional Conference</p>
-        </div>
-      </div>
-
-      <div class="research-poster-card reveal-scale stagger-1 poster-featured">
-        <div class="poster-image-area">
-          <div class="poster-placeholder">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
-            </svg>
-            <span>Poster coming soon</span>
-          </div>
-        </div>
-        <div class="poster-info">
-          <span class="poster-type" style="color: var(--accent-amber)">ASCO 2026</span>
+          <span class="poster-type" style="color: var(--accent-indigo)">POSTER · GRS</span>
           <h4 class="poster-title">Lipid-lowering therapy in cancer survivors</h4>
-          <p class="poster-venue">In-person presentation, accepted</p>
+          <p class="poster-venue">Graduate Research Symposium · WashU</p>
         </div>
-      </div>
+        <span class="poster-cta-hint">Click to view</span>
+      </button>
+
+      <button class="research-poster-card reveal-scale stagger-2 poster-featured"
+              data-poster="statin"
+              data-full="Posters/full/statin.png"
+              data-pdf="Posters/statin.pdf"
+              data-title="Statin utilization in cancer survivors"
+              data-subtitle="Coauthored with Dr. Odeny, Siteman Cancer Center"
+              data-venue="Siteman Cancer Center research collaboration"
+              data-type="ASCO 2026 · ACCEPTED"
+              data-typecolor="#F59E0B">
+        <div class="poster-image-area poster-landscape">
+          <img src="Posters/thumbs/statin.png" alt="Statin utilization in cancer survivors poster" loading="lazy">
+        </div>
+        <div class="poster-info">
+          <span class="poster-type" style="color: var(--accent-amber)">ASCO 2026 · ACCEPTED</span>
+          <h4 class="poster-title">Statin utilization in cancer survivors</h4>
+          <p class="poster-venue">Siteman Cancer Center · w/ Dr. Odeny</p>
+        </div>
+        <span class="poster-cta-hint">Click to view</span>
+      </button>
 
     </div>
 
@@ -533,12 +623,8 @@
   <div class="ach-inner">
 
     <div class="ach-header reveal">
-      <p class="label-sm" style="color: var(--accent-amber)">
-        EDUCATION & ACHIEVEMENTS
-      </p>
-      <h2 class="heading-lg" style="margin-top: 16px">
-        Three degrees. One direction.
-      </h2>
+      <h2 class="heading-lg">Three degrees. One direction.</h2>
+      <p class="section-sub">MBA, MPH, and a clinical degree. Each one built a different layer of how I think about healthcare.</p>
     </div>
 
     <div class="ach-degrees reveal-group">
@@ -629,77 +715,65 @@
 <div class="section-divider"></div>
 
 <section id="beyond">
-
   <div class="beyond-inner">
 
     <div class="beyond-header reveal">
-      <p class="label-sm" style="color: var(--accent-pink)">
-        BEYOND WORK
-      </p>
-      <h2 class="heading-lg" style="margin-top: 16px">
-        What grounds the work.
-      </h2>
+      <h2 class="heading-lg">What grounds the work.</h2>
+      <p class="section-sub">The things that shape how I think when I'm not modeling data or writing strategy decks.</p>
     </div>
 
-    <div class="beyond-bento reveal-group">
+    <div class="beyond-grid reveal-group">
 
-      <div class="beyond-card beyond-card-tall beyond-card-photo reveal" style="background-image: url('images/sg5.jpeg')">
-        <div class="beyond-card-overlay"></div>
-        <div class="beyond-card-content">
-          <h3 class="beyond-title" style="color:#fff">Stargazing</h3>
-          <p class="beyond-desc" style="color:rgba(255,255,255,0.8)">Finding perspective under dark skies.</p>
+      <!-- Row 1: 3 cards — hero photo left (2 cols), two stacked right -->
+      <div class="bcard bcard-accent reveal" style="--bcard-accent: var(--accent-green)">
+        <div class="bcard-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V17a2 2 0 002 2h6m0 0l-3-3m3 3l-3 3"/><path d="M14 17V7a2 2 0 012-2h0a2 2 0 012 2v10"/><path d="M18 7v10"/><path d="M22 7v10"/></svg>
+        </div>
+        <h3 class="bcard-title">Music</h3>
+        <p class="bcard-desc">Carnatic classical to lo-fi. The right sound changes how I think through a problem.</p>
+      </div>
+
+      <div class="bcard bcard-accent reveal" style="--bcard-accent: var(--accent-indigo)">
+        <div class="bcard-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10"/></svg>
+        </div>
+        <h3 class="bcard-title">5 Languages</h3>
+        <p class="bcard-desc">Tamil, Hindi, English, Kannada, Malayalam. Each one opens a different way of seeing things.</p>
+      </div>
+
+      <!-- Row 2: 3 cards — two stacked left, wide photo right (2 cols) -->
+      <div class="bcard bcard-accent reveal" style="--bcard-accent: var(--accent-amber)">
+        <div class="bcard-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3 class="bcard-title">Fragrances</h3>
+        <p class="bcard-desc">Oud, vetiver, and everything in between. Scent is the most underrated form of memory.</p>
+      </div>
+
+      <div class="bcard bcard-accent reveal" style="--bcard-accent: var(--accent-pink)">
+        <div class="bcard-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+        <h3 class="bcard-title">Dogs</h3>
+        <p class="bcard-desc">The best part of working from home. Unconditional company, zero judgment on my code.</p>
+      </div>
+
+      <div class="bcard bcard-wide bcard-photo reveal" style="background-image: url('images/brookings.jpeg'); background-position: center 25%">
+        <div class="bcard-overlay"></div>
+        <div class="bcard-content">
+          <div class="bcard-tag">5 Countries</div>
+          <h3 class="bcard-title">Travel</h3>
+          <p class="bcard-desc">India, Spain, Singapore, DC. Every place changes the lens. Healthcare looks different from every timezone.</p>
         </div>
       </div>
 
-      <div class="beyond-card beyond-card-wide reveal">
-        <div class="beyond-card-bg" style="background: linear-gradient(135deg, rgba(16,185,129,0.15) 0%, rgba(16,185,129,0.05) 100%)"></div>
-        <div class="beyond-card-content">
-          <span class="beyond-emoji">🌊</span>
-          <h3 class="beyond-title">Creve Coeur Lake</h3>
-          <p class="beyond-desc">Early mornings at the water. St. Louis has hidden gems.</p>
-        </div>
-      </div>
-
-      <div class="beyond-card reveal">
-        <div class="beyond-card-bg" style="background: linear-gradient(135deg, rgba(245,158,11,0.15) 0%, rgba(245,158,11,0.05) 100%)"></div>
-        <div class="beyond-card-content">
-          <span class="beyond-emoji">🎵</span>
-          <h3 class="beyond-title">Music</h3>
-          <p class="beyond-desc">Carnatic classical to lo-fi. Always something playing.</p>
-        </div>
-      </div>
-
-      <div class="beyond-card beyond-card-tall beyond-card-photo reveal" style="background-image: url('images/yoga.jpeg')">
-        <div class="beyond-card-overlay"></div>
-        <div class="beyond-card-content">
-          <h3 class="beyond-title" style="color:#fff">Fitness</h3>
-          <p class="beyond-desc" style="color:rgba(255,255,255,0.8)">2x yoga champion. Movement as discipline.</p>
-        </div>
-      </div>
-
-      <div class="beyond-card reveal">
-        <div class="beyond-card-bg" style="background: linear-gradient(135deg, rgba(59,130,246,0.15) 0%, rgba(59,130,246,0.05) 100%)"></div>
-        <div class="beyond-card-content">
-          <span class="beyond-emoji">🐕</span>
-          <h3 class="beyond-title">Dogs</h3>
-          <p class="beyond-desc">Unconditional. No further explanation needed.</p>
-        </div>
-      </div>
-
-      <div class="beyond-card reveal">
-        <div class="beyond-card-bg" style="background: linear-gradient(135deg, rgba(129,140,248,0.15) 0%, rgba(129,140,248,0.05) 100%)"></div>
-        <div class="beyond-card-content">
-          <span class="beyond-emoji">🌿</span>
-          <h3 class="beyond-title">Fragrances</h3>
-          <p class="beyond-desc">Oud, vetiver, and everything in between. Scent as memory.</p>
-        </div>
-      </div>
-
-      <div class="beyond-card beyond-card-wide beyond-card-photo reveal" style="background-image: url('images/brookings.jpeg')">
-        <div class="beyond-card-overlay"></div>
-        <div class="beyond-card-content">
-          <h3 class="beyond-title" style="color:#fff">Travel</h3>
-          <p class="beyond-desc" style="color:rgba(255,255,255,0.8)">India, Spain, Singapore, DC. Five languages and counting.</p>
+      <!-- Row 3: full-width atmospheric card -->
+      <div class="bcard bcard-full bcard-photo reveal" style="background-image: url('images/sg5.jpeg'); background-position: center 30%">
+        <div class="bcard-overlay" style="background:linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 30%, transparent 60%)"></div>
+        <div class="bcard-content bcard-content-center">
+          <div class="bcard-tag">Dark Sky Observer</div>
+          <h3 class="bcard-title bcard-title-lg">Stargazing</h3>
+          <p class="bcard-desc">When you've spent the day staring at data points, the best reset is staring at actual ones. Creve Coeur Lake on a clear night is better than any meditation app.</p>
         </div>
       </div>
 
@@ -713,7 +787,7 @@
   <div class="contact-inner">
 
     <div class="contact-content reveal">
-      <p class="label-sm" style="color: var(--accent-indigo)">
+      <p class="label-sm">
         GET IN TOUCH
       </p>
       <h2 class="contact-heading">
@@ -733,6 +807,9 @@
         <a href="mailto:drsridhar22@gmail.com?subject=Resume%20Request" class="btn-outline magnetic">
           Request Resume
         </a>
+        <a href="https://www.linkedin.com/in/dr-sri-dharan-shri/" target="_blank" rel="noopener" class="btn-outline magnetic">
+          LinkedIn
+        </a>
       </div>
     </div>
 
@@ -741,9 +818,9 @@
         <span class="contact-link-label">Email</span>
         <span class="contact-link-value">drsridhar22@gmail.com</span>
       </a>
-      <a href="https://www.linkedin.com/in/sridharan-gr/" target="_blank" rel="noopener" class="contact-link-item">
+      <a href="https://www.linkedin.com/in/dr-sri-dharan-shri/" target="_blank" rel="noopener" class="contact-link-item">
         <span class="contact-link-label">LinkedIn</span>
-        <span class="contact-link-value">linkedin.com/in/sridharan-gr</span>
+        <span class="contact-link-value">linkedin.com/in/dr-sri-dharan-shri</span>
       </a>
     </div>
 
@@ -755,11 +832,37 @@
     <span class="footer-name">Shri 2026</span>
     <div class="footer-links">
       <a href="mailto:drsridhar22@gmail.com">Email</a>
-      <a href="https://www.linkedin.com/in/sridharan-gr/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/dr-sri-dharan-shri/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="mailto:drsridhar22@gmail.com?subject=Resume%20Request">Resume</a>
     </div>
   </div>
 </footer>
+
+<!-- Poster lightbox modal -->
+<div class="poster-lightbox" id="poster-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Poster viewer">
+  <button class="lb-close" id="lb-close" aria-label="Close (Esc)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous poster">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="lb-nav lb-next" id="lb-next" aria-label="Next poster">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <div class="lb-stage" id="lb-stage">
+    <img class="lb-image" id="lb-image" alt="">
+  </div>
+  <div class="lb-meta" id="lb-meta">
+    <span class="lb-type" id="lb-type"></span>
+    <h3 class="lb-title" id="lb-title"></h3>
+    <p class="lb-subtitle" id="lb-subtitle"></p>
+    <p class="lb-venue" id="lb-venue"></p>
+    <a class="lb-download" id="lb-download" href="" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+      Download PDF
+    </a>
+  </div>
+</div>
 
 <script src="js/globe.js"></script>
 <script src="js/main.js" defer></script>

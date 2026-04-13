@@ -10,6 +10,18 @@ Thumbs.db
 Projects/nhanes-cancer-survival/data/*.XPT
 Projects/nhanes-cancer-survival/data/*.dat
 Projects/nhanes-cancer-survival/data/analytic_cohort.csv
+Projects/nhanes-cancer-survival/data/analytic_cohort_cv.csv
+Projects/nhanes-cancer-survival/data/analytic_cohort_phq9.csv
+Projects/nhanes-cancer-survival/docs/.Rhistory
+
+# Editor/AI config files
+.cursorrules
+.windsurfrules
+.mcp.json
+AGENTS.md
+GEMINI.md
+.claude/skills/
+Projects/Portfolio_Projects_Plan.docx
 
 # Medicare claims data (too large for git, download via download_data.py)
 Projects/medicare-claims-analysis/data/raw/
@@ -22,3 +34,7 @@ Projects/propensity-score-analysis/data/processed/
 # Healthcare expenditure modeling (MEPS data)
 Projects/healthcare-expenditure-modeling/data/raw/
 Projects/healthcare-expenditure-modeling/data/processed/
+Projects/I2DB_Datathon/data/
+Projects/I2DB_Datathon/internal_validation/
+Projects/I2DB_Datathon/models/
+Projects/I2DB_Datathon/submission/

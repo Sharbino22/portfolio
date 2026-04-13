@@ -1,0 +1,25 @@
+variable,non_cancer,cancer_survivor
+BMXBMI,28.76,28.75
+LBXGH,5.55,5.75
+N (unweighted),46453,4715
+Weighted N,"192,601,837","20,054,411"
+a1c_controlled,50.3%,60.3%
+age,45.14,62.26
+bp_controlled,66.6%,65.4%
+chol_high,14.0%,15.3%
+dbp_mean,71.43,69.71
+depressed,7.6%,8.7%
+diabetes,10.0%,17.3%
+female,51.3%,57.6%
+hypertension,28.1%,50.1%
+obese,35.4%,35.8%
+on_bp_meds,85.0%,91.1%
+on_chol_meds,76.4%,81.7%
+phq9_total,3.00,3.21
+race=Mexican American,8.7%,2.3%
+race=Non-Hispanic Black,11.8%,5.5%
+race=Non-Hispanic White,66.1%,86.3%
+race=Other Hispanic,6.0%,2.4%
+race=Other/Multi,7.3%,3.5%
+sbp_mean,121.93,128.03
+total_chol,196.16,198.08

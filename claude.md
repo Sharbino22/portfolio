@@ -2,7 +2,11 @@
 
 ## CURRENT STATE
 - **Dark theme** with animated gradient background (#08080C base)
-- **File structure:** index.html, css/style.css, js/globe.js, nyrocare.html
+- **File structure:**
+  - Top-level: `index.html`, `css/style.css`, `js/globe.js`, `js/main.js`
+  - Project case-study pages (sibling to index): `nyrocare.html`, `survival-analysis.html`, `cv-risk-gaps.html`, `medicare-analysis.html`, `propensity-analysis.html`, `i2db-datathon.html`
+  - Project source folders: `Projects/nhanes-cancer-survival/`, `Projects/cv-risk-gaps/`, `Projects/medicare-claims-analysis/`, `Projects/propensity-score-analysis/`, `Projects/I2DB_Datathon/`, `Projects/healthcare-expenditure-modeling/`, `Projects/nhanes-survival-analysis/`
+  - Interactive dashboards (single-file Plotly.js + embedded JSON): `Projects/nhanes-cancer-survival/dashboard.html`, `Projects/cv-risk-gaps/dashboard.html`, `Projects/medicare-claims-analysis/dashboard.html`
 - **globe.js is LOCKED** — do NOT modify unless explicitly told "edit the globe"
 - Deployed on GitHub Pages via github.com/Sharbino22/portfolio
 
@@ -42,7 +46,7 @@
 ## SITE STRUCTURE
 
 ### Hero (100vh, side-by-side layout)
-- LEFT: Profile photo + "Shri" name, tagline "Physician turned healthcare strategist", "Research · Evidence · Strategy", description, tag pills, buttons (Get in touch + Request Resume), credential badges (CPH, Delta Omega, ASCO 2026, 3.94 GPA, Class Acts, Claude 101)
+- LEFT: "Shri" name (no profile photo — removed for cleaner look), tagline "Physician turned healthcare strategist", "Research · Evidence · Strategy", description, tag pills, buttons (Get in touch + Request Resume), credential badges (CPH, Delta Omega, ASCO 2026, 3.94 GPA, Class Acts, Claude 101)
 - RIGHT: Interactive Three.js 3D globe with 5 location markers, flight path animation, breadcrumb dots, info cards
 - Globe cycles: India, St. Louis, Washington DC, Barcelona, Singapore
 
@@ -52,9 +56,30 @@
 - Target bullseye with pulsing ring + target roles: Life Sciences & RWE, Healthcare Consulting, Health Tech PM, Research & Analytics
 
 ### Projects (id="projects")
-- 3-column grid with impact metrics
-- Nyrocare (50+ interviews, case study link), Strange Donuts Barcelona (EUR 192K), Madera Hospital ($24M)
+- Multi-row grid mixing strategy case studies and analytical research projects
+- Strategy / case studies: Nyrocare (50+ interviews, case study link), Strange Donuts Barcelona (EUR 192K), Madera Hospital ($24M)
+- Analytical research projects (each with its own case-study HTML and a single-file Plotly dashboard):
+  - **Oncology Survival Analysis** → `survival-analysis.html` → `Projects/nhanes-cancer-survival/dashboard.html` (KM curves, subgroup HR forest, follow-up cutoff slider; indigo theme)
+  - **CV Risk in Cancer Survivors** → `cv-risk-gaps.html` → `Projects/cv-risk-gaps/dashboard.html` (BP/A1c/cholesterol control bars, trends, depression overlay; emerald theme)
+  - **Medicare Rate & Utilization** → `medicare-analysis.html` → `Projects/medicare-claims-analysis/dashboard.html` (US choropleth, click-to-drilldown by state, top DRG/HCPCS bars, markup vs volume scatter; amber theme)
+  - **Propensity Score Analysis** → `propensity-analysis.html` (no dashboard yet)
+  - **I2DB Datathon** → `i2db-datathon.html` (no dashboard yet)
 - Animated gradient borders on hover
+- **Live Dashboard badge** (`.interactive-badge` in style.css) on the bottom-left of each project card image when a dashboard exists. Bold pill, color-coded per project theme via `--badge-from`/`--badge-to` CSS vars, animated pulsing dot, "LIVE DASHBOARD" label.
+
+### Interactive Dashboards — shared conventions
+All three dashboards follow the same pattern so they read as one body of work:
+- **Single self-contained HTML file** with Plotly.js loaded via CDN and pre-aggregated data embedded as JSON
+- Aggregation done server-side in Python (notebook or scratch script) to keep payloads small (85-320 KB)
+- Dark theme matching the portfolio: bg `#0F0D2A`, text `#E0E7FF`, muted `#A5B4FC`, frosted-glass panels, Plus Jakarta Sans
+- Sticky nav with "← Back to project" + "Portfolio" links
+- Banner with project-themed eyebrow tag, h1, and subtitle
+- Stat strip of headline numbers
+- Filter row (selects + toggle groups + reset button)
+- Grid of panels (full-width + 2-column)
+- Footer with source/methods/attribution
+- **Project-specific palettes:** Survival = indigo `#818CF8`, CV Risk = emerald `#34D399`, Medicare = amber `#F59E0B`/orange `#F97316`
+- Each project's case-study HTML page has a "Now Live" eyebrow + gradient "Launch Interactive Dashboard" button under the hero subtitle, color-matched to the project theme
 
 ### Experience (id="experience") — Bridge Map
 - Heading: "Research. Evidence. Strategy."
@@ -101,3 +126,42 @@
 
 ## GLOBE SPECS (DO NOT MODIFY)
 Three.js r128, TopoJSON world-atlas, great circle arcs with slerp, pink flight path animation (#F472B6) with arrowhead (#EC4899), shortest-path rotation, 5 locations with breadcrumb dot navigation, state machine: ROTATING > ZOOMING_IN > DWELLING > ZOOMING_OUT.
+
+<!-- code-review-graph MCP tools -->
+## MCP Tools: code-review-graph
+
+**IMPORTANT: This project has a knowledge graph. ALWAYS use the
+code-review-graph MCP tools BEFORE using Grep/Glob/Read to explore
+the codebase.** The graph is faster, cheaper (fewer tokens), and gives
+you structural context (callers, dependents, test coverage) that file
+scanning cannot.
+
+### When to use graph tools FIRST
+
+- **Exploring code**: `semantic_search_nodes` or `query_graph` instead of Grep
+- **Understanding impact**: `get_impact_radius` instead of manually tracing imports
+- **Code review**: `detect_changes` + `get_review_context` instead of reading entire files
+- **Finding relationships**: `query_graph` with callers_of/callees_of/imports_of/tests_for
+- **Architecture questions**: `get_architecture_overview` + `list_communities`
+
+Fall back to Grep/Glob/Read **only** when the graph doesn't cover what you need.
+
+### Key Tools
+
+| Tool | Use when |
+|------|----------|
+| `detect_changes` | Reviewing code changes — gives risk-scored analysis |
+| `get_review_context` | Need source snippets for review — token-efficient |
+| `get_impact_radius` | Understanding blast radius of a change |
+| `get_affected_flows` | Finding which execution paths are impacted |
+| `query_graph` | Tracing callers, callees, imports, tests, dependencies |
+| `semantic_search_nodes` | Finding functions/classes by name or keyword |
+| `get_architecture_overview` | Understanding high-level codebase structure |
+| `refactor_tool` | Planning renames, finding dead code |
+
+### Workflow
+
+1. The graph auto-updates on file changes (via hooks).
+2. Use `detect_changes` for code review.
+3. Use `get_affected_flows` to understand impact.
+4. Use `query_graph` pattern="tests_for" to check coverage.
