@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medicare Rate Analysis - Shri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/cs.css?v=1">
+<style>
+  :root{
+    --cs-hero-1:#0C1B2E; --cs-hero-2:#142840;
+    --cs-accent:#60A5FA; --cs-accent-soft:#93C5FD; --cs-accent-bright:#DBEAFE;
+    --cs-hl-1:#EFF6FF; --cs-hl-2:#DBEAFE; --cs-hl-title:#1E3A5F; --cs-hl-text:#1E40AF;
+    --cs-launch-1:#F59E0B; --cs-launch-2:#F97316; --cs-launch-text:#0F0D2A;
+  }
+</style>
+<script src="js/transitions.js"></script>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Shri</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#contact" class="nav-cta">Connect</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="cs-hero">
+  <div class="cs-hero-inner">
+    <a href="index.html#projects" class="cs-back rv">&larr; Back to projects</a>
+    <div class="cs-badge rv"><div class="cs-badge-dot"></div><span>Payer Analytics</span></div>
+    <h1 class="cs-title rv">Medicare Rate &<br>Utilization Analysis</h1>
+    <p class="cs-subtitle rv">How do Medicare payment rates and utilization patterns vary across providers, procedures, and geographies, and what does this imply for payer contracting strategy?</p>
+    <p class="cs-meta rv">CMS Public Use Files, Calendar Year 2022</p>
+    <div class="rv">
+      <div class="cs-launch-tag">Now Live</div><br>
+      <a href="../Projects/medicare-claims-analysis/dashboard.html" class="cs-launch">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+        Launch Interactive Dashboard
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="cs-content">
+  <div class="cs-stats">
+    <div class="cs-stat rv"><div class="cs-stat-n">9.5x</div><div class="cs-stat-l">Markup spread (MD vs NV)</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.1s"><div class="cs-stat-n">3,015</div><div class="cs-stat-l">Hospitals analyzed</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.2s"><div class="cs-stat-n">9.7M</div><div class="cs-stat-l">Claims records</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.3s"><div class="cs-stat-n">14</div><div class="cs-stat-l">Analytic figures</div></div>
+  </div>
+
+  <!-- THE PROBLEM -->
+  <div class="cs-section rv">
+    <div class="cs-label">THE PROBLEM</div>
+    <h2 class="cs-section-title">Healthcare pricing is opaque by design</h2>
+    <p class="cs-text">Hospitals set their own chargemasters. Medicare pays a fraction of what providers bill. But the gap between charges and payments varies wildly by state, procedure, and provider. For payers benchmarking commercial rates against Medicare, understanding this spread is the foundation of contracting strategy. The question is: where is the markup highest, and what drives it?</p>
+  </div>
+
+  <!-- APPROACH -->
+  <div class="cs-section rv">
+    <div class="cs-label">APPROACH</div>
+    <h2 class="cs-section-title">Two datasets, four notebooks, one story</h2>
+    <p class="cs-text">I combined the CMS Medicare Inpatient Hospital PUF (145,742 provider-DRG records) with the Physician and Other Practitioners PUF (9.76M provider-HCPCS records) to build a complete picture of Medicare payment variation.</p>
+    <div class="cs-cards">
+      <div class="cs-card rv">
+        <div class="cs-card-label">Inpatient</div>
+        <div class="cs-card-title">145,742 records</div>
+        <div class="cs-card-text">3,015 hospitals, 533 DRGs, 51 states. Provider-level charges, payments, and discharges.</div>
+      </div>
+      <div class="cs-card rv" style="transition-delay:0.1s">
+        <div class="cs-card-label">Physician</div>
+        <div class="cs-card-title">9.76M records</div>
+        <div class="cs-card-text">1.15M NPIs, 6,326 HCPCS codes, 103 specialties. Submitted charges, allowed amounts, and payments.</div>
+      </div>
+    </div>
+    <div class="cs-pills rv">
+      <span class="cs-pill">Python</span>
+      <span class="cs-pill">pandas</span>
+      <span class="cs-pill">matplotlib</span>
+      <span class="cs-pill">CMS Public Data</span>
+      <span class="cs-pill">DRG Analysis</span>
+      <span class="cs-pill">HCPCS Variation</span>
+      <span class="cs-pill">Rate Benchmarking</span>
+    </div>
+  </div>
+
+  <!-- FINDING 1: VOLUME -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 1</div>
+    <h2 class="cs-section-title">Septicemia drives 11% of all inpatient volume</h2>
+    <p class="cs-text">The top 5 DRGs account for over 25% of all Medicare inpatient discharges. Septicemia alone represents 550,000 stays. Any value-based contract that doesn't address these conditions is leaving the highest-volume diagnoses unmanaged.</p>
+    <div class="cs-figure rv">
+      <img src="../Projects/medicare-claims-analysis/figures/top15_drg_volume.png" alt="Top 15 DRGs by discharge volume" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Top 15 DRGs by discharge volume, CY 2022</div>
+    </div>
+  </div>
+
+  <!-- FINDING 2: COST -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 2</div>
+    <h2 class="cs-section-title">Heart transplants cost $295K per case</h2>
+    <p class="cs-text">The costliest DRGs are surgical and transplant-related. For commercial payers benchmarking against Medicare, these are the procedures where a 10% rate difference translates to $20K-$30K per case.</p>
+    <div class="cs-figure rv">
+      <img src="../Projects/medicare-claims-analysis/figures/top15_drg_cost.png" alt="Top 15 costliest DRGs" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Top 15 costliest DRGs by average Medicare payment</div>
+    </div>
+  </div>
+
+  <!-- FINDING 3: MARKUP -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 3</div>
+    <h2 class="cs-section-title">The 5.4x markup gap</h2>
+    <p class="cs-text">Nationally, hospitals charge 5.4x what Medicare pays (median). The scatter plot shows a nonlinear relationship: lower-cost procedures have the widest markup spread, while high-cost DRGs compress toward smaller ratios. The distribution is right-skewed, with a minority of hospitals charging 8-12x Medicare rates.</p>
+    <div class="cs-cards">
+      <div class="cs-figure rv" style="margin:0;">
+        <img src="../Projects/medicare-claims-analysis/figures/inpatient_charges_vs_payment.png" alt="Charges vs payment scatter" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+        <div class="cs-figure-cap">Submitted charges vs. Medicare payment</div>
+      </div>
+      <div class="cs-figure rv" style="margin:0;transition-delay:0.1s">
+        <img src="../Projects/medicare-claims-analysis/figures/inpatient_markup_distribution.png" alt="Markup distribution" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+        <div class="cs-figure-cap">Distribution of inpatient markup ratios</div>
+      </div>
+    </div>
+    <div class="cs-highlight rv">
+      <div class="cs-highlight-title">Why this matters for payers</div>
+      <div class="cs-highlight-text">Chargemaster-based contracts systematically overpay relative to Medicare. Percent-of-Medicare benchmarks are more defensible and transparent for rate negotiations.</div>
+    </div>
+  </div>
+
+  <!-- FINDING 4: GEOGRAPHY -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 4</div>
+    <h2 class="cs-section-title">Maryland 1.2x vs. Nevada 10.7x</h2>
+    <p class="cs-text">The 9.5x spread in median markup between Maryland and Nevada is not random. Maryland's all-payer rate-setting system compresses the charge-to-payment gap by regulation. States without rate controls show far higher markups. California, Texas, and Florida combine high volume with above-median markups, making them priority markets for rate renegotiation.</p>
+    <div class="cs-figure rv">
+      <img src="../Projects/medicare-claims-analysis/figures/state_markup_variation.png" alt="State markup variation" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Inpatient markup ratio by state with IQR whiskers</div>
+    </div>
+    <div class="cs-figure rv">
+      <img src="../Projects/medicare-claims-analysis/figures/state_volume_payment.png" alt="State volume and payment" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Discharge volume and average payment by state</div>
+    </div>
+  </div>
+
+  <!-- FINDING 5: PHYSICIAN -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 5</div>
+    <h2 class="cs-section-title">Specialty markup varies 2x to 5x</h2>
+    <p class="cs-text">On the physician side, the volume-cost mismatch is a strategic signal. Lab and radiology drive spend through utilization; surgery drives it through unit price. Different levers apply: utilization management for the former, rate negotiation for the latter.</p>
+    <div class="cs-cards">
+      <div class="cs-figure rv" style="margin:0;">
+        <img src="../Projects/medicare-claims-analysis/figures/specialty_markup_ratio.png" alt="Specialty markup ratios" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+        <div class="cs-figure-cap">Markup ratio by specialty (top 20)</div>
+      </div>
+      <div class="cs-figure rv" style="margin:0;transition-delay:0.1s">
+        <img src="../Projects/medicare-claims-analysis/figures/hcpcs_payment_variation.png" alt="HCPCS variation" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+        <div class="cs-figure-cap">Highest payment variation by procedure</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPLICATIONS -->
+  <div class="cs-section rv">
+    <div class="cs-label">SO WHAT</div>
+    <h2 class="cs-section-title">Strategic implications</h2>
+    <table class="cs-table">
+      <tr><th>Finding</th><th>Implication</th></tr>
+      <tr><td>Septicemia = 11% of volume</td><td>Bundled payment and readmission reduction programs should prioritize sepsis pathways</td></tr>
+      <tr><td>Median markup = 5.4x</td><td>Chargemaster-based contracts overpay; percent-of-Medicare benchmarks are more defensible</td></tr>
+      <tr><td>MD vs NV spread = 9.5x</td><td>State regulatory environment is a first-order variable; multi-state payers need state-specific playbooks</td></tr>
+      <tr><td>High-variation HCPCS codes</td><td>Procedure-level benchmarking can surface outlier providers billing 3-5x peers</td></tr>
+      <tr><td>Volume-cost specialty mismatch</td><td>Utilization management for high-volume specialties; rate negotiation for high-cost ones</td></tr>
+    </table>
+  </div>
+
+  <!-- METHODS -->
+  <div class="cs-section rv">
+    <div class="cs-label">METHODS</div>
+    <h2 class="cs-section-title">How I built this</h2>
+    <p class="cs-text">Data was downloaded directly from CMS public endpoints using a custom Python downloader. The inpatient file required Latin-1 encoding (not UTF-8). Both files were deduplicated on natural keys (CCN+DRG for inpatient, NPI+HCPCS+Place of Service for physician) with zero duplicates found. Physician data was filtered to US-only providers. A derived markup ratio (submitted charges / Medicare payment) was computed for both datasets. All analysis was done in four self-contained Jupyter notebooks with 14 figures saved at 150 DPI.</p>
+    <div class="cs-pills rv">
+      <span class="cs-pill">Data Cleaning</span>
+      <span class="cs-pill">Deduplication</span>
+      <span class="cs-pill">Geographic Analysis</span>
+      <span class="cs-pill">Rate Benchmarking</span>
+      <span class="cs-pill">DRG/HCPCS Coding</span>
+      <span class="cs-pill">Two-Dataset Merge</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cs-cta rv">
+    <p class="cs-cta-text">Interested in payer analytics, rate benchmarking, or claims data?</p>
+    <a href="mailto:g.sridharan@wustl.edu" class="cs-cta-btn">Get in touch</a>
+    <div class="cs-footer">Shri 2026</div>
+  </div>
+</div>
+
+<script>
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
+var nav=document.querySelector('.nav');
+window.addEventListener('scroll',function(){if(window.scrollY>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled');},{passive:true});
+</script>
+</body>
+</html>

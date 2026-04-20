@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oncology Survival Analysis - Shri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/cs.css?v=1">
+<style>
+  :root{
+    --cs-hero-1:#1A1540; --cs-hero-2:#0F0D2A;
+    --cs-accent:#818CF8; --cs-accent-soft:#A5B4FC; --cs-accent-bright:#E0E7FF;
+    --cs-hl-1:#EEF2FF; --cs-hl-2:#E0E7FF; --cs-hl-title:#312E81; --cs-hl-text:#4338CA;
+    --cs-launch-1:#6366F1; --cs-launch-2:#818CF8; --cs-launch-text:#0F0D2A;
+  }
+</style>
+<script src="js/transitions.js"></script>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Shri</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#contact" class="nav-cta">Connect</a>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="cs-hero-inner">
+    <a href="index.html#projects" class="cs-back rv">&larr; Back to projects</a>
+    <div class="cs-badge rv"><div class="cs-badge-dot"></div><span>Cancer Epidemiology</span></div>
+    <h1 class="cs-title rv">Oncology Survival<br>Analysis</h1>
+    <p class="cs-subtitle rv">Among US adults with cancer, do cardiometabolic comorbidities independently predict mortality? A population-based cohort study using 20 years of NHANES linked mortality data.</p>
+    <p class="cs-meta rv">NHANES 1999-2018 + NCHS Mortality Files &middot; Siteman Cancer Center</p>
+    <div class="rv">
+      <div class="cs-launch-tag">Now Live</div><br>
+      <a href="../Projects/nhanes-cancer-survival/dashboard.html" class="cs-launch">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+        Launch Interactive Dashboard
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="cs-content">
+  <div class="cs-stats">
+    <div class="cs-stat rv"><div class="cs-stat-n">4,715</div><div class="cs-stat-l">Cancer survivors</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.1s"><div class="cs-stat-n">1,676</div><div class="cs-stat-l">Deaths observed</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.2s"><div class="cs-stat-n">20 yr</div><div class="cs-stat-l">Max follow-up</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.3s"><div class="cs-stat-n">8</div><div class="cs-stat-l">Analytic notebooks</div></div>
+  </div>
+
+  <!-- CONTEXT -->
+  <div class="cs-section rv">
+    <div class="cs-label">THE QUESTION</div>
+    <h2 class="cs-section-title">Cancer survivors are dying of other things</h2>
+    <p class="cs-text">As cancer treatment improves, more patients survive their primary diagnosis. But cancer survivors carry a high burden of cardiometabolic conditions: diabetes, hypertension, and obesity. These comorbidities may independently drive mortality in ways that aren't addressed by oncology-focused care. Understanding this is critical for survivorship programs, integrated care models, and risk stratification.</p>
+    <div class="cs-highlight rv">
+      <div class="cs-highlight-title">Why this matters</div>
+      <div class="cs-highlight-text">If cardiometabolic comorbidities independently predict mortality in cancer survivors, it changes how survivorship care is designed. The clinical implication: oncology follow-up should include aggressive cardiovascular risk management, not just tumor surveillance.</div>
+    </div>
+  </div>
+
+  <!-- APPROACH -->
+  <div class="cs-section rv">
+    <div class="cs-label">APPROACH</div>
+    <h2 class="cs-section-title">10 cycles, 8 notebooks, publication-grade analysis</h2>
+    <p class="cs-text">I pooled 10 NHANES survey cycles (1999-2018) with NCHS linked mortality files, constructing a nationally representative cohort of 51,168 adults including 4,715 cancer survivors. The analysis follows a full epidemiologic pipeline from cohort construction through sensitivity analyses.</p>
+    <div class="cs-cards">
+      <div class="cs-card rv">
+        <div class="cs-card-label">Cohort</div>
+        <div class="cs-card-title">51,168 adults</div>
+        <div class="cs-card-text">4,715 cancer survivors, 46,453 non-cancer controls. Linked to mortality through December 2019. Median follow-up 9.2 years.</div>
+      </div>
+      <div class="cs-card rv" style="transition-delay:0.1s">
+        <div class="cs-card-label">Exposures</div>
+        <div class="cs-card-title">3 comorbidities</div>
+        <div class="cs-card-text">Diabetes (physician diagnosis or HbA1c >= 6.5%), hypertension (physician diagnosis), obesity (BMI >= 30). Tested individually and as cumulative burden.</div>
+      </div>
+    </div>
+    <div class="cs-pills rv">
+      <span class="cs-pill">Python</span>
+      <span class="cs-pill">lifelines</span>
+      <span class="cs-pill">Cox Regression</span>
+      <span class="cs-pill">Kaplan-Meier</span>
+      <span class="cs-pill">Schoenfeld Test</span>
+      <span class="cs-pill">NHANES Survey Data</span>
+      <span class="cs-pill">Mortality Linkage</span>
+      <span class="cs-pill">Forest Plots</span>
+    </div>
+  </div>
+
+  <!-- FINDING 1: KM CURVES -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 1</div>
+    <h2 class="cs-section-title">Cancer survivors with diabetes die faster</h2>
+    <p class="cs-text">Kaplan-Meier curves show clear separation in survival between cancer survivors with and without diabetes. The gap widens over follow-up time, consistent with the cumulative cardiovascular toll of uncontrolled glycemia.</p>
+    <div class="cs-figure rv">
+      <img src="../Projects/nhanes-cancer-survival/figures/km_combined_figure1.png" alt="KM survival curves" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Kaplan-Meier survival curves: cancer survivors by comorbidity status</div>
+    </div>
+  </div>
+
+  <!-- FINDING 2: COX MODELS -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 2</div>
+    <h2 class="cs-section-title">Diabetes: HR 1.31 after full adjustment</h2>
+    <p class="cs-text">Progressive Cox regression models show that diabetes remains a significant predictor of mortality even after adjusting for age, sex, race/ethnicity, and smoking. Hypertension is borderline significant. Obesity shows a paradoxical protective effect, consistent with published survivorship literature.</p>
+
+    <table class="cs-table">
+      <tr><th>Comorbidity</th><th>Adjusted HR</th><th>95% CI</th><th>P</th></tr>
+      <tr><td class="sig">Diabetes</td><td class="sig">1.31</td><td>1.17 - 1.47</td><td class="sig">&lt; 0.001</td></tr>
+      <tr><td>Hypertension</td><td>1.13</td><td>1.02 - 1.25</td><td>0.018</td></tr>
+      <tr><td>Obesity (BMI >= 30)</td><td>0.89</td><td>0.79 - 0.99</td><td>0.037</td></tr>
+      <tr><td class="sig">Current smoking</td><td class="sig">2.27</td><td>1.94 - 2.66</td><td class="sig">&lt; 0.001</td></tr>
+    </table>
+
+    <div class="cs-figure rv">
+      <img src="../Projects/nhanes-cancer-survival/figures/figure2_forest_publication.png" alt="Cox model forest plot" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Forest plot: fully adjusted Cox PH model</div>
+    </div>
+  </div>
+
+  <!-- FINDING 3: DOSE-RESPONSE -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 3</div>
+    <h2 class="cs-section-title">Dose-response: more conditions, higher mortality</h2>
+    <p class="cs-text">Each additional cardiometabolic condition stacks the risk. Cancer survivors with all three conditions (diabetes + hypertension + obesity) have 30% higher mortality than those with none (HR 1.30, 95% CI 1.08-1.57). This dose-response relationship strengthens the causal argument.</p>
+    <div class="cs-figure rv">
+      <img src="../Projects/nhanes-cancer-survival/figures/km_cancer_cm_burden.png" alt="KM by comorbidity burden" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Survival by number of cardiometabolic conditions among cancer survivors</div>
+    </div>
+
+    <table class="cs-table">
+      <tr><th>Burden</th><th>HR</th><th>95% CI</th><th>P</th></tr>
+      <tr><td>0 conditions (ref)</td><td>1.00</td><td>--</td><td>--</td></tr>
+      <tr><td>1 condition</td><td>1.11</td><td>0.98 - 1.26</td><td>0.088</td></tr>
+      <tr><td>2 conditions</td><td>1.19</td><td>1.04 - 1.37</td><td class="sig">0.014</td></tr>
+      <tr><td class="sig">3 conditions</td><td class="sig">1.30</td><td>1.08 - 1.57</td><td class="sig">0.005</td></tr>
+    </table>
+  </div>
+
+  <!-- FINDING 4: SUBGROUPS -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 4</div>
+    <h2 class="cs-section-title">Diabetes hits younger survivors hardest</h2>
+    <p class="cs-text">Subgroup analysis reveals that the diabetes-mortality association is strongest among younger cancer survivors (age 20-59: HR 1.66) and attenuates with age (60-79: HR 1.36, 80+: HR 1.33). This has direct implications for survivorship screening guidelines.</p>
+    <div class="cs-figure rv">
+      <img src="../Projects/nhanes-cancer-survival/figures/figure3_subgroup_forest.png" alt="Subgroup forest plot" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Subgroup analysis: diabetes effect by age, sex, and cancer type</div>
+    </div>
+  </div>
+
+  <!-- FINDING 5: DIAGNOSTICS -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 5</div>
+    <h2 class="cs-section-title">Proportional hazards assumption holds</h2>
+    <p class="cs-text">Schoenfeld residual tests confirm the PH assumption is met for all primary exposures. The log-log plots show parallel curves. This validates the Cox model specification and supports the stability of the reported hazard ratios over the full follow-up period.</p>
+    <div class="cs-cards">
+      <div class="cs-figure rv" style="margin:0;">
+        <img src="../Projects/nhanes-cancer-survival/figures/schoenfeld_residuals.png" alt="Schoenfeld residuals" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+        <div class="cs-figure-cap">Schoenfeld residual plots</div>
+      </div>
+      <div class="cs-figure rv" style="margin:0;transition-delay:0.1s">
+        <img src="../Projects/nhanes-cancer-survival/figures/loglog_plots.png" alt="Log-log plots" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+        <div class="cs-figure-cap">Log-log survival plots</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SENSITIVITY -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 6</div>
+    <h2 class="cs-section-title">Robust across sensitivity analyses</h2>
+    <p class="cs-text">The diabetes-mortality association persists across every sensitivity test: alternative diabetes definitions (HbA1c-only), exclusion of early deaths (first 2 years), sex-stratified models, and time-period stratification. This consistency strengthens confidence in the primary finding.</p>
+    <div class="cs-figure rv">
+      <img src="../Projects/nhanes-cancer-survival/figures/figure4_sensitivity_diabetes.png" alt="Sensitivity analysis" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Sensitivity analysis: diabetes HR across alternative specifications</div>
+    </div>
+  </div>
+
+  <!-- SO WHAT -->
+  <div class="cs-section rv">
+    <div class="cs-label">SO WHAT</div>
+    <h2 class="cs-section-title">Clinical and strategic implications</h2>
+    <table class="cs-table">
+      <tr><th>Finding</th><th>Implication</th></tr>
+      <tr><td>Diabetes HR 1.31, independent of cancer</td><td>Survivorship programs should integrate glycemic management alongside tumor surveillance</td></tr>
+      <tr><td>Dose-response with comorbidity burden</td><td>Risk stratification models for cancer survivors should include cardiometabolic conditions, not just cancer stage</td></tr>
+      <tr><td>Strongest in younger survivors (HR 1.66)</td><td>Early-onset diabetes screening should be prioritized in younger cancer survivor populations</td></tr>
+      <tr><td>Obesity paradox (HR 0.89)</td><td>BMI alone is a poor risk marker in cancer survivors; body composition or sarcopenia measures may be more informative</td></tr>
+      <tr><td>Current smoking HR 2.27</td><td>Smoking cessation remains the single highest-yield intervention in survivorship care</td></tr>
+    </table>
+  </div>
+
+  <!-- METHODS -->
+  <div class="cs-section rv">
+    <div class="cs-label">METHODS</div>
+    <h2 class="cs-section-title">How I built this</h2>
+    <p class="cs-text">Pooled 10 NHANES cycles (1999-2018) by merging 7 survey components per cycle (demographics, cancer history, diabetes, body measures, blood pressure, smoking, HbA1c) with fixed-width mortality linkage files. Custom parser handles concatenated follow-up fields in the mortality data. Cancer defined as self-reported physician diagnosis (MCQ220). Diabetes defined as composite: physician diagnosis OR HbA1c >= 6.5%. Cox models with progressive adjustment (unadjusted, age-sex, fully adjusted). Schoenfeld residuals for PH diagnostics. 8 notebooks, 16 publication-quality figures.</p>
+    <div class="cs-pills rv">
+      <span class="cs-pill">Cancer Epidemiology</span>
+      <span class="cs-pill">Cox Regression</span>
+      <span class="cs-pill">Kaplan-Meier</span>
+      <span class="cs-pill">Schoenfeld Residuals</span>
+      <span class="cs-pill">NHANES Pooling</span>
+      <span class="cs-pill">Comorbidity Burden</span>
+      <span class="cs-pill">Subgroup Analysis</span>
+      <span class="cs-pill">Sensitivity Analysis</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cs-cta rv">
+    <p class="cs-cta-text">Interested in cancer epidemiology, real-world evidence, or survivorship research?</p>
+    <a href="mailto:g.sridharan@wustl.edu" class="cs-cta-btn">Get in touch</a>
+    <div class="cs-footer">Shri 2026</div>
+  </div>
+</div>
+
+<script>
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
+var nav=document.querySelector('.nav');
+window.addEventListener('scroll',function(){if(window.scrollY>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled');},{passive:true});
+</script>
+</body>
+</html>

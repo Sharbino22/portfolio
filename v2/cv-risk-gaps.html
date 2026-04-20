@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cardiovascular Risk Management in Cancer Survivors - Shri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/cs.css?v=1">
+<style>
+  :root{
+    --cs-hero-1:#1A1540; --cs-hero-2:#0F0D2A;
+    --cs-accent:#10B981; --cs-accent-soft:#6EE7B7; --cs-accent-bright:#ECFDF5;
+    --cs-hl-1:#ECFDF5; --cs-hl-2:#D1FAE5; --cs-hl-title:#064E3B; --cs-hl-text:#047857;
+    --cs-launch-1:#10B981; --cs-launch-2:#34D399; --cs-launch-text:#0F0D2A;
+  }
+</style>
+<script src="js/transitions.js"></script>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Shri</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#contact" class="nav-cta">Connect</a>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="cs-hero-inner">
+    <a href="index.html#projects" class="cs-back rv">&larr; Back to projects</a>
+    <div class="cs-badge rv"><div class="cs-badge-dot"></div><span>Survivorship Care</span></div>
+    <h1 class="cs-title rv">Cardiovascular Risk Management<br>in Cancer Survivors</h1>
+    <p class="cs-subtitle rv">Are cancer survivors with hypertension and diabetes better or worse at managing cardiovascular risk? A population-based study using 20 years of NHANES data.</p>
+    <p class="cs-meta rv">NHANES 1999-2018 + NCHS Mortality Files &middot; Siteman Cancer Center</p>
+    <div class="rv">
+      <div class="cs-launch-tag">Now Live</div><br>
+      <a href="../Projects/cv-risk-gaps/dashboard.html" class="cs-launch">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+        Launch Interactive Dashboard
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="cs-content">
+  <div class="cs-stats">
+    <div class="cs-stat rv"><div class="cs-stat-n">4,715</div><div class="cs-stat-l">Cancer survivors</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.1s"><div class="cs-stat-n">51,168</div><div class="cs-stat-l">Total cohort</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.2s"><div class="cs-stat-n">7</div><div class="cs-stat-l">NHANES cycles</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.3s"><div class="cs-stat-n">3</div><div class="cs-stat-l">CV outcomes</div></div>
+  </div>
+
+  <!-- THE QUESTION -->
+  <div class="cs-section rv">
+    <div class="cs-label">THE QUESTION</div>
+    <h2 class="cs-section-title">We assumed cancer survivors were falling through the cracks. The data told a different story.</h2>
+    <p class="cs-text">Cancer survivors live longer than they used to. Most of them don't die from their original cancer. They die from cardiovascular disease, diabetes complications, and the slow accumulation of chronic conditions that get pushed to the back of the queue while everyone is focused on the tumor. That framing leads to an obvious hypothesis: cancer survivors should have worse cardiovascular risk control than the general population. Their care is fragmented. Oncology doesn't run blood pressures. Primary care gets crowded out. We built this analysis to demonstrate the gap. The data refused to cooperate.</p>
+    <div class="cs-highlight rv">
+      <div class="cs-highlight-title">Why this matters</div>
+      <div class="cs-highlight-text">If cancer survivors are doing better on chronic disease control, the policy implications flip. The healthcare contact from cancer follow-up has a spillover benefit for chronic disease management. But the advantage could disappear as survivors age out of active surveillance. Survivorship care design should not assume neglect.</div>
+    </div>
+  </div>
+
+  <!-- APPROACH -->
+  <div class="cs-section rv">
+    <div class="cs-label">APPROACH</div>
+    <h2 class="cs-section-title">Survey-weighted logistic regression on a 51,168-adult cohort</h2>
+    <p class="cs-text">I extended the existing NHANES cardiometabolic cohort by adding three new domains: blood pressure exam (BPX), cholesterol labs (TCHOL, TRIGLY), and the PHQ-9 depression screener (DPQ). I then defined three cardiovascular outcomes and fit survey-weighted logistic regression models comparing cancer survivors to non-cancer adults, with cluster-robust standard errors approximating the NHANES Taylor-linearized design.</p>
+    <div class="cs-cards">
+      <div class="cs-card rv">
+        <div class="cs-card-label">Cohort</div>
+        <div class="cs-card-title">51,168 adults</div>
+        <div class="cs-card-text">10 NHANES cycles 1999-2018. Models including depression are restricted to cycles 2005-2018 because PHQ-9 was not collected before then.</div>
+      </div>
+      <div class="cs-card rv" style="transition-delay:0.1s">
+        <div class="cs-card-label">Outcomes</div>
+        <div class="cs-card-title">3 CV controls</div>
+        <div class="cs-card-text">BP control (SBP<140 and DBP<90 among hypertensives), A1c control (HbA1c<7 among diabetics), high cholesterol (LBXTC>=240 in full sample).</div>
+      </div>
+    </div>
+    <div class="cs-pills rv">
+      <span class="cs-pill">Python</span>
+      <span class="cs-pill">statsmodels</span>
+      <span class="cs-pill">Survey-Weighted GLM</span>
+      <span class="cs-pill">NHANES Survey Data</span>
+      <span class="cs-pill">PHQ-9</span>
+      <span class="cs-pill">Logistic Regression</span>
+      <span class="cs-pill">Cluster-Robust SE</span>
+      <span class="cs-pill">Forest Plots</span>
+    </div>
+  </div>
+
+  <!-- FINDING 1 -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 1</div>
+    <h2 class="cs-section-title">Cancer survivors have 26% higher odds of controlled BP</h2>
+    <p class="cs-text">Among 11,772 US adults with hypertension across cycles 2005-2018, cancer survivors are significantly more likely to have their blood pressure under control. The fully adjusted odds ratio is 1.26 (95% CI 1.10 to 1.44, p = 0.001) after accounting for age, sex, race, smoking, obesity, and depression. The advantage holds across every individual cycle in the stratified analysis.</p>
+    <div class="cs-figure rv">
+      <img src="../Projects/cv-risk-gaps/figures/forest_cancer_effect.png" alt="Forest plot of cancer survivor odds ratios across three CV outcomes" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Forest plot: adjusted ORs for cancer survivor status across BP control, A1c control, and high cholesterol</div>
+    </div>
+  </div>
+
+  <!-- FINDING 2 -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 2</div>
+    <h2 class="cs-section-title">Cancer survivors have 33% higher odds of controlled A1c</h2>
+    <p class="cs-text">Among 5,194 US adults with diabetes, cancer survivors are 33% more likely to have HbA1c below 7.0% than non-cancer diabetics. OR 1.33 (95% CI 1.03 to 1.72, p = 0.031). The effect is larger but the confidence interval is wider because diabetics are a smaller subgroup. The leading explanation is the same as for BP control: more visits means more chances to titrate medications, refer to endocrinology, or escalate therapy.</p>
+
+    <table class="cs-table">
+      <tr><th>Outcome</th><th>Sample</th><th>OR</th><th>95% CI</th><th>P</th></tr>
+      <tr><td class="sig">BP controlled</td><td>Hypertensives (n = 11,772)</td><td class="sig">1.26</td><td>1.10 - 1.44</td><td class="sig">0.001</td></tr>
+      <tr><td class="sig">A1c controlled</td><td>Diabetics (n = 5,194)</td><td class="sig">1.33</td><td>1.03 - 1.72</td><td class="sig">0.031</td></tr>
+      <tr><td>High cholesterol</td><td>Full sample (n = 32,110)</td><td>0.86</td><td>0.71 - 1.04</td><td>0.111</td></tr>
+    </table>
+
+    <div class="cs-figure rv">
+      <img src="../Projects/cv-risk-gaps/figures/control_rates_by_cancer.png" alt="Bar chart of control rates by cancer status" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Survey-weighted prevalence of each outcome by cancer status</div>
+    </div>
+  </div>
+
+  <!-- FINDING 3 -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 3</div>
+    <h2 class="cs-section-title">Depression does not modify the cancer effect</h2>
+    <p class="cs-text">We hypothesized that depressed cancer survivors would lose the advantage because depression is associated with worse self-management, missed appointments, and lower medication adherence. We were wrong, or the effect is smaller than this dataset can detect. None of the three cancer x depression interactions were statistically significant (all p > 0.09). The survivor advantage holds even when mental health comorbidity is layered in.</p>
+
+    <table class="cs-table">
+      <tr><th>Outcome</th><th>Cancer x depressed OR</th><th>95% CI</th><th>P</th></tr>
+      <tr><td>BP controlled</td><td>0.78</td><td>0.53 - 1.16</td><td>0.223</td></tr>
+      <tr><td>A1c controlled</td><td>0.62</td><td>0.35 - 1.09</td><td>0.097</td></tr>
+      <tr><td>High cholesterol</td><td>1.25</td><td>0.79 - 1.99</td><td>0.346</td></tr>
+    </table>
+
+    <div class="cs-figure rv">
+      <img src="../Projects/cv-risk-gaps/figures/trend_bp_control_by_cycle.png" alt="Cancer survivor BP control OR by NHANES cycle" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Cancer survivor BP control OR across NHANES cycles 2005-2018</div>
+    </div>
+  </div>
+
+  <!-- SO WHAT -->
+  <div class="cs-section rv">
+    <div class="cs-label">SO WHAT</div>
+    <h2 class="cs-section-title">Clinical and strategic implications</h2>
+    <table class="cs-table">
+      <tr><th>Finding</th><th>Implication</th></tr>
+      <tr><td>Cancer survivors do better on BP control (OR 1.26)</td><td>The frequent-contact hypothesis is supported. Survivorship visits provide a spillover benefit for chronic disease management.</td></tr>
+      <tr><td>Cancer survivors do better on A1c control (OR 1.33)</td><td>Same mechanism. Diabetes management is touch-intensive and benefits from frequent clinical contact.</td></tr>
+      <tr><td>No advantage on high cholesterol (NS)</td><td>Cholesterol is a "set it and forget it" condition once a statin is prescribed. Visit frequency matters less for it.</td></tr>
+      <tr><td>Depression interaction not significant</td><td>The survivor advantage is robust to mental health comorbidity, at least in cross-section.</td></tr>
+      <tr><td>Effect likely tied to active follow-up</td><td>The advantage may shrink as survivors age out of structured surveillance. Worth following up in longitudinal data.</td></tr>
+    </table>
+  </div>
+
+  <!-- METHODS -->
+  <div class="cs-section rv">
+    <div class="cs-label">METHODS</div>
+    <h2 class="cs-section-title">How I built this</h2>
+    <p class="cs-text">Extended the existing NHANES cardiometabolic cohort by adding BPX (blood pressure exam, 30 new XPT files), TCHOL and TRIGLY (cholesterol labs), and DPQ (PHQ-9 depression screener). Outcomes derived from mean systolic and diastolic across up to 4 readings, HbA1c thresholds, and total cholesterol cut points. Survey-weighted logistic regression via statsmodels GLM with binomial family. Weights normalized so effective N matches actual N. Cluster-robust standard errors using combined SDMVSTRA x SDMVPSU as the cluster id, approximating the Taylor-series linearization that R's survey package uses. Each model adjusts for age, sex, race/ethnicity, smoking, obesity, and depression, with a cancer x depression interaction. Cycle-stratified models test temporal stability. All analysis is in two Python scripts and reruns in seconds.</p>
+    <div class="cs-pills rv">
+      <span class="cs-pill">Survivorship Care</span>
+      <span class="cs-pill">Survey-Weighted GLM</span>
+      <span class="cs-pill">PHQ-9</span>
+      <span class="cs-pill">NHANES Pooling</span>
+      <span class="cs-pill">Cluster-Robust SE</span>
+      <span class="cs-pill">Cycle Trends</span>
+      <span class="cs-pill">Interaction Testing</span>
+      <span class="cs-pill">Tableau Export</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cs-cta rv">
+    <p class="cs-cta-text">Interested in survivorship care, real-world evidence, or population health strategy?</p>
+    <a href="mailto:drsridhar22@gmail.com" class="cs-cta-btn">Get in touch</a>
+    <div class="cs-footer">Shri 2026</div>
+  </div>
+</div>
+
+<script>
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
+var nav=document.querySelector('.nav');
+window.addEventListener('scroll',function(){if(window.scrollY>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled');},{passive:true});
+</script>
+</body>
+</html>
