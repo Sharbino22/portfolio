@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What AI in healthcare actually looks like right now · Shri</title>
+<meta name="description" content="Between the hype of autonomous clinicians and the reality of locked-down hospital IT is a much narrower, more interesting corridor. A grounded look at what is actually shipping, what is FDA-cleared, and where the useful work sits.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/cs.css?v=1">
+
+<style>
+  :root {
+    --cs-hero-1: #0F2A24;
+    --cs-hero-2: #061A14;
+    --cs-accent: #34D399;
+    --cs-accent-soft: #A7F3D0;
+    --cs-accent-bright: #ECFDF5;
+    --cs-hl-1: #D1FAE5;
+    --cs-hl-2: #A7F3D0;
+    --cs-hl-title: #065F46;
+    --cs-hl-text: #047857;
+  }
+  .prose { max-width: 740px; }
+  .prose p { font-size: 17px; line-height: 1.75; color: var(--cs-ink-soft); margin-bottom: 20px; }
+  .prose p strong { color: var(--cs-ink); }
+  .prose a { color: var(--cs-accent); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; transition: color 0.2s; }
+  .prose a:hover { color: var(--cs-hl-title); }
+  .prose h2 { font-size: clamp(24px, 2.4vw, 32px); font-weight: 800; color: var(--cs-ink); margin: 48px 0 16px; letter-spacing: -0.02em; line-height: 1.2; }
+  .prose h3 { font-size: 20px; font-weight: 700; color: var(--cs-ink); margin: 32px 0 12px; letter-spacing: -0.015em; }
+  .prose ul { padding-left: 24px; margin-bottom: 20px; }
+  .prose ul li { font-size: 16.5px; line-height: 1.7; color: var(--cs-ink-soft); margin-bottom: 10px; }
+  .prose .callout {
+    background: linear-gradient(135deg, var(--cs-hl-1), var(--cs-hl-2));
+    border-radius: 14px; padding: 22px 26px; margin: 28px 0;
+  }
+  .prose .callout p { font-size: 15.5px; color: var(--cs-hl-text); margin-bottom: 0; }
+  .prose .callout strong { color: var(--cs-hl-title); }
+  .prose blockquote {
+    border-left: 3px solid var(--cs-accent);
+    padding: 14px 0 14px 24px; margin: 28px 0;
+  }
+  .prose blockquote p { font-size: 19px; font-weight: 500; font-style: italic; color: var(--cs-ink); line-height: 1.5; margin-bottom: 0; }
+  .further-reading {
+    background: #fff; border: 1px solid var(--cs-hairline);
+    border-radius: 16px; padding: 28px 32px; margin: 48px 0 0;
+  }
+  .further-reading h3 { margin-top: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cs-accent); margin-bottom: 16px; }
+  .further-reading ul { padding-left: 0; list-style: none; }
+  .further-reading li { padding: 10px 0; border-bottom: 1px solid var(--cs-hairline); font-size: 15px; }
+  .further-reading li:last-child { border-bottom: none; }
+  .further-reading li strong { color: var(--cs-ink); }
+  .further-reading a { color: var(--cs-accent); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">Shri</a>
+  <div class="nav-links">
+    <a href="../index.html#story">Story</a>
+    <a href="../index.html#process">Process</a>
+    <a href="../index.html#projects">Projects</a>
+    <a href="../writing.html">Writing</a>
+  </div>
+  <a href="../index.html#contact" class="nav-cta">Connect</a>
+</nav>
+
+<section class="cs-hero">
+  <div class="cs-hero-inner">
+    <a href="../writing.html" class="cs-back">&larr; All writing</a>
+    <div class="cs-badge">
+      <span class="cs-badge-dot"></span>
+      <span>AI in Healthcare · 12 min read</span>
+    </div>
+    <h1 class="cs-title">What AI in healthcare<br>actually looks like right now.</h1>
+    <p class="cs-subtitle">Between the hype of autonomous clinicians and the reality of locked‑down hospital IT is a much narrower, more interesting corridor. A grounded look at what is shipping, what is FDA‑cleared, and where the useful work sits.</p>
+    <p class="cs-meta">Apr 23, 2026 · Sridharan Gopalsamy Ramaswamy</p>
+  </div>
+</section>
+
+<div class="cs-content prose rv">
+
+  <p>I practiced medicine in India for a year, then left the clinic for an MPH/MBA at Washington University. I work on cancer epidemiology at Siteman, build a consumer health product, and run an entirely local AI pipeline that produces long‑form health explainer videos. That last one still startles people.</p>
+
+  <p>So when I say <em>AI in healthcare</em>, I mean something very specific. I do not mean an autonomous doctor. I do not mean chatbots replacing nurses. I mean the narrower, harder, more useful work that is actually getting shipped and cleared, the work that sits between what a trained clinician used to do by hand and what an algorithm can now do reproducibly at scale.</p>
+
+  <h2>What is actually shipping</h2>
+
+  <p>The FDA maintains a <a href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-device-list" target="_blank" rel="noopener">public list of authorized AI/ML‑enabled medical devices</a>. As of 2025 it sat above 1,000 cleared devices, and it is growing. Most of them are not what you see in a demo on Twitter. They are:</p>
+
+  <ul>
+    <li><strong>Imaging triage and detection.</strong> Radiology dominates the list. Stroke detection on CT (<a href="https://www.viz.ai" target="_blank" rel="noopener">Viz.ai</a>), pulmonary embolism detection, diabetic retinopathy screening (<a href="https://www.digitaldiagnostics.com/" target="_blank" rel="noopener">Digital Diagnostics / IDx‑DR</a>), breast density assessment.</li>
+    <li><strong>Cardiology interpretation.</strong> ECG algorithms flagging atrial fibrillation, heart failure signals, hyperkalemia signatures. The Mayo Clinic ECG‑AI work is the reference point here.</li>
+    <li><strong>Pathology.</strong> Digital pathology models scoring prostate biopsies (<a href="https://paige.ai" target="_blank" rel="noopener">Paige.AI</a>), breast tissue quantification.</li>
+    <li><strong>Ambient documentation.</strong> Scribe products (<a href="https://www.abridge.com" target="_blank" rel="noopener">Abridge</a>, <a href="https://www.nuance.com/healthcare/dax.html" target="_blank" rel="noopener">Nuance DAX</a>, <a href="https://www.suki.ai" target="_blank" rel="noopener">Suki</a>) that listen to the visit and generate a draft note. This is the segment that is actually moving revenue at large health systems right now.</li>
+    <li><strong>Operational tools.</strong> Bed‑turn prediction, sepsis early warning, discharge risk scoring. Quiet, high‑leverage, and rarely the part you see in the press.</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>The pattern:</strong> successful AI in healthcare tends to replace a narrow, repetitive cognitive task a clinician already did, not the clinician's judgment. It is boring on purpose.</p>
+  </div>
+
+  <h2>Why the hyped version keeps failing</h2>
+
+  <p>The canonical failure mode is the sepsis prediction model. Epic's embedded sepsis model was the poster child for embedded EHR AI for years. In 2021, a <a href="https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2781307" target="_blank" rel="noopener">JAMA Internal Medicine validation study</a> found it performed substantially worse than Epic's own reported numbers at a large academic health system. It missed real cases and flagged many false positives. The model was still there. It just did not work the way the product page said it did.</p>
+
+  <p>That is not a one‑off. The <a href="https://www.bmj.com/content/369/bmj.m1328" target="_blank" rel="noopener">BMJ's 2020 review of COVID‑19 prediction models</a> looked at 232 published models and concluded that essentially none were fit for clinical use. The failure modes were reproducible: non‑representative training data, data leakage, no external validation, calibration drift once deployed.</p>
+
+  <p>So when a vendor says "our model has 94% accuracy," the correct next questions are: accuracy on what population, at what prevalence, calibrated when, validated where, drift monitored how. If any of those answers is vague, the number is a marketing number.</p>
+
+  <h2>Where the useful work actually sits</h2>
+
+  <p>If I had to draw the map, I would put useful healthcare AI in four regions:</p>
+
+  <h3>1. Clinician augmentation, not replacement</h3>
+
+  <p>Ambient scribes are the single biggest live example. A clinician still sees the patient, still makes the decisions, still signs the note. The model just drafts the note from the conversation. This pattern fits because it removes a universally hated documentation burden, it is low‑stakes per interaction, and the clinician always signs off before it becomes part of the record. It is a force multiplier that respects the existing authority structure of medicine.</p>
+
+  <p>The same pattern works for coding assistance, draft discharge summaries, and draft patient‑portal replies. The model produces a first pass, the clinician edits and signs.</p>
+
+  <h3>2. Triage at the top of the funnel</h3>
+
+  <p>Retinal cameras that screen for diabetic retinopathy in primary care, without an ophthalmologist in the room, are a live example of AI expanding access rather than replacing expertise. IDx‑DR was the <a href="https://www.fda.gov/news-events/press-announcements/fda-permits-marketing-artificial-intelligence-based-device-detect-certain-diabetes-related-eye" target="_blank" rel="noopener">first FDA‑authorized autonomous diagnostic</a> in 2018 and the category has grown since. The trick is that these are screening tools, explicitly designed to route patients to humans when uncertainty is high.</p>
+
+  <h3>3. Population‑level risk stratification</h3>
+
+  <p>This is the quiet segment. Models predicting 30‑day readmission, inpatient deterioration, sepsis onset, no‑show risk. They rarely make headlines but they are where health systems are saving money and occasionally lives. The honest version ships with calibration plots by subgroup and a plan for revalidation every 6 to 12 months.</p>
+
+  <h3>4. Research and evidence synthesis</h3>
+
+  <p>Here is where general‑purpose LLMs are most useful right now, and it is the one I use most. Literature review, clinical guideline synthesis across sources, competitive teardowns of health apps, data quality audits of public datasets, building reference documents grounded in primary sources. This is not medical device territory. It is knowledge work, done faster.</p>
+
+  <p>The discipline is what matters. Every claim should cite the primary source, not a secondary summary. Every ambiguity should be flagged, not smoothed over. Evidence grades matter when they exist (<a href="https://www.uspreventiveservicestaskforce.org/uspstf/about-uspstf/methods-and-processes/grade-definitions" target="_blank" rel="noopener">USPSTF</a>, <a href="https://gradepro.org/" target="_blank" rel="noopener">GRADE</a>). I have built long‑form reference documents with Claude on topics ranging from hypertension management thresholds to FDA General Wellness guidance and the outputs are only valuable because they are grounded and cited, not because they are produced fast.</p>
+
+  <blockquote>
+    <p>An AI‑generated clinical reference without citations is worse than no reference. It is a reference you cannot check.</p>
+  </blockquote>
+
+  <h2>The regulatory edge nobody wants to talk about</h2>
+
+  <p>A consumer wellness app that says "this food is good for your heart" sits on one side of a line. The same app saying "this food is good for your hypertension" sits on the other side. The first is <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-wellness-policy-low-risk-devices" target="_blank" rel="noopener">FDA General Wellness</a>, unregulated. The second is a medical device claim. The distinction is the difference between a shippable product and an enforcement letter.</p>
+
+  <p>The same thing applies to AI features. A model that suggests <em>what a doctor might consider</em> is decision support. A model that <em>tells the doctor what to do</em> or, worse, <em>bypasses the doctor entirely</em>, is Software as a Medical Device (SaMD). The FDA has <a href="https://www.fda.gov/medical-devices/software-medical-device-samd/clinical-decision-support-software" target="_blank" rel="noopener">specific guidance</a> here, and in 2023 they <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-decision-support-software" target="_blank" rel="noopener">finalized the CDS guidance</a> to clarify when software falls under device regulation.</p>
+
+  <p>If you are building, this is not a small detail. It determines whether you can ship in 6 weeks or whether you need a 510(k) submission. My working rule: read the FDA warning letter archive for your category before you ship. <a href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters" target="_blank" rel="noopener">They are public.</a> The specific language the FDA objects to is instructive in a way that no summary document is.</p>
+
+  <h2>What actually makes AI in healthcare work</h2>
+
+  <p>Across the examples above, the shipped and working ones share a few traits:</p>
+
+  <ul>
+    <li><strong>Narrow problem definition.</strong> "Detect diabetic retinopathy from a fundus photo." Not "be a doctor."</li>
+    <li><strong>Labeled training data with provenance.</strong> You can trace where the labels came from. Who labeled them. What their agreement rate was.</li>
+    <li><strong>External validation on a real population.</strong> Not the same population the model was trained on, measured at the same prevalence, in the same setting.</li>
+    <li><strong>Calibrated outputs, not just ranked ones.</strong> "This patient has a 7% probability of X" beats "this patient is in the top decile for X" for most clinical decisions.</li>
+    <li><strong>A human in the loop, explicitly.</strong> Who sees the output. What they do with it. How their override is logged.</li>
+    <li><strong>A monitoring plan.</strong> Drift happens. Populations change. Coding practices change. A model that worked in 2023 might be miscalibrated by 2026.</li>
+  </ul>
+
+  <p>Those are boring requirements. They are the requirements. The shortest path to a working AI product in healthcare is to take them seriously from the first commit, not the first audit.</p>
+
+  <h2>Where I think this goes next</h2>
+
+  <p>Three bets, at decreasing confidence.</p>
+
+  <p><strong>Ambient documentation becomes table stakes.</strong> By the end of 2026 I would bet that most large academic and community health systems have a scribe product contract in place. The remaining question is which vendor, not whether. The clinician time recovered is too large to ignore and the competitive pressure on the health systems without it is real.</p>
+
+  <p><strong>LLMs become a layer in the EHR, not a feature.</strong> Not a chatbot in the corner. A substrate the EHR uses to surface what a clinician needs: relevant prior notes, relevant lab trends, relevant guideline reminders. <a href="https://www.epic.com/epic/post/epic-announces-generative-ai-partnership-with-microsoft" target="_blank" rel="noopener">Epic's partnership with Microsoft</a> is a signal of that direction; the product has to get quieter and more useful for it to actually stick.</p>
+
+  <p><strong>Consumer health AI stays legally careful or gets letters.</strong> Condition‑aware, evidence‑grounded consumer tools can ship under General Wellness if the claims are disciplined. Most of the ones I see in app stores are not that disciplined. Expect the enforcement signal to rise with the noise level.</p>
+
+  <h2>What to do about it</h2>
+
+  <p>If you are a clinician: learn to evaluate an AI claim the way you evaluate a drug trial. Who was the population. What was the prevalence. What is the calibration. What is the monitoring plan. If those answers are missing, the product is not ready for your workflow.</p>
+
+  <p>If you are a builder: pick a narrow problem with a labeled dataset and a human in the loop. Ship something boring that works before you try to ship something interesting.</p>
+
+  <p>If you are a buyer at a health system: ask for the external validation, the calibration plot, the drift monitoring plan, and the subgroup performance. If those are not offered, the answer is probably no.</p>
+
+  <p>The corridor where AI in healthcare actually works is narrower than the pitch decks suggest. It is also wider than the cynics think. The useful part is figuring out which side of each specific question you are on.</p>
+
+  <div class="further-reading">
+    <h3>Further reading</h3>
+    <ul>
+      <li><strong>FDA AI/ML‑enabled device list.</strong> <a href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-device-list" target="_blank" rel="noopener">The authoritative public list of cleared devices.</a></li>
+      <li><strong>FDA Clinical Decision Support guidance (2022, final).</strong> <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-decision-support-software" target="_blank" rel="noopener">How to tell CDS from SaMD.</a></li>
+      <li><strong>FDA General Wellness policy.</strong> <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-wellness-policy-low-risk-devices" target="_blank" rel="noopener">Where the consumer wellness line sits.</a></li>
+      <li><strong>Wong et al, JAMA Internal Medicine 2021.</strong> <a href="https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2781307" target="_blank" rel="noopener">The Epic sepsis model validation paper.</a></li>
+      <li><strong>Wynants et al, BMJ 2020.</strong> <a href="https://www.bmj.com/content/369/bmj.m1328" target="_blank" rel="noopener">Systematic review of COVID‑19 prediction models.</a></li>
+      <li><strong>Rajkomar, Dean, Kohane, NEJM 2019.</strong> "<a href="https://www.nejm.org/doi/full/10.1056/NEJMra1814259" target="_blank" rel="noopener">Machine Learning in Medicine</a>." Still one of the clearest overviews.</li>
+    </ul>
+  </div>
+
+  <div class="cs-cta">
+    <p class="cs-cta-text">Building at the intersection of AI and healthcare? I'd like to hear about it.</p>
+    <a href="mailto:drsridhar22@gmail.com" class="cs-cta-btn">Get in touch</a>
+    <div class="cs-footer">Shri · 2026 · <a href="../writing.html" style="color:inherit;">More writing</a></div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  const items = document.querySelectorAll('.rv');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (!e.isIntersecting) return; e.target.classList.add('vis'); io.unobserve(e.target); });
+  }, { threshold: 0.05 });
+  items.forEach((el) => io.observe(el));
+})();
+</script>
+
+</body>
+</html>

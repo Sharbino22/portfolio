@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shri — Physician · Epidemiologist · Strategist</title>
-<meta name="description" content="Physician turned healthcare strategist. Using epidemiology, data, and product to redesign the systems that shape care.">
+<title>Shri — Healthcare Professional · Epidemiologist · Strategist</title>
+<meta name="description" content="Healthcare professional turned healthcare strategist. Using epidemiology, data, and product to redesign the systems that shape care.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,14 +20,24 @@
   <a href="#hero" class="nav-logo">Shri</a>
   <div class="nav-links">
     <a href="#story">Story</a>
+    <a href="#process">Process</a>
     <a href="#projects">Projects</a>
+    <a href="#tools">Tools</a>
     <a href="#experience">Experience</a>
     <a href="#research">Research</a>
     <a href="#education">Education</a>
-    <a href="#beyond">Beyond</a>
+    <a href="writing.html">Writing</a>
     <a href="#contact">Connect</a>
   </div>
-  <a href="#contact" class="nav-cta">Get in touch</a>
+  <div class="nav-right">
+    <span class="nav-locale" aria-label="Current location and local time">
+      <span class="nav-locale-flag" aria-hidden="true">🇺🇸</span>
+      <span class="nav-locale-city">St. Louis</span>
+      <span class="nav-locale-sep">·</span>
+      <span class="nav-locale-time" id="local-time">—:—</span>
+    </span>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
 </nav>
 
 <!-- =======================================================
@@ -48,7 +58,7 @@
       </h1>
 
       <p class="hero-sub">
-        I'm <em>Shri</em> — physician, epidemiologist, and strategist.
+        I'm <em>Shri</em> — healthcare professional, epidemiologist, and strategist.
         I spent a year treating patients before realizing the biggest
         lever sits upstream. Now I use data, product, and evidence
         to fix the systems around them.
@@ -111,10 +121,9 @@
       <div class="eyebrow rv">The Story</div>
 
       <h2 class="story-hello rv">
-        Hi, I'm<br>
-        Shri. <em>A physician</em><br>
-        who left the<br>
-        clinic to fix it.
+        Hi, I'm Shri.<br>
+        <em>A healthcare professional</em><br>
+        who left the clinic to fix it.
       </h2>
 
       <p class="story-lede rv">
@@ -133,14 +142,91 @@
       <p class="story-body rv">
         So I left clinical practice, moved to St. Louis, and started a dual MPH/MBA at
         Washington University. Since then I've done cancer survival research at Siteman,
-        built a health‑tech product from scratch, helped a struggling hospital find
-        <strong>$24M</strong> in opportunities, and presented at ASCO 2026.
+        built a health‑tech product from zero with AI as a co‑architect, helped a struggling
+        hospital find <strong>$24M</strong> in opportunities, and presented at ASCO 2026.
+      </p>
+
+      <p class="story-body rv">
+        The work takes a lot of shapes now — Cox models on 20 years of NHANES, a chronic‑care
+        app built spec‑first with AI in the loop, hospital financial turnarounds, and a
+        <em>locally‑run AI pipeline</em> producing long‑form health video on a single GPU.
+        The method stays the same: <strong>spec first, locked decisions, primary sources
+        cited, AI as a co‑builder, never a crutch.</strong>
       </p>
 
       <p class="story-body rv">
         Every project comes back to the same question: <strong>how do we make the system
         work better for the people inside it?</strong>
       </p>
+    </div>
+  </div>
+</section>
+
+<!-- =======================================================
+     PROCESS — How I work with AI
+     ======================================================= -->
+<section id="process" class="s-cream-2">
+  <div class="process-inner">
+    <div class="process-intro">
+      <div class="eyebrow rv">How I Work</div>
+      <h2 class="heading-lg rv">
+        I build <em>with</em> AI,<br>
+        not around it.
+      </h2>
+      <p class="body-lg rv">
+        Every project starts from a written specification in plain Markdown:
+        research synthesis, thresholds, edge cases, locked decisions, all captured
+        before the first file is written. Code follows the spec, not the other way around.
+      </p>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-card rv">
+        <div class="process-num">01</div>
+        <h3 class="process-title">Spec‑driven development</h3>
+        <p class="process-desc">
+          Research, thresholds, and edge cases are locked in a plain Markdown spec before
+          any code is written. Open‑ended prompts produce debt; locked prompts produce
+          verifiable output.
+        </p>
+      </div>
+      <div class="process-card rv stagger-1">
+        <div class="process-num">02</div>
+        <h3 class="process-title">Multi‑chat AI orchestration</h3>
+        <p class="process-desc">
+          Parallel AI chats for different phases of a single project — research,
+          architecture, implementation review, prompt drafting. Each chat holds its own
+          context; artifacts feed the others. Decisions stay traceable across the build.
+        </p>
+      </div>
+      <div class="process-card rv stagger-2">
+        <div class="process-num">03</div>
+        <h3 class="process-title">Instrumented before expanded</h3>
+        <p class="process-desc">
+          I defer architectural complexity until telemetry justifies it. New data sources,
+          new services, new layers all wait on evidence from the baseline. One step per
+          agentic session, verified on device before the next one starts.
+        </p>
+      </div>
+      <div class="process-card rv stagger-3">
+        <div class="process-num">04</div>
+        <h3 class="process-title">Clinical grounding</h3>
+        <p class="process-desc">
+          Health‑domain thresholds come from primary guidelines (ADA, AHA, DASH, NHLBI,
+          WHO, CDC, FDA). Cited inline, evidence grades flagged, edge cases worked — never
+          paraphrased from secondary summaries.
+        </p>
+      </div>
+    </div>
+
+    <div class="process-footer rv">
+      <p class="process-motto">
+        <em>Spec first. Locked decisions. Instrumented before expanded. Verified before advanced.</em>
+      </p>
+      <a href="writing.html" class="process-link">
+        Read the long‑form
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -223,7 +309,7 @@
           <line x1="10" y1="110" x2="190" y2="110" stroke="rgba(255,255,255,0.2)"/>
           <line x1="10" y1="20" x2="10" y2="110" stroke="rgba(255,255,255,0.2)"/>
         </svg>
-        <span class="live-badge">Published</span>
+        <span class="live-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>Live Dashboard</span>
         <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17L17 7"/></svg></div>
       </div>
       <div class="case-meta">
@@ -241,7 +327,7 @@
       <div class="case-card-visual theme-green">
         <span class="hero-label">Odds ratio (adjusted)</span>
         <div class="hero-big">1.73×<br><span style="font-weight:300;font-style:italic;opacity:0.8;font-size:20px;">better BP control</span></div>
-        <span class="live-badge">Live dashboard</span>
+        <span class="live-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>Live Dashboard</span>
         <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17L17 7"/></svg></div>
       </div>
       <div class="case-meta">
@@ -287,6 +373,7 @@
       <div class="case-card-visual theme-blue">
         <span class="hero-label">State markup variation</span>
         <div class="hero-big">9.5×<br><span style="font-weight:300;font-style:italic;opacity:0.8;font-size:20px;">spread across states</span></div>
+        <span class="live-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>Live Dashboard</span>
         <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17L17 7"/></svg></div>
       </div>
       <div class="case-meta">
@@ -316,6 +403,177 @@
         </div>
       </div>
     </a>
+
+    <div class="case-card t-green rv stagger-1">
+      <div class="case-card-visual theme-green">
+        <span class="hero-label">Turnaround analysis</span>
+        <div class="hero-big">$24M<br><span style="font-weight:300;font-style:italic;opacity:0.8;font-size:20px;">opportunities identified</span></div>
+        <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17L17 7"/></svg></div>
+      </div>
+      <div class="case-meta">
+        <div class="case-kicker">Healthcare Strategy</div>
+        <h3 class="case-title">Madera Hospital turnaround</h3>
+        <p class="case-desc">Rural California hospital in financial distress. Identified $24M across supply chain, payor mix, and service‑line optimization.</p>
+        <div class="case-tags">
+          <span class="case-tag">Consulting</span>
+          <span class="case-tag">Turnaround</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card t-amber rv">
+      <div class="case-card-visual theme-amber">
+        <span class="hero-label">Market entry · EU</span>
+        <div class="hero-big">€192K<br><span style="font-weight:300;font-style:italic;opacity:0.8;font-size:20px;">3‑year pro forma</span></div>
+        <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17L17 7"/></svg></div>
+      </div>
+      <div class="case-meta">
+        <div class="case-kicker">Business Strategy</div>
+        <h3 class="case-title">Strange Donuts · Barcelona entry</h3>
+        <p class="case-desc">Full market entry strategy for a US food brand expanding into Spain. Site selection, consumer research, and a 3‑year financial model.</p>
+        <div class="case-tags">
+          <span class="case-tag">Market entry</span>
+          <span class="case-tag">Pro forma</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =======================================================
+     TOOLS — tech stack icon grid
+     ======================================================= -->
+<section id="tools" class="s-light">
+  <div class="tools-inner">
+    <div class="tools-intro">
+      <div class="eyebrow rv">Tools &amp; Stack</div>
+      <h2 class="heading-lg rv">
+        Built with <em>intent.</em>
+      </h2>
+      <p class="body-lg rv">
+        Not an exhaustive list — the tools I actually reach for. TypeScript strict mode,
+        locally‑run open‑source models, FFmpeg‑assembled video, and Claude in every phase
+        of the build.
+      </p>
+    </div>
+
+    <div class="tools-section rv">
+      <div class="tools-group-label">Languages</div>
+      <div class="tools-grid">
+        <a class="tool-item" href="https://www.typescriptlang.org" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/typescript/3178C6" alt="TypeScript" loading="lazy">
+          <span>TypeScript</span>
+        </a>
+        <a class="tool-item" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JavaScript" loading="lazy">
+          <span>JavaScript</span>
+        </a>
+        <a class="tool-item" href="https://www.python.org" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/python/3776AB" alt="Python" loading="lazy">
+          <span>Python</span>
+        </a>
+        <a class="tool-item" href="https://www.r-project.org" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/r/276DC3" alt="R" loading="lazy">
+          <span>R</span>
+        </a>
+        <a class="tool-item" href="https://www.gnu.org/software/bash/" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/gnubash/4EAA25" alt="Bash" loading="lazy">
+          <span>Bash</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="tools-section rv stagger-1">
+      <div class="tools-group-label">Mobile &amp; Frontend</div>
+      <div class="tools-grid">
+        <a class="tool-item" href="https://reactnative.dev" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/react/61DAFB" alt="React Native" loading="lazy">
+          <span>React Native</span>
+        </a>
+        <a class="tool-item" href="https://expo.dev" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/expo/000020" alt="Expo" loading="lazy">
+          <span>Expo</span>
+        </a>
+        <a class="tool-item" href="https://react.dev" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/react/61DAFB" alt="React" loading="lazy">
+          <span>React</span>
+        </a>
+        <a class="tool-item" href="https://tailwindcss.com" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" alt="Tailwind CSS" loading="lazy">
+          <span>Tailwind</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="tools-section rv stagger-2">
+      <div class="tools-group-label">Backend &amp; Data</div>
+      <div class="tools-grid">
+        <a class="tool-item" href="https://nodejs.org" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/nodedotjs/5FA04E" alt="Node.js" loading="lazy">
+          <span>Node.js</span>
+        </a>
+        <a class="tool-item" href="https://supabase.com" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/supabase/3FCF8E" alt="Supabase" loading="lazy">
+          <span>Supabase</span>
+        </a>
+        <a class="tool-item" href="https://www.postgresql.org" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/postgresql/4169E1" alt="PostgreSQL" loading="lazy">
+          <span>Postgres</span>
+        </a>
+        <a class="tool-item" href="https://www.sqlite.org" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/sqlite/003B57" alt="SQLite" loading="lazy">
+          <span>SQLite</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="tools-section rv stagger-3">
+      <div class="tools-group-label">AI &amp; Media</div>
+      <div class="tools-grid">
+        <a class="tool-item" href="https://claude.com/claude-code" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/anthropic/191919" alt="Claude" loading="lazy">
+          <span>Claude</span>
+        </a>
+        <a class="tool-item" href="https://pytorch.org" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/pytorch/EE4C2C" alt="PyTorch" loading="lazy">
+          <span>PyTorch</span>
+        </a>
+        <a class="tool-item" href="https://developer.nvidia.com/cuda-toolkit" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/nvidia/76B900" alt="CUDA" loading="lazy">
+          <span>CUDA</span>
+        </a>
+        <a class="tool-item" href="https://ffmpeg.org" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/ffmpeg/007808" alt="FFmpeg" loading="lazy">
+          <span>FFmpeg</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="tools-section rv stagger-4">
+      <div class="tools-group-label">Tooling &amp; Discipline</div>
+      <div class="tools-grid">
+        <a class="tool-item" href="https://git-scm.com" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/git/F05032" alt="Git" loading="lazy">
+          <span>Git</span>
+        </a>
+        <a class="tool-item" href="https://github.com" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/github/24292E" alt="GitHub" loading="lazy">
+          <span>GitHub</span>
+        </a>
+        <a class="tool-item" href="https://jestjs.io" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/jest/C21325" alt="Jest" loading="lazy">
+          <span>Jest</span>
+        </a>
+        <a class="tool-item" href="https://eslint.org" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/eslint/4B32C3" alt="ESLint" loading="lazy">
+          <span>ESLint</span>
+        </a>
+        <a class="tool-item" href="https://www.figma.com" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/figma/F24E1E" alt="Figma" loading="lazy">
+          <span>Figma</span>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -339,67 +597,78 @@
     <div class="exp-item rv">
       <div class="exp-head">
         <div>
-          <div class="exp-role">Healthcare Strategy Consultant</div>
-          <div class="exp-org">Madera Community Hospital · Consulting engagement</div>
+          <div class="exp-role">Cancer Epi Research Fellow</div>
+          <div class="exp-org">Siteman Cancer Center</div>
         </div>
-        <div class="exp-date">2024 – 2025</div>
+        <div class="exp-date">Jun 2024 – Present</div>
       </div>
-      <p class="exp-desc">Led financial and operational analysis for a rural California hospital facing distress. Identified $24M across supply chain, payor mix, and service‑line optimization.</p>
+      <p class="exp-desc">Cox regression and survival modeling on 20 years of NHANES data. Statin utilization in cancer survivors accepted to ASCO 2026 with Dr. Odeny.</p>
     </div>
 
     <div class="exp-item rv stagger-1">
       <div class="exp-head">
         <div>
-          <div class="exp-role">Graduate Research Assistant</div>
-          <div class="exp-org">Siteman Cancer Center · WashU School of Medicine</div>
+          <div class="exp-role">Healthcare Research Analyst</div>
+          <div class="exp-org">Stats Lab, WashU</div>
         </div>
-        <div class="exp-date">2023 – present</div>
+        <div class="exp-date">Jul 2024 – Present</div>
       </div>
-      <p class="exp-desc">Survival analysis and epidemiologic research on breast and colorectal cancer outcomes. Published in JCO Precision Oncology; presented at ASCO 2026.</p>
+      <p class="exp-desc">Claims data analysis, biostatistics consulting, and methodology support for public health faculty across multiple ongoing studies.</p>
     </div>
 
     <div class="exp-item rv">
       <div class="exp-head">
         <div>
-          <div class="exp-role">Founder · Health Tech PM</div>
-          <div class="exp-org">Nyrocare · Skandalaris Center venture</div>
+          <div class="exp-role">Graduate Venture Project Lead</div>
+          <div class="exp-org">Nyrocare · WashU Skandalaris Center</div>
         </div>
-        <div class="exp-date">2024 – present</div>
+        <div class="exp-date">May 2024 – Present</div>
       </div>
-      <p class="exp-desc">Built from 0 to working product through 50+ user interviews. Clinical decision support for chronic disease — medications, nutrition, AI companion.</p>
+      <p class="exp-desc">Built from zero through 50+ user interviews. React Native app, 19 integrated services, voice AI companion for chronic disease management.</p>
     </div>
 
     <div class="exp-item rv stagger-1">
       <div class="exp-head">
         <div>
-          <div class="exp-role">Clinical Practice</div>
-          <div class="exp-org">General Medicine · Bengaluru, India</div>
+          <div class="exp-role">Strategy Consultant</div>
+          <div class="exp-org">Madera Hospital, California</div>
         </div>
-        <div class="exp-date">2021 – 2022</div>
+        <div class="exp-date">Oct 2023 – Oct 2024</div>
       </div>
-      <p class="exp-desc">Outpatient medicine + redesigned the clinic's EHR intake workflow. Noticed the systems around patients mattered more than any single consult.</p>
+      <p class="exp-desc">Identified $24M in operational and financial opportunities across supply chain, payor mix, and service‑line optimization for a rural hospital in distress.</p>
     </div>
 
     <div class="exp-item rv">
       <div class="exp-head">
         <div>
-          <div class="exp-role">Policy Research Intern</div>
-          <div class="exp-org">Brookings Institution · Health Policy</div>
+          <div class="exp-role">Board Member</div>
+          <div class="exp-org">Community Care Center, Illinois</div>
         </div>
-        <div class="exp-date">2023</div>
+        <div class="exp-date">Jan 2024 – Jan 2026</div>
       </div>
-      <p class="exp-desc">Analyzed cancer screening uptake across Medicaid populations. Published policy brief on structural barriers to colorectal cancer screening.</p>
+      <p class="exp-desc">Governance oversight for an FQHC. Reviewed financials, strategic plans, and quality metrics across two years.</p>
     </div>
 
     <div class="exp-item rv stagger-1">
+      <div class="exp-head">
+        <div>
+          <div class="exp-role">Medical Officer</div>
+          <div class="exp-org">ANR Poly Clinic, India</div>
+        </div>
+        <div class="exp-date">Jun 2022 – Jun 2023</div>
+      </div>
+      <p class="exp-desc">One year of outpatient medicine. Redesigned the clinic's EHR intake workflow and founded an 800+ member mentoring community.</p>
+    </div>
+
+    <div class="exp-item rv">
       <div class="exp-head">
         <div>
           <div class="exp-role">Teaching Assistant</div>
-          <div class="exp-org">Biostatistics I & II · WashU MPH</div>
+          <div class="exp-org">Public Health Seminar II · WashU MPH</div>
         </div>
-        <div class="exp-date">2024 – 2025</div>
+        <div class="exp-date">Spring 2026</div>
       </div>
-      <p class="exp-desc">TA for first‑year MPH biostatistics. Weekly labs on regression, survival analysis, and causal inference for 60+ students.</p>
+      <p class="exp-desc">Graduate‑level seminar on research methods and evidence‑based practice.</p>
     </div>
   </div>
 </section>
@@ -421,62 +690,44 @@
   </div>
 
   <div class="res-grid">
-    <a href="#" class="res-card res-hero-photo span-3 rv">
-      <img src="images/poster-presenting-1.jpeg" alt="Shri presenting cervical cancer screening poster at WashU Public Health">
+    <a href="../Posters/full/statin.png" target="_blank" rel="noopener" class="res-card res-hero-photo span-3 rv">
+      <img src="../Posters/thumbs/statin.png" alt="Statin utilization in cancer survivors poster">
       <div class="res-hero-overlay">
-        <div class="res-hero-eyebrow">Featured · APHA 2024</div>
-        <div class="res-hero-title">Cervical cancer screening disparities among survivors</div>
+        <div class="res-hero-eyebrow">ASCO 2026 · Accepted</div>
+        <div class="res-hero-title">Statin utilization in cancer survivors</div>
       </div>
     </a>
 
-    <div class="res-card res-posters span-3 rv stagger-1">
-      <div class="eyebrow">Posters &amp; Presentations</div>
-      <h3>Recent presentations</h3>
-      <div class="res-poster-list">
-        <div class="res-poster">
-          <div class="res-poster-title">10‑year survival in HER2‑low metastatic breast cancer</div>
-          <div class="res-poster-venue">ASCO 2026</div>
-        </div>
-        <div class="res-poster">
-          <div class="res-poster-title">Screening disparities in colorectal cancer (Medicaid cohort)</div>
-          <div class="res-poster-venue">APHA 2024</div>
-        </div>
-        <div class="res-poster">
-          <div class="res-poster-title">Drug‑nutrient interactions in chronic disease apps</div>
-          <div class="res-poster-venue">HIMSS 2025</div>
-        </div>
+    <a href="../Posters/full/grs.png" target="_blank" rel="noopener" class="res-card res-hero-photo span-3 rv stagger-1">
+      <img src="../Posters/thumbs/grs.png" alt="Lipid-lowering therapy in cancer survivors poster">
+      <div class="res-hero-overlay">
+        <div class="res-hero-eyebrow">WashU GRS · Poster</div>
+        <div class="res-hero-title">Lipid‑lowering therapy in cancer survivors</div>
       </div>
-    </div>
+    </a>
 
-    <div class="res-card res-pubs span-2 rv">
-      <div class="eyebrow">Publications</div>
-      <h3>Peer‑reviewed</h3>
+    <div class="res-card res-pubs span-3 rv">
+      <div class="eyebrow">Research Stats</div>
+      <h3>By the numbers</h3>
       <ul class="res-pub-list">
-        <li>JCO Precision Oncology, 2026</li>
-        <li>Journal of Health Policy, 2024</li>
-        <li>AMIA Annual Symposium, 2024</li>
+        <li><strong>2</strong> conference posters</li>
+        <li><strong>1</strong> ASCO 2026 accepted presentation</li>
+        <li><strong>5</strong> peer reviewerships</li>
+        <li>Publications in progress</li>
       </ul>
     </div>
 
-    <div class="res-card res-peer span-2 rv stagger-1">
-      <div class="eyebrow">Reviewer</div>
-      <h3>Peer review</h3>
+    <div class="res-card res-peer span-3 rv stagger-1">
+      <div class="eyebrow">Topic Areas</div>
+      <h3>Research focus</h3>
       <div class="res-peer-list">
-        <span class="res-peer-pill">JCO</span>
-        <span class="res-peer-pill">Health Affairs</span>
-        <span class="res-peer-pill">JAMIA</span>
-        <span class="res-peer-pill">BMC HSR</span>
+        <span class="res-peer-pill">Cancer Epidemiology</span>
+        <span class="res-peer-pill">Real World Evidence</span>
+        <span class="res-peer-pill">Survival Analysis</span>
+        <span class="res-peer-pill">Claims Data</span>
+        <span class="res-peer-pill">Health Systems Research</span>
+        <span class="res-peer-pill">Biostatistics</span>
       </div>
-    </div>
-
-    <div class="res-card span-2 rv stagger-2">
-      <div class="eyebrow" style="color:var(--amber)">Grants &amp; Awards</div>
-      <h3 style="font-size:20px;font-weight:700;letter-spacing:-0.015em;margin:14px 0 16px;">Funded research</h3>
-      <ul class="res-pub-list">
-        <li>Skandalaris Venture Fellowship, 2024</li>
-        <li>Delta Omega Honor Society</li>
-        <li>Class Acts Teaching Award</li>
-      </ul>
     </div>
   </div>
 </section>
@@ -501,27 +752,27 @@
     <div class="edu-card t-mba rv">
       <div class="edu-degree">MBA · Dual Degree</div>
       <div class="edu-school">Olin Business School</div>
-      <div class="edu-sub">Washington University in St. Louis · 2023 – 2026</div>
+      <div class="edu-sub">Washington University in St. Louis · Class of 2026</div>
       <div class="edu-highlight">
-        Strategy, healthcare finance, and operations. <strong>GPA 3.94</strong>. Skandalaris Venture Fellow.
+        Healthcare strategy and finance. Graduate Policy Scholar.
       </div>
     </div>
 
     <div class="edu-card t-mph rv stagger-1">
       <div class="edu-degree">MPH · Epidemiology</div>
-      <div class="edu-school">Brown School of Public Health</div>
-      <div class="edu-sub">Washington University in St. Louis · 2023 – 2026</div>
+      <div class="edu-school">School of Public Health</div>
+      <div class="edu-sub">Washington University in St. Louis · Class of 2026 · 3.94 GPA</div>
       <div class="edu-highlight">
-        Concentration in biostatistics and survival analysis. <strong>Delta Omega Honor Society.</strong>
+        Epidemiology and biostatistics concentration. <strong>Delta Omega Honor Society.</strong>
       </div>
     </div>
 
     <div class="edu-card t-bnys rv stagger-2">
       <div class="edu-degree">BNYS · Medical Degree</div>
-      <div class="edu-school">Government Medical College</div>
-      <div class="edu-sub">Bengaluru, India · 2016 – 2021</div>
+      <div class="edu-school">SDM College</div>
+      <div class="edu-sub">Karnataka, India · 2016 – 2022</div>
       <div class="edu-highlight">
-        Bachelor of Naturopathy and Yogic Sciences. One year of clinical practice post‑graduation.
+        Bachelor of Naturopathy and Yogic Sciences. One year of clinical practice post‑graduation at ANR Poly Clinic.
       </div>
     </div>
   </div>
@@ -536,11 +787,12 @@
 
   <div class="honors">
     <span class="honor">Delta Omega Honor Society</span>
-    <span class="honor">Class Acts Teaching Award</span>
-    <span class="honor">Skandalaris Venture Fellow</span>
+    <span class="honor">Class Acts Award</span>
+    <span class="honor">ASCO 2026 Accepted</span>
     <span class="honor">CPH Certified</span>
-    <span class="honor">ASCO 2026 Presenter</span>
-    <span class="honor">3.94 GPA · Dual Degree</span>
+    <span class="honor">Graduate Policy Scholar</span>
+    <span class="honor">3.94 GPA</span>
+    <span class="honor">5 Languages</span>
   </div>
 </section>
 
@@ -556,11 +808,11 @@
       <em>still curious.</em>
     </h2>
     <p class="beyond-desc rv">
-      I teach yoga on weekends, cook my way through regional Indian cookbooks,
-      and read more health‑policy white papers than is probably healthy.
+      I cook my way through regional Indian cookbooks, chase dark skies for
+      stargazing, and read more health‑policy white papers than is probably healthy.
     </p>
     <div class="beyond-tiles rv">
-      <span class="beyond-tile">Yoga teacher</span>
+      <span class="beyond-tile">Stargazer</span>
       <span class="beyond-tile">Home cook</span>
       <span class="beyond-tile">Policy nerd</span>
       <span class="beyond-tile">Trail runner</span>
@@ -585,31 +837,33 @@
       summer 2026. If you're working on something hard, I'd love to hear about it.
     </p>
     <div class="contact-cta-row rv">
-      <a href="mailto:shri@example.com" class="btn-primary magnetic">
+      <a href="mailto:drsridhar22@gmail.com" class="btn-primary magnetic">
         Email me
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM4 4l8 7 8-7"/></svg>
       </a>
-      <a href="#" class="btn-outline magnetic">Request resume</a>
+      <a href="mailto:drsridhar22@gmail.com?subject=Resume%20Request" class="btn-outline magnetic">Request resume</a>
     </div>
     <div class="contact-info">
       <div class="contact-item">
         <div class="l">Email</div>
-        <a class="v" href="mailto:shri@example.com">shri@example.com</a>
+        <a class="v" href="mailto:drsridhar22@gmail.com">drsridhar22@gmail.com</a>
       </div>
       <div class="contact-item">
         <div class="l">LinkedIn</div>
-        <a class="v" href="#">linkedin.com/in/shri</a>
+        <a class="v" href="https://www.linkedin.com/in/dr-sri-dharan-shri/" target="_blank" rel="noopener">linkedin.com/in/dr-sri-dharan-shri</a>
       </div>
       <div class="contact-item">
         <div class="l">Based in</div>
-        <div class="v">St. Louis, MO · US &amp; India</div>
+        <div class="v">USA</div>
       </div>
     </div>
   </div>
 </section>
 
 <footer class="footer">
-  © 2026 Shri · Built with care in St. Louis
+  <span>© 2026 Shri · Built with care in St. Louis</span>
+  <span class="footer-sep">·</span>
+  <span class="footer-updated">Last updated <time datetime="2026-04-23">Apr 23, 2026</time></span>
 </footer>
 
 <!-- =======================================================
@@ -617,6 +871,27 @@
      ======================================================= -->
 <script src="js/globe.js"></script>
 <script src="js/main.js"></script>
+
+<!-- Live local-time in nav (St. Louis / America/Chicago) — ticks every second -->
+<script>
+(function () {
+  var el = document.getElementById('local-time');
+  if (!el) return;
+  var fmt = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Chicago',
+    hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true
+  });
+  function tick() { el.textContent = fmt.format(new Date()); }
+  tick();
+  // Align the interval so the tick is as close to the wall-clock second as possible
+  var now = new Date();
+  var delay = 1000 - now.getMilliseconds();
+  setTimeout(function () {
+    tick();
+    setInterval(tick, 1000);
+  }, delay);
+})();
+</script>
 
 <!-- Observer for .rv elements (js/main.js only handles .reveal variants) -->
 <script>

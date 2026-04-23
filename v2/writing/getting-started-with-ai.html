@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting started with AI without becoming an engineer · Shri</title>
+<meta name="description" content="A workflow for clinicians, researchers, and analysts who want to use AI as a force multiplier, not a toy. Spec-driven prompting, multi-chat orchestration, verified outputs.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/cs.css?v=1">
+
+<style>
+  :root {
+    --cs-hero-1: #1A1540;
+    --cs-hero-2: #0F0D2A;
+    --cs-accent: #818CF8;
+    --cs-accent-soft: #A5B4FC;
+    --cs-accent-bright: #F0EEFF;
+  }
+  .prose { max-width: 740px; }
+  .prose p { font-size: 17px; line-height: 1.75; color: var(--cs-ink-soft); margin-bottom: 20px; }
+  .prose p strong { color: var(--cs-ink); }
+  .prose a { color: var(--cs-accent); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; transition: color 0.2s; }
+  .prose a:hover { color: var(--cs-hl-title); }
+  .prose h2 { font-size: clamp(24px, 2.4vw, 32px); font-weight: 800; color: var(--cs-ink); margin: 48px 0 16px; letter-spacing: -0.02em; line-height: 1.2; }
+  .prose h3 { font-size: 20px; font-weight: 700; color: var(--cs-ink); margin: 32px 0 12px; letter-spacing: -0.015em; }
+  .prose ul, .prose ol { padding-left: 24px; margin-bottom: 20px; }
+  .prose li { font-size: 16.5px; line-height: 1.7; color: var(--cs-ink-soft); margin-bottom: 10px; }
+  .prose code { background: rgba(99,102,241,0.08); color: var(--cs-hl-title); padding: 2px 7px; border-radius: 5px; font-family: 'SF Mono', Menlo, monospace; font-size: 14px; }
+  .prose pre { background: #0F0D2A; color: #E0E7FF; padding: 20px 24px; border-radius: 12px; overflow-x: auto; margin: 24px 0; font-size: 13.5px; line-height: 1.65; }
+  .prose pre code { background: transparent; color: inherit; padding: 0; }
+  .prose .callout {
+    background: linear-gradient(135deg, var(--cs-hl-1), var(--cs-hl-2));
+    border-radius: 14px; padding: 22px 26px; margin: 28px 0;
+  }
+  .prose .callout p { font-size: 15.5px; color: var(--cs-hl-text); margin-bottom: 0; }
+  .prose .callout strong { color: var(--cs-hl-title); }
+  .prose blockquote {
+    border-left: 3px solid var(--cs-accent);
+    padding: 14px 0 14px 24px; margin: 28px 0;
+  }
+  .prose blockquote p { font-size: 19px; font-weight: 500; font-style: italic; color: var(--cs-ink); line-height: 1.5; margin-bottom: 0; }
+  .further-reading {
+    background: #fff; border: 1px solid var(--cs-hairline);
+    border-radius: 16px; padding: 28px 32px; margin: 48px 0 0;
+  }
+  .further-reading h3 { margin-top: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cs-accent); margin-bottom: 16px; }
+  .further-reading ul { padding-left: 0; list-style: none; }
+  .further-reading li { padding: 10px 0; border-bottom: 1px solid var(--cs-hairline); font-size: 15px; }
+  .further-reading li:last-child { border-bottom: none; }
+  .further-reading li strong { color: var(--cs-ink); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">Shri</a>
+  <div class="nav-links">
+    <a href="../index.html#story">Story</a>
+    <a href="../index.html#process">Process</a>
+    <a href="../index.html#projects">Projects</a>
+    <a href="../writing.html">Writing</a>
+  </div>
+  <a href="../index.html#contact" class="nav-cta">Connect</a>
+</nav>
+
+<section class="cs-hero">
+  <div class="cs-hero-inner">
+    <a href="../writing.html" class="cs-back">&larr; All writing</a>
+    <div class="cs-badge">
+      <span class="cs-badge-dot"></span>
+      <span>Getting Started · 14 min read</span>
+    </div>
+    <h1 class="cs-title">Getting started with AI<br>without becoming an engineer.</h1>
+    <p class="cs-subtitle">A workflow for clinicians, researchers, and analysts who want to use AI as a force multiplier, not a toy. Spec‑driven prompting, multi‑chat orchestration, verified outputs. Actionable from day one.</p>
+    <p class="cs-meta">Apr 23, 2026 · Sridharan Gopalsamy Ramaswamy</p>
+  </div>
+</section>
+
+<div class="cs-content prose rv">
+
+  <p>Most of what is written about AI right now assumes you are either a software engineer or trying to become one. That is not the population I am writing for. I am writing for clinicians, researchers, public health folks, analysts, and MBAs who want AI to do real work in their day job and are tired of the prompt‑engineering hype.</p>
+
+  <p>Here is what actually matters, based on about a year of using AI daily to build real products, write research, and produce long‑form health content. Everything below works without writing a line of code.</p>
+
+  <h2>Start with the problem, not the tool</h2>
+
+  <p>The first mistake most people make is picking a tool. ChatGPT, Claude, Gemini, Copilot, a dozen wrappers. The tool matters less than the workflow. Start from this question instead:</p>
+
+  <p><strong>What is a thing I do repeatedly, that is cognitively draining, that has a clear right and wrong answer, and that I can verify after?</strong> That is the shape of a task AI is good at. Examples:</p>
+
+  <ul>
+    <li>Summarizing a 40‑page clinical guideline into a reference sheet for a specific clinical question.</li>
+    <li>Turning a messy set of interview notes into a clean affinity diagram.</li>
+    <li>Drafting a literature review from a list of PDFs.</li>
+    <li>Writing the first draft of a grant aim or a discharge summary.</li>
+    <li>Building a data‑cleaning script for a public dataset.</li>
+    <li>Reviewing a written document for tone, evidence, and internal consistency.</li>
+  </ul>
+
+  <p>Notice what is missing: "give me a creative idea," "tell me what I should do," "make a decision for me." AI is weakest exactly where it is most confident: giving judgment. It is strongest where you would have hired an intern: compression, drafts, first passes, structured extraction.</p>
+
+  <h2>The three tools that cover 90% of useful work</h2>
+
+  <p>You do not need ten tools. You need three, and you need to use them well.</p>
+
+  <h3>1. A long‑context chat assistant for thinking</h3>
+
+  <p>This is where you think out loud, specify a problem, review drafts, and iterate. <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a>, <a href="https://chat.openai.com" target="_blank" rel="noopener">ChatGPT</a>, or <a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a>. Pick one and learn it well. Do not bounce between them trying to find the "best" one. The best one is the one you use consistently enough to develop a working rhythm.</p>
+
+  <p>My default is Claude because the long‑context behavior and the cite‑your‑sources discipline are the best in class right now. But the specific model matters less than the habit.</p>
+
+  <h3>2. A research assistant for sourced long‑form output</h3>
+
+  <p>For anything where citations matter (clinical reference, competitive teardown, lit review, policy synthesis), a research‑mode tool is a step up from a plain chat. <a href="https://claude.ai" target="_blank" rel="noopener">Claude's research feature</a>, <a href="https://www.perplexity.ai" target="_blank" rel="noopener">Perplexity</a>, or <a href="https://gemini.google.com/app" target="_blank" rel="noopener">Google's deep research</a> fall in this category. They search the web, pull primary sources, and produce a structured output with inline links.</p>
+
+  <p>The critical habit: treat the output as a first draft. Open the cited sources. Check that the claim matches what the source actually says. At least half the time there is a subtle drift between what a model writes and what the cited source actually said. That is the part that stays your job.</p>
+
+  <h3>3. A persistent context layer for long projects</h3>
+
+  <p>If you are working on something that spans weeks (a grant, a research project, a build), you need a way to keep context across sessions. Claude Projects, ChatGPT Custom GPTs, and similar features all solve this. You upload the reference documents once, and the assistant has them available in every new chat.</p>
+
+  <p>This is the single biggest leverage point most people miss. Without it, you re‑explain your project in every chat. With it, you start every conversation already in context.</p>
+
+  <h2>The workflow that scales</h2>
+
+  <p>Here is the loop I run, whether I am doing research, writing, or building. Four phases, every time.</p>
+
+  <h3>Phase 1: Spec</h3>
+
+  <p>Before you open a chat, write a short specification in plain text. What are you trying to produce. What are the inputs. What does good look like. What are the non‑goals. What is the output format. Save it. This is your spec. It does not need to be long, but it needs to exist before you start prompting.</p>
+
+  <div class="callout">
+    <p><strong>Rule:</strong> Open‑ended prompts produce debt. Locked prompts produce verifiable output. Writing the spec is the hard part; once you have it, the prompts almost write themselves.</p>
+  </div>
+
+  <h3>Phase 2: Multi‑chat orchestration</h3>
+
+  <p>For anything bigger than a single task, run multiple chats in parallel instead of one long chat. Each chat holds its own context:</p>
+
+  <ul>
+    <li>A <strong>research chat</strong> where you gather sources, synthesize literature, and build a reference.</li>
+    <li>A <strong>decisions chat</strong> where you talk through tradeoffs, structure, and what to include or exclude.</li>
+    <li>An <strong>implementation chat</strong> where you actually generate the output: the essay, the script, the analysis plan, the draft.</li>
+    <li>An optional <strong>review chat</strong> (often a fresh session) that critiques the output without being biased by the history of how it was built.</li>
+  </ul>
+
+  <p>The reason this works: every chat gets longer over time, and the longer it gets the worse its judgment becomes. Keeping chats scoped and short keeps the quality consistent. You are effectively running a team of specialist assistants, not a single confused generalist.</p>
+
+  <h3>Phase 3: Produce</h3>
+
+  <p>Give the implementation chat the spec, the research output, and the decisions. Ask for one step. Get the output. Read it. Flag what is wrong. Ask for the next step.</p>
+
+  <p>Do not ask for the whole thing at once. That is the most common beginner mistake. A single shot at an entire document is almost always worse than five iterations on discrete sections.</p>
+
+  <h3>Phase 4: Verify</h3>
+
+  <p>Every claim that came from the model gets checked against a source. Every number gets verified. Every citation gets clicked. This is tedious. It is also the reason the output is useful instead of a liability.</p>
+
+  <blockquote>
+    <p>The speed gain from AI is real, but it is not in the producing. It is in the iterating.</p>
+  </blockquote>
+
+  <h2>The specific habits that make a big difference</h2>
+
+  <h3>Write prompts like specifications, not conversations</h3>
+
+  <p>A lot of people treat prompts like a chat with a smart friend. That works for small tasks. For anything serious, prompt like you are handing work to a contractor.</p>
+
+  <p>Structure every non‑trivial prompt like this:</p>
+
+  <pre><code># Context
+What I am working on. Why. Who will read the output.
+
+# Input
+The materials I am giving you.
+
+# Task
+What you should produce. In what format. At what length.
+
+# Constraints
+Do not do X. Do do Y. Cite all claims inline. Flag any uncertainty.
+
+# Success criteria
+The output is useful if it does A, B, and C.
+</code></pre>
+
+  <p>That takes 5 minutes to write. It saves 30 minutes of re‑prompting because the first output was vague.</p>
+
+  <h3>Lock decisions explicitly</h3>
+
+  <p>When you decide something (a threshold, a format, a scope), write it down in the prompt and tell the model it is locked. "We have decided to use NHANES cycles 1999–2018. Do not propose alternatives." Otherwise the model will helpfully offer to change decisions that are already closed, every time.</p>
+
+  <h3>Ask for cited sources, always</h3>
+
+  <p>Never accept a claim without a citation. This is non‑negotiable for clinical, research, or business‑critical work. If the model says it cannot cite, treat the claim as unsupported.</p>
+
+  <h3>Treat the first output as a draft</h3>
+
+  <p>The first output is never the output. It is the input to the second prompt. Your job is to read it, mark what is wrong, and feed that back. Three iterations beats one "perfect" prompt.</p>
+
+  <h3>Keep a "prompts I reuse" file</h3>
+
+  <p>Every time you build a prompt that produces good output, save it. You will reuse it. Over a year, your personal prompt library becomes more valuable than any specific tool.</p>
+
+  <h2>The failure modes to recognize early</h2>
+
+  <p>There are specific ways this goes wrong. Recognize them before they cost you.</p>
+
+  <h3>The confident hallucination</h3>
+
+  <p>The model produces a fluent, specific, plausible claim that is completely fabricated. Common with citations, statistics, and quotes. The only defense is verification. Every time.</p>
+
+  <h3>The smoothing problem</h3>
+
+  <p>The model takes a complicated situation and smooths it into a clean summary. The smoothing is often where the useful information lives. Ask "what did I lose when you summarized this?" It is a surprisingly productive question.</p>
+
+  <h3>The yes‑person problem</h3>
+
+  <p>Models default to agreeing with you. If you ask "is X a good idea?" you will usually get "yes, X is a good idea." Ask instead: "argue against X" or "what are the three strongest critiques of X?" You will learn more in ten seconds than in a year of yes‑answers.</p>
+
+  <h3>The lost‑context problem</h3>
+
+  <p>As chats get long, models start forgetting earlier instructions. When you notice the quality dropping, start a new chat with a fresh spec and the key artifacts from the old one. Do not try to push through a degraded context.</p>
+
+  <h2>A concrete 30‑day plan</h2>
+
+  <p>If you want to go from zero to genuinely useful with AI, here is a plan that works.</p>
+
+  <ol>
+    <li><strong>Week 1 — one tool, one habit.</strong> Pick Claude, ChatGPT, or Gemini. Use it for one task every single day. Summarizing an article, drafting an email, writing a meeting agenda. Just build the habit of opening it first.</li>
+    <li><strong>Week 2 — specs.</strong> For every task this week, write a one‑paragraph spec before you prompt. Notice the difference in output quality.</li>
+    <li><strong>Week 3 — multi‑chat.</strong> Pick one larger project. Split it across three chats: research, decisions, implementation. Feel the difference vs running one chat for everything.</li>
+    <li><strong>Week 4 — verification.</strong> Do one sourced long‑form task (a reference document, a literature synthesis, a competitive teardown). Verify every citation. Count how many were wrong. That number will shape how you trust outputs going forward.</li>
+  </ol>
+
+  <p>At the end of 30 days you will not be an engineer. You will not need to be. You will be measurably faster at the knowledge work that was already your job, and you will have the discipline to do it without the quality going down.</p>
+
+  <h2>What not to do</h2>
+
+  <p>A short list of traps that cost me time I will not get back.</p>
+
+  <ul>
+    <li><strong>Do not use AI for decisions you would not delegate to an intern.</strong> The decision is still yours.</li>
+    <li><strong>Do not trust a citation you have not clicked.</strong> Ever.</li>
+    <li><strong>Do not ask one model to grade another model's output.</strong> You are the grader.</li>
+    <li><strong>Do not skip the spec because the task feels small.</strong> The smallest tasks are where sloppy prompts compound the most.</li>
+    <li><strong>Do not confuse speed with quality.</strong> Fast output that is wrong is worse than slow output that is right.</li>
+  </ul>
+
+  <p>The goal is not to use AI more. The goal is to do better work, faster, with fewer errors, using AI as one of several tools. When you notice the tool is getting in the way, stop and do the work the old way. When you notice it is pulling its weight, lean in.</p>
+
+  <div class="further-reading">
+    <h3>Further reading</h3>
+    <ul>
+      <li><strong>Anthropic, "Building effective agents."</strong> <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">Official guidance on agentic workflows.</a></li>
+      <li><strong>OpenAI prompt engineering guide.</strong> <a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noopener">Still one of the clearest intros.</a></li>
+      <li><strong>Ethan Mollick, "Co‑Intelligence."</strong> The book. Best non‑technical framing of AI as a collaborator.</li>
+      <li><strong>Simon Willison's blog.</strong> <a href="https://simonwillison.net/" target="_blank" rel="noopener">Running commentary on what is actually working in practice.</a></li>
+    </ul>
+  </div>
+
+  <div class="cs-cta">
+    <p class="cs-cta-text">Thinking through how AI fits into your work? Happy to talk.</p>
+    <a href="mailto:drsridhar22@gmail.com" class="cs-cta-btn">Get in touch</a>
+    <div class="cs-footer">Shri · 2026 · <a href="../writing.html" style="color:inherit;">More writing</a></div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  const items = document.querySelectorAll('.rv');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (!e.isIntersecting) return; e.target.classList.add('vis'); io.unobserve(e.target); });
+  }, { threshold: 0.05 });
+  items.forEach((el) => io.observe(el));
+})();
+</script>
+
+</body>
+</html>

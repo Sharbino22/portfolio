@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spec-driven AI development: locked prompts beat clever ones · Shri</title>
+<meta name="description" content="Open-ended prompts produce debt. Locked prompts produce verifiable output. Notes from a year of building real software with Claude Code, including the prompt patterns that worked and the ones that didn't.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/cs.css?v=1">
+
+<style>
+  :root {
+    --cs-hero-1: #2A1E08;
+    --cs-hero-2: #1A1405;
+    --cs-accent: #F59E0B;
+    --cs-accent-soft: #FCD34D;
+    --cs-accent-bright: #FEF3C7;
+    --cs-hl-1: #FEF3C7;
+    --cs-hl-2: #FDE68A;
+    --cs-hl-title: #78350F;
+    --cs-hl-text: #92400E;
+  }
+  .prose { max-width: 740px; }
+  .prose p { font-size: 17px; line-height: 1.75; color: var(--cs-ink-soft); margin-bottom: 20px; }
+  .prose p strong { color: var(--cs-ink); }
+  .prose a { color: var(--cs-accent); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; transition: color 0.2s; }
+  .prose a:hover { color: var(--cs-hl-title); }
+  .prose h2 { font-size: clamp(24px, 2.4vw, 32px); font-weight: 800; color: var(--cs-ink); margin: 48px 0 16px; letter-spacing: -0.02em; line-height: 1.2; }
+  .prose h3 { font-size: 20px; font-weight: 700; color: var(--cs-ink); margin: 32px 0 12px; letter-spacing: -0.015em; }
+  .prose ul, .prose ol { padding-left: 24px; margin-bottom: 20px; }
+  .prose li { font-size: 16.5px; line-height: 1.7; color: var(--cs-ink-soft); margin-bottom: 10px; }
+  .prose code { background: rgba(245,158,11,0.1); color: var(--cs-hl-title); padding: 2px 7px; border-radius: 5px; font-family: 'SF Mono', Menlo, monospace; font-size: 14px; }
+  .prose pre { background: #1A1405; color: #FEF3C7; padding: 20px 24px; border-radius: 12px; overflow-x: auto; margin: 24px 0; font-size: 13.5px; line-height: 1.65; }
+  .prose pre code { background: transparent; color: inherit; padding: 0; }
+  .prose .callout {
+    background: linear-gradient(135deg, var(--cs-hl-1), var(--cs-hl-2));
+    border-radius: 14px; padding: 22px 26px; margin: 28px 0;
+  }
+  .prose .callout p { font-size: 15.5px; color: var(--cs-hl-text); margin-bottom: 0; }
+  .prose .callout strong { color: var(--cs-hl-title); }
+  .prose blockquote {
+    border-left: 3px solid var(--cs-accent);
+    padding: 14px 0 14px 24px; margin: 28px 0;
+  }
+  .prose blockquote p { font-size: 19px; font-weight: 500; font-style: italic; color: var(--cs-ink); line-height: 1.5; margin-bottom: 0; }
+  .further-reading {
+    background: #fff; border: 1px solid var(--cs-hairline);
+    border-radius: 16px; padding: 28px 32px; margin: 48px 0 0;
+  }
+  .further-reading h3 { margin-top: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cs-accent); margin-bottom: 16px; }
+  .further-reading ul { padding-left: 0; list-style: none; }
+  .further-reading li { padding: 10px 0; border-bottom: 1px solid var(--cs-hairline); font-size: 15px; }
+  .further-reading li:last-child { border-bottom: none; }
+  .further-reading li strong { color: var(--cs-ink); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">Shri</a>
+  <div class="nav-links">
+    <a href="../index.html#story">Story</a>
+    <a href="../index.html#process">Process</a>
+    <a href="../index.html#projects">Projects</a>
+    <a href="../writing.html">Writing</a>
+  </div>
+  <a href="../index.html#contact" class="nav-cta">Connect</a>
+</nav>
+
+<section class="cs-hero">
+  <div class="cs-hero-inner">
+    <a href="../writing.html" class="cs-back">&larr; All writing</a>
+    <div class="cs-badge">
+      <span class="cs-badge-dot"></span>
+      <span>Working with Claude · 10 min read</span>
+    </div>
+    <h1 class="cs-title">Spec‑driven AI development:<br>locked prompts beat clever ones.</h1>
+    <p class="cs-subtitle">Open‑ended prompts produce debt. Locked prompts produce verifiable output. Notes from a year of building real software with Claude Code, with the prompt patterns that worked and the ones that didn't.</p>
+    <p class="cs-meta">Apr 23, 2026 · Sridharan Gopalsamy Ramaswamy</p>
+  </div>
+</section>
+
+<div class="cs-content prose rv">
+
+  <p>I am not an engineer by training. I am a healthcare professional, epidemiologist, and MBA student. Over the last year I have shipped a React Native mobile product, a locally‑run video production pipeline, and a couple of internal data tools. All of it was built with Claude Code as the primary implementer and me as the architect and reviewer.</p>
+
+  <p>Along the way I learned something that contradicts most AI‑coding advice: the goal is not to write better prompts. The goal is to write better specifications.</p>
+
+  <h2>The difference between a prompt and a spec</h2>
+
+  <p>A <strong>prompt</strong> is a request. "Build me an authentication flow." "Add a login screen." "Make this faster."</p>
+
+  <p>A <strong>specification</strong> is a contract. Inputs, outputs, constraints, edge cases, success criteria, explicit non‑goals. When the spec is good, the prompt writes itself: "Implement the attached spec."</p>
+
+  <p>Most AI‑coding failure comes from the first. An open‑ended prompt gives the model a huge search space and no way to know when it is done. It will do something, because models always do something, but that something may or may not be what you actually need. Worse, the output looks plausible enough that you might not notice the mismatch until two weeks later when the assumption it baked in is wrong.</p>
+
+  <div class="callout">
+    <p><strong>Rule:</strong> Any prompt longer than two sentences should be a spec, not a prompt.</p>
+  </div>
+
+  <h2>What a useful spec looks like</h2>
+
+  <p>Here is a template I use for any non‑trivial feature. It is short. That is the point.</p>
+
+  <pre><code># Feature spec: &lt;name&gt;
+
+## Purpose
+What problem this solves, for whom. One sentence.
+
+## Inputs
+What data, files, config, user actions this consumes.
+
+## Outputs
+What it produces. Format. Where it goes.
+
+## Constraints
+- Must use X
+- Must not break Y
+- Performance budget: Z
+
+## Edge cases
+- What happens when input is empty
+- What happens when external dependency fails
+- What happens on cancel/retry
+
+## Non-goals
+Explicit list of things this does NOT do.
+
+## Verification
+How I (human) will check this works. Specific test cases.
+</code></pre>
+
+  <p>You can write that in 10 minutes. The feature takes an hour. Without the spec, the feature takes four hours because half of it is wrong on the first pass, wrong in different ways on the second pass, and only converges when you finally articulate what you actually wanted.</p>
+
+  <h2>Lock decisions before the agentic session starts</h2>
+
+  <p>Claude Code can run agentic sessions: long‑running, multi‑step, you‑come‑back‑to‑a‑finished‑result. These sessions are the most powerful and the most dangerous mode. Powerful because they can do real work unattended. Dangerous because if the decisions are not locked in the prompt, the agent will improvise, and improvised decisions compound across an 8‑hour session into something that takes longer to untangle than to rebuild.</p>
+
+  <p>My rule: <em>every decision that could be open gets closed before the session starts.</em> File paths. Data formats. Library choices. Error‑handling strategy. Stop conditions. Explicit non‑goals.</p>
+
+  <p>For the video production pipeline I built, the spec handed to the agent included things like:</p>
+
+  <ul>
+    <li>Use FFmpeg with NVENC encoding, not CPU encoding.</li>
+    <li>Scene files named <code>scene-&lt;NN&gt;-&lt;slug&gt;.mp4</code>. Do not rename.</li>
+    <li>Do not add a progress bar library. Use bash built‑ins only.</li>
+    <li>Stop after step 3; do not continue to step 4 even if step 3 succeeds.</li>
+  </ul>
+
+  <p>Every one of those is a decision that, if left open, the agent would make differently on a different day. Closing them means the output on Monday matches the output on Friday. Reproducibility is a side effect of locked decisions.</p>
+
+  <h2>One step per session, verified on device</h2>
+
+  <p>The other rule I learned the hard way: do not chain steps inside one agentic session. Do one step, verify it works on the actual device or environment, then start the next step with the result as locked context.</p>
+
+  <p>The temptation to ask the agent "now do step 2 as well" is enormous. Do not give in. Every step that runs without human verification compounds error risk. A one‑step session that ends in a correct state is worth ten multi‑step sessions that end in "almost correct, but actually there is a subtle issue in step 4 that propagated through step 5, 6, 7."</p>
+
+  <blockquote>
+    <p>Agentic throughput is a trap. Reliability matters more than speed. A correct step is worth ten almost‑correct ones.</p>
+  </blockquote>
+
+  <h2>Multi‑chat orchestration, for real work</h2>
+
+  <p>For a single feature, one chat works. For a project that spans weeks, one chat always ends in context collapse. The model starts forgetting the spec, conflating earlier decisions, or helpfully re‑litigating things you locked last Tuesday.</p>
+
+  <p>What works: parallel chats by phase.</p>
+
+  <ul>
+    <li>A <strong>research chat</strong> for clinical or market background, data quality audits, and literature synthesis. Never writes code.</li>
+    <li>An <strong>architecture chat</strong> for type definitions, file organization, and interface decisions. Writes interfaces, not implementations.</li>
+    <li>A <strong>Claude Code</strong> session for each feature implementation. Takes the spec and the types as inputs. Outputs code.</li>
+    <li>A separate <strong>review chat</strong> that reads the committed code without the implementation history and argues against it. Catches things an implementer cannot catch because they are too close.</li>
+  </ul>
+
+  <p>Artifacts flow between them. Research output becomes input to architecture. Architecture output becomes input to Claude Code. Code output becomes input to review. Each chat stays scoped and short, which keeps its judgment intact.</p>
+
+  <h2>Instrument before you expand</h2>
+
+  <p>The biggest architectural trap is the urge to add complexity that sounds good on paper. A third data source. A new caching layer. A more sophisticated model for a recommendation. All of these feel like upgrades.</p>
+
+  <p>The rule: do not add complexity until the instrumentation on the simpler version tells you that you need it.</p>
+
+  <p>On one of my apps, a third data source was proposed early. I deferred it. The reasoning was simple: until I have telemetry showing that the two‑source baseline is producing wrong answers, adding a third source is a guess. I instrumented the two‑source version, ran it for weeks, and found the actual failure modes were elsewhere (a normalization bug, not missing data). The third source would have been new code and new maintenance debt for a problem I did not have.</p>
+
+  <p>This is why AI tooling is so dangerous when you use it casually. The cost of generating new complexity is low. That does not mean the complexity is free. It just means you spent the low cost at generation time and will spend the high cost forever at maintenance time.</p>
+
+  <h2>Clinical grounding, not casual citation</h2>
+
+  <p>I work in health. Every claim that affects user‑facing behavior has to be grounded in a primary source. When I build features that nudge behavior (eating, medication, activity), I do not let the model paraphrase from a blog post. The reference material comes from:</p>
+
+  <ul>
+    <li>ADA, AHA, DASH, NHLBI for chronic disease thresholds.</li>
+    <li>WHO and CDC for population‑level guidance.</li>
+    <li>FDA for food labeling (<a href="https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-101/subpart-A/section-101.9" target="_blank" rel="noopener">21 CFR 101.9</a>) and regulatory posture.</li>
+    <li>Peer‑reviewed literature, with preference for systematic reviews.</li>
+  </ul>
+
+  <p>The AI helps me synthesize, not interpret. It pulls the relevant sections from long documents. It cross‑references between guidelines. It flags where two guidelines disagree. The clinical judgment about which guideline applies to which patient in which context stays mine.</p>
+
+  <h2>What I tell people who want to start</h2>
+
+  <p>A short list of the patterns that changed my output the most.</p>
+
+  <ol>
+    <li><strong>Write the spec before you open the chat.</strong> If you cannot write it, you do not know the problem well enough to delegate yet.</li>
+    <li><strong>Close every decision you can close.</strong> Ambiguity is the enemy. Explicit is better than implicit, every single time.</li>
+    <li><strong>One step per agentic session.</strong> Verify on device. Lock the result. Start the next step fresh.</li>
+    <li><strong>Multi‑chat, not long‑chat.</strong> Parallel by phase. Each chat scoped and short.</li>
+    <li><strong>Instrument first, expand second.</strong> New complexity is a guess without telemetry.</li>
+    <li><strong>Treat citations as sacred.</strong> Every claim grounded in a primary source, or flagged as opinion.</li>
+  </ol>
+
+  <p>None of this is clever. All of it is boring discipline. That is exactly what makes it work.</p>
+
+  <h2>Closing</h2>
+
+  <p>The most surprising thing about building with AI this past year is how little the "AI part" matters once the workflow is right. Claude Code is a tool. Like any tool, it rewards preparation and punishes improvisation. The people who are getting real work out of it are not writing magic prompts. They are writing clear specs, closing decisions early, and verifying every step.</p>
+
+  <p>Spec first. Locked decisions. Instrumented before expanded. Verified before advanced.</p>
+
+  <div class="further-reading">
+    <h3>Further reading</h3>
+    <ul>
+      <li><strong>Claude Code docs.</strong> <a href="https://docs.claude.com/en/docs/claude-code" target="_blank" rel="noopener">Official CLI documentation.</a></li>
+      <li><strong>Anthropic, "Building effective agents."</strong> <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">What works and what does not in agentic patterns.</a></li>
+      <li><strong>Thomas Ptacek, "My AI skeptic friends are all nuts."</strong> <a href="https://fly.io/blog/youre-all-nuts/" target="_blank" rel="noopener">Direct take on AI coding from someone who ships.</a></li>
+      <li><strong>Simon Willison on LLMs and code.</strong> <a href="https://simonwillison.net/tags/llms/" target="_blank" rel="noopener">Running documentation of what is actually working.</a></li>
+    </ul>
+  </div>
+
+  <div class="cs-cta">
+    <p class="cs-cta-text">Shipping with Claude Code? I'd like to hear what you're building.</p>
+    <a href="mailto:drsridhar22@gmail.com" class="cs-cta-btn">Get in touch</a>
+    <div class="cs-footer">Shri · 2026 · <a href="../writing.html" style="color:inherit;">More writing</a></div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  const items = document.querySelectorAll('.rv');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (!e.isIntersecting) return; e.target.classList.add('vis'); io.unobserve(e.target); });
+  }, { threshold: 0.05 });
+  items.forEach((el) => io.observe(el));
+})();
+</script>
+
+</body>
+</html>

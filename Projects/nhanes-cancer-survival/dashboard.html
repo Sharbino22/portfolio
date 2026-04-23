@@ -50,45 +50,67 @@
     background: rgba(129,140,248,0.06);
   }
   h1 {
-    font-size: clamp(28px, 4vw, 44px);
+    font-size: clamp(40px, 5.5vw, 72px);
     font-weight: 800;
     color: #F0EEFF;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-    margin-bottom: 14px;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 18px;
   }
-  .subtitle { color: #A5B4FC; font-size: 16px; font-weight: 500; }
+  .subtitle {
+    color: #8C8A9E; font-size: 17px; font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+    color: #818CF8; margin-bottom: 20px;
+  }
+  .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; opacity: 0.7; }
 
   .stats-strip {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px;
-    margin-bottom: 32px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
   }
   .stat-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 14px;
-    padding: 20px 22px;
-    backdrop-filter: blur(10px);
+    position: relative;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 18px;
+    padding: 28px 26px 24px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #A5B4FC, #818CF8);
   }
   .stat-num {
-    font-size: 28px; font-weight: 800; color: #F0EEFF;
-    letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px;
+    font-size: 34px; font-weight: 800; color: #F0EEFF;
+    letter-spacing: -0.03em; line-height: 1; margin-bottom: 10px;
   }
   .stat-lbl {
-    font-size: 11px; font-weight: 600; letter-spacing: 1.2px;
-    text-transform: uppercase; color: #A5B4FC;
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #8C8A9E;
   }
 
   .controls {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
-    padding: 24px 28px;
-    margin-bottom: 24px;
-    backdrop-filter: blur(10px);
-    display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-end;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 32px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-end;
+  }
+  .controls-label {
+    width: 100%;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+    color: #8C8A9E; margin-bottom: 4px;
   }
   .ctrl { display: flex; flex-direction: column; gap: 8px; min-width: 220px; flex: 1; }
   .ctrl label {
@@ -162,24 +184,33 @@
     .full { grid-column: 1 / -1; }
   }
   .panel {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
-    padding: 28px;
-    backdrop-filter: blur(10px);
+    position: relative;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 32px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: border-color 0.4s, transform 0.4s;
   }
+  .panel::before {
+    content: ""; position: absolute; top: 0; left: 20px; right: 20px; height: 2px;
+    background: linear-gradient(90deg, transparent, #818CF8, transparent);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .panel:hover::before { opacity: 0.6; }
   .panel h2 {
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 22px;
+    font-weight: 800;
     color: #F0EEFF;
-    margin-bottom: 6px;
-    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
   }
   .panel .desc {
-    font-size: 13px;
-    color: #A5B4FC;
-    margin-bottom: 20px;
-    line-height: 1.55;
+    font-size: 14px;
+    color: #8C8A9E;
+    margin-bottom: 24px;
+    line-height: 1.6;
   }
   .chart { width: 100%; height: 460px; }
   .chart-tall { height: 520px; }
@@ -218,13 +249,29 @@
   }
 
   .footnote {
-    margin-top: 40px;
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
     text-align: center;
     color: #6B6880;
     font-size: 12px;
     line-height: 1.7;
+    letter-spacing: 0.02em;
   }
   .footnote strong { color: #A5B4FC; }
+  .footnote .updated {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 16px; color: #8C8A9E;
+  }
+  .footnote .updated::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: #10B981; box-shadow: 0 0 0 3px rgba(16,185,129,0.25);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 3px rgba(16,185,129,0.25); }
+    50%     { box-shadow: 0 0 0 6px rgba(16,185,129,0); }
+  }
 
   @media (max-width: 768px) {
     .container { padding: 40px 20px 60px; }
@@ -245,9 +292,9 @@
 <div class="container">
 
   <div class="banner">
-    <div class="banner-tag">Survival Analysis</div>
-    <h1>Cancer Survivor All-Cause Mortality</h1>
-    <div class="subtitle">Interactive Explorer &nbsp;|&nbsp; NHANES 1999-2018 &middot; NCHS Mortality Linkage</div>
+    <div class="eyebrow">Survival Analysis · Interactive Explorer</div>
+    <h1>Cancer survivor<br>all‑cause mortality.</h1>
+    <div class="subtitle">Cox proportional hazards on NHANES 1999–2018 · NCHS Mortality Linkage</div>
   </div>
 
   <div class="stats-strip">
@@ -293,9 +340,10 @@
   </div>
 
   <div class="footnote">
-    <strong>Source:</strong> NHANES 1999-2018 (CDC/NCHS) linked to National Death Index through 2019. n = 51,168 adults including 4,715 cancer survivors and 7,778 deaths over up to 20.8 years of follow-up.<br>
-    KM estimates use survey weights (wt_pooled). Cox HRs are unadjusted within-subgroup estimates from `lifelines`.<br>
+    <strong>Source:</strong> NHANES 1999–2018 (CDC/NCHS) linked to National Death Index through 2019. n = 51,168 adults including 4,715 cancer survivors and 7,778 deaths over up to 20.8 years of follow-up.<br>
+    KM estimates use survey weights (wt_pooled). Cox HRs are unadjusted within-subgroup estimates from <code>lifelines</code>.<br>
     Built with Plotly.js. <strong>Sridharan Gopalsamy Ramaswamy</strong>, MPH/MBA · Washington University in St. Louis.
+    <br><span class="updated">Last updated <time datetime="2026-04-23">Apr 23, 2026</time></span>
   </div>
 </div>
 

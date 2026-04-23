@@ -53,26 +53,40 @@
     background: rgba(52,211,153,0.06);
   }
   h1 {
-    font-size: clamp(28px, 4vw, 44px);
+    font-size: clamp(40px, 5.5vw, 72px);
     font-weight: 800;
     color: #F0EEFF;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-    margin-bottom: 14px;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 18px;
   }
   .subtitle {
-    color: #A5B4FC;
-    font-size: 16px;
+    color: #8C8A9E;
+    font-size: 17px;
     font-weight: 500;
+    letter-spacing: -0.005em;
   }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+    color: #34D399; margin-bottom: 20px;
+  }
+  .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; opacity: 0.7; }
   .controls {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
-    padding: 24px 28px;
-    margin-bottom: 32px;
-    backdrop-filter: blur(10px);
-    display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-end;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-end;
+  }
+  .controls-label {
+    width: 100%;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+    color: #8C8A9E;
+    margin-bottom: 4px;
   }
   .ctrl { display: flex; flex-direction: column; gap: 8px; min-width: 180px; }
   .ctrl label {
@@ -139,34 +153,60 @@
     .full { grid-column: 1 / -1; }
   }
   .panel {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
-    padding: 28px;
-    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 32px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: relative;
+    transition: border-color 0.4s, transform 0.4s;
   }
+  .panel::before {
+    content: ""; position: absolute; top: 0; left: 20px; right: 20px; height: 2px;
+    background: linear-gradient(90deg, transparent, #34D399, transparent);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .panel:hover::before { opacity: 0.6; }
   .panel h2 {
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 22px;
+    font-weight: 800;
     color: #F0EEFF;
-    margin-bottom: 6px;
-    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
   }
   .panel .desc {
-    font-size: 13px;
-    color: #A5B4FC;
-    margin-bottom: 20px;
+    font-size: 14px;
+    color: #8C8A9E;
+    line-height: 1.55;
+    margin-bottom: 24px;
   }
   .chart { width: 100%; height: 380px; }
   .chart.tall { height: 420px; }
   .footnote {
-    margin-top: 40px;
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
     text-align: center;
     color: #6B6880;
     font-size: 12px;
     line-height: 1.7;
+    letter-spacing: 0.02em;
   }
   .footnote strong { color: #A5B4FC; }
+  .footnote .updated {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 16px; color: #8C8A9E;
+  }
+  .footnote .updated::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: #10B981; box-shadow: 0 0 0 3px rgba(16,185,129,0.25);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 3px rgba(16,185,129,0.25); }
+    50%     { box-shadow: 0 0 0 6px rgba(16,185,129,0); }
+  }
 </style>
 </head>
 <body>
@@ -180,9 +220,9 @@
 <div class="container">
 
   <div class="banner">
-    <div class="banner-tag">Survivorship Care</div>
-    <h1>Cardiovascular Risk Management Among US Cancer Survivors</h1>
-    <div class="subtitle">Interactive Explorer &nbsp;|&nbsp; NHANES 1999-2018</div>
+    <div class="eyebrow">Survivorship Care · Interactive Explorer</div>
+    <h1>Cardiovascular risk in<br>US cancer survivors.</h1>
+    <div class="subtitle">Survey‑weighted logistic regression on NHANES 1999–2018</div>
   </div>
 
   <div class="controls">
@@ -236,9 +276,10 @@
   </div>
 
   <div class="footnote">
-    <strong>Source:</strong> NHANES 1999-2018 (CDC/NCHS), n = 51,168 adults including 4,715 cancer survivors.<br>
-    Estimates use survey weights (wt_pooled). Depression overlay restricts to cycles 2005-2018 because PHQ-9 was not collected before 2005.<br>
+    <strong>Source:</strong> NHANES 1999–2018 (CDC/NCHS), n = 51,168 adults including 4,715 cancer survivors.<br>
+    Estimates use survey weights (wt_pooled). Depression overlay restricts to cycles 2005–2018 because PHQ-9 was not collected before 2005.<br>
     Built with Plotly.js. <strong>Sridharan Gopalsamy Ramaswamy</strong>, MPH/MBA · Washington University in St. Louis.
+    <br><span class="updated">Last updated <time datetime="2026-04-23">Apr 23, 2026</time></span>
   </div>
 </div>
 

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing · Shri</title>
+<meta name="description" content="Long-form writing by Shri: AI in healthcare, spec-driven development with Claude, and getting started with AI as a non-developer.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/cs.css?v=1">
+
+<style>
+  :root {
+    --cs-hero-1: #1A1540;
+    --cs-hero-2: #0F0D2A;
+    --cs-accent: #818CF8;
+    --cs-accent-soft: #A5B4FC;
+    --cs-accent-bright: #F0EEFF;
+  }
+  .writing-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 40px 0 80px;
+  }
+  .writing-card {
+    background: #fff;
+    border: 1px solid var(--cs-hairline);
+    border-radius: 18px;
+    padding: 32px 36px;
+    text-decoration: none;
+    color: var(--cs-ink-soft);
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .writing-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 30px 60px -24px rgba(15,15,20,0.15);
+  }
+  .writing-card-meta {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 16px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .writing-card-topic { color: var(--cs-accent); }
+  .writing-card-date { color: var(--cs-muted-2); }
+  .writing-card-read { color: var(--cs-muted-2); }
+  .writing-card-dot { color: var(--cs-muted-2); opacity: 0.5; }
+  .writing-card-title {
+    font-size: 26px; font-weight: 700; letter-spacing: -0.02em;
+    color: var(--cs-ink); margin-bottom: 10px; line-height: 1.2;
+  }
+  .writing-card-dek {
+    font-size: 15.5px; color: var(--cs-muted); line-height: 1.55;
+    max-width: 680px;
+  }
+  .writing-card-arrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 16px;
+    font-size: 13px; font-weight: 600;
+    color: var(--cs-accent);
+  }
+
+  .writing-intro {
+    padding: 48px 0 24px;
+    border-bottom: 1px solid var(--cs-hairline);
+  }
+  .writing-intro-lead {
+    font-size: 17px; color: var(--cs-muted); line-height: 1.7;
+    max-width: 720px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Shri</a>
+  <div class="nav-links">
+    <a href="index.html#story">Story</a>
+    <a href="index.html#process">Process</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#tools">Tools</a>
+    <a href="writing.html">Writing</a>
+  </div>
+  <a href="index.html#contact" class="nav-cta">Connect</a>
+</nav>
+
+<section class="cs-hero">
+  <div class="cs-hero-inner">
+    <a href="index.html" class="cs-back">&larr; Back to home</a>
+    <div class="cs-badge">
+      <span class="cs-badge-dot"></span>
+      <span>Writing</span>
+    </div>
+    <h1 class="cs-title">Long‑form on AI,<br>healthcare, and how to build.</h1>
+    <p class="cs-subtitle">Essays on spec‑driven development, AI in clinical practice, and what I've learned building at the edge of medicine and software. Cited primary sources, honest confidence flags.</p>
+  </div>
+</section>
+
+<div class="cs-content">
+  <div class="writing-intro rv">
+    <p class="writing-intro-lead">
+      Every post here follows the same rule: claims are grounded in primary sources
+      (clinical guidelines, FDA guidance, peer‑reviewed literature) or flagged as personal
+      opinion. If a sentence would surprise me coming from a stranger, I cut it or cite it.
+    </p>
+  </div>
+
+  <div class="writing-list">
+
+    <a href="writing/ai-in-healthcare.html" class="writing-card rv">
+      <div class="writing-card-meta">
+        <span class="writing-card-topic">AI in Healthcare</span>
+        <span class="writing-card-dot">·</span>
+        <span class="writing-card-date">Apr 2026</span>
+        <span class="writing-card-dot">·</span>
+        <span class="writing-card-read">12 min read</span>
+      </div>
+      <h2 class="writing-card-title">What AI in healthcare actually looks like right now</h2>
+      <p class="writing-card-dek">
+        Between the hype of autonomous clinicians and the reality of locked-down hospital IT
+        is a much narrower, more interesting corridor. A grounded look at what's shipping,
+        what's FDA‑cleared, and where the useful work actually sits.
+      </p>
+      <span class="writing-card-arrow">
+        Read the essay
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </span>
+    </a>
+
+    <a href="writing/getting-started-with-ai.html" class="writing-card rv stagger-1">
+      <div class="writing-card-meta">
+        <span class="writing-card-topic">Getting Started</span>
+        <span class="writing-card-dot">·</span>
+        <span class="writing-card-date">Apr 2026</span>
+        <span class="writing-card-dot">·</span>
+        <span class="writing-card-read">14 min read</span>
+      </div>
+      <h2 class="writing-card-title">Getting started with AI without becoming an engineer</h2>
+      <p class="writing-card-dek">
+        A workflow for clinicians, researchers, and analysts who want to use AI as a force
+        multiplier, not a toy. Spec‑driven prompting, multi‑chat orchestration, verified
+        outputs. Actionable from day one.
+      </p>
+      <span class="writing-card-arrow">
+        Read the essay
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </span>
+    </a>
+
+    <a href="writing/spec-driven-ai-development.html" class="writing-card rv stagger-2">
+      <div class="writing-card-meta">
+        <span class="writing-card-topic">Working with Claude</span>
+        <span class="writing-card-dot">·</span>
+        <span class="writing-card-date">Apr 2026</span>
+        <span class="writing-card-dot">·</span>
+        <span class="writing-card-read">10 min read</span>
+      </div>
+      <h2 class="writing-card-title">Spec‑driven AI development: locked prompts beat clever ones</h2>
+      <p class="writing-card-dek">
+        Open‑ended prompts produce debt. Locked prompts produce verifiable output. Notes
+        from ~12 months of building real software with Claude Code, with the prompt
+        patterns that worked and the ones that didn't.
+      </p>
+      <span class="writing-card-arrow">
+        Read the essay
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </span>
+    </a>
+
+  </div>
+
+  <div class="cs-cta">
+    <p class="cs-cta-text">Working on something at the intersection of AI and healthcare?</p>
+    <a href="mailto:drsridhar22@gmail.com" class="cs-cta-btn">Get in touch</a>
+    <div class="cs-footer">Shri · 2026 · Last updated <time datetime="2026-04-23">Apr 23, 2026</time></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const items = document.querySelectorAll('.rv');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('vis');
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.05 });
+  items.forEach((el) => io.observe(el));
+})();
+</script>
+
+</body>
+</html>
