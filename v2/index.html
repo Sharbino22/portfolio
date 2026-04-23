@@ -302,13 +302,32 @@
 
     <a href="survival-analysis.html" class="case-card rv">
       <div class="case-card-visual theme-indigo">
-        <span class="hero-label">Kaplan–Meier curve</span>
-        <svg viewBox="0 0 200 120" width="100%" style="max-width:280px" fill="none">
-          <path d="M 10 30 L 40 30 L 40 38 L 70 38 L 70 48 L 95 48 L 95 62 L 120 62 L 120 78 L 145 78 L 145 92 L 180 92" stroke="#A5B4FC" stroke-width="2" fill="none"/>
-          <path d="M 10 42 L 40 42 L 40 52 L 70 52 L 70 68 L 95 68 L 95 84 L 120 84 L 120 96 L 145 96 L 145 106 L 180 106" stroke="#F472B6" stroke-width="2" fill="none" opacity="0.7"/>
-          <line x1="10" y1="110" x2="190" y2="110" stroke="rgba(255,255,255,0.2)"/>
-          <line x1="10" y1="20" x2="10" y2="110" stroke="rgba(255,255,255,0.2)"/>
+        <svg class="case-card-art" viewBox="0 0 600 360" fill="none" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="kmFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#A5B4FC" stop-opacity="0.28"/>
+              <stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- Survivor curve (upper, stays higher) -->
+          <path d="M60,140 L140,140 L140,160 L220,160 L220,176 L300,176 L300,194 L380,194 L380,214 L460,214 L460,236 L540,236" fill="none" stroke="#A5B4FC" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M60,140 L140,140 L140,160 L220,160 L220,176 L300,176 L300,194 L380,194 L380,214 L460,214 L460,236 L540,236 L540,320 L60,320 Z" fill="url(#kmFill)"/>
+          <!-- Non-survivor curve (lower, drops faster) -->
+          <path d="M60,168 L140,168 L140,196 L220,196 L220,224 L300,224 L300,252 L380,252 L380,278 L460,278 L460,300 L540,300" fill="none" stroke="#F472B6" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
+          <!-- Censored ticks on survivor -->
+          <circle cx="140" cy="140" r="3" fill="#A5B4FC"/>
+          <circle cx="220" cy="160" r="3" fill="#A5B4FC"/>
+          <circle cx="300" cy="176" r="3" fill="#A5B4FC"/>
+          <circle cx="380" cy="194" r="3" fill="#A5B4FC"/>
+          <!-- Axes -->
+          <line x1="60" y1="320" x2="560" y2="320" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+          <line x1="60" y1="90" x2="60" y2="320" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+          <!-- Axis labels -->
+          <text x="60" y="345" fill="rgba(255,255,255,0.45)" font-size="11" font-family="Plus Jakarta Sans">0 yr</text>
+          <text x="540" y="345" fill="rgba(255,255,255,0.45)" font-size="11" font-family="Plus Jakarta Sans" text-anchor="end">20 yr</text>
+          <text x="300" y="110" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="12" font-weight="700" letter-spacing="2" font-family="Plus Jakarta Sans">KAPLAN–MEIER SURVIVAL</text>
         </svg>
+        <span class="hero-label">Kaplan–Meier curve</span>
         <span class="live-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>Live Dashboard</span>
         <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17L17 7"/></svg></div>
       </div>
@@ -325,15 +344,37 @@
 
     <a href="cv-risk-gaps.html" class="case-card t-green rv stagger-1">
       <div class="case-card-visual theme-green">
-        <span class="hero-label">Odds ratio (adjusted)</span>
-        <div class="hero-big">1.73×<br><span style="font-weight:300;font-style:italic;opacity:0.8;font-size:20px;">better BP control</span></div>
+        <svg class="case-card-art" viewBox="0 0 600 360" fill="none" preserveAspectRatio="xMidYMid slice">
+          <!-- OR = 1.0 reference line -->
+          <line x1="300" y1="70" x2="300" y2="310" stroke="#34D399" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+          <text x="300" y="55" text-anchor="middle" fill="#34D399" font-size="11" font-weight="700" letter-spacing="1" opacity="0.55" font-family="Plus Jakarta Sans">OR = 1.0</text>
+
+          <!-- BP control: OR 1.26 (1.10, 1.44) -->
+          <text x="80" y="120" fill="#A7F3D0" font-size="13" font-weight="600" opacity="0.9" font-family="Plus Jakarta Sans">BP control</text>
+          <line x1="330" y1="130" x2="432" y2="130" stroke="#34D399" stroke-width="2.4" opacity="0.7"/>
+          <circle cx="378" cy="130" r="8" fill="#34D399" stroke="#061A14" stroke-width="2"/>
+          <text x="448" y="135" fill="#A7F3D0" font-size="13" font-weight="700" font-family="Plus Jakarta Sans">1.26</text>
+
+          <!-- A1c control: OR 1.33 (1.03, 1.72) -->
+          <text x="80" y="200" fill="#F9A8D4" font-size="13" font-weight="600" opacity="0.9" font-family="Plus Jakarta Sans">A1c control</text>
+          <line x1="309" y1="210" x2="516" y2="210" stroke="#F472B6" stroke-width="2.4" opacity="0.7"/>
+          <circle cx="399" cy="210" r="8" fill="#F472B6" stroke="#061A14" stroke-width="2"/>
+          <text x="532" y="215" fill="#F9A8D4" font-size="13" font-weight="700" font-family="Plus Jakarta Sans">1.33</text>
+
+          <!-- High cholesterol: OR 0.86 (0.71, 1.04), crosses 1.0 -->
+          <text x="80" y="280" fill="#C7D2FE" font-size="13" font-weight="600" opacity="0.9" font-family="Plus Jakarta Sans">High chol</text>
+          <line x1="213" y1="290" x2="312" y2="290" stroke="#818CF8" stroke-width="2.4" opacity="0.7"/>
+          <circle cx="258" cy="290" r="8" fill="#818CF8" stroke="#061A14" stroke-width="2"/>
+          <text x="328" y="295" fill="#C7D2FE" font-size="13" font-weight="700" font-family="Plus Jakarta Sans">0.86</text>
+        </svg>
+        <span class="hero-label">Adjusted odds ratios</span>
         <span class="live-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>Live Dashboard</span>
         <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17L17 7"/></svg></div>
       </div>
       <div class="case-meta">
         <div class="case-kicker">Survivorship Care</div>
         <h3 class="case-title">Cardiovascular risk in cancer survivors</h3>
-        <p class="case-desc">20 years of NHANES data, 11,772 adults. Survivors out‑manage BP — but the pattern unravels for A1c and cholesterol.</p>
+        <p class="case-desc">Survey‑weighted logistic regression on 51,168 NHANES adults. Survivors have 26% better BP control and 33% better A1c control.</p>
         <div class="case-tags">
           <span class="case-tag">Logistic regression</span>
           <span class="case-tag">NHANES</span>
@@ -343,19 +384,34 @@
 
     <a href="propensity-analysis.html" class="case-card rv">
       <div class="case-card-visual theme-indigo">
-        <span class="hero-label">Covariate balance (SMD)</span>
-        <svg viewBox="0 0 200 120" width="100%" style="max-width:280px" fill="none">
-          <line x1="100" y1="15" x2="100" y2="110" stroke="rgba(255,255,255,0.3)" stroke-dasharray="3 3"/>
-          <g stroke="#F472B6" stroke-width="2" fill="#F472B6">
-            <line x1="100" y1="28" x2="160" y2="28"/><circle cx="160" cy="28" r="3"/>
-            <line x1="100" y1="44" x2="145" y2="44"/><circle cx="145" cy="44" r="3"/>
-            <line x1="100" y1="60" x2="135" y2="60"/><circle cx="135" cy="60" r="3"/>
-          </g>
-          <g stroke="#A5B4FC" stroke-width="2" fill="#A5B4FC">
-            <line x1="100" y1="76" x2="108" y2="76"/><circle cx="108" cy="76" r="3"/>
-            <line x1="100" y1="92" x2="104" y2="92"/><circle cx="104" cy="92" r="3"/>
-          </g>
+        <svg class="case-card-art" viewBox="0 0 600 360" fill="none" preserveAspectRatio="xMidYMid slice">
+          <!-- HR = 1.0 reference line -->
+          <line x1="300" y1="60" x2="300" y2="310" stroke="#A5B4FC" stroke-width="1" stroke-dasharray="4,4" opacity="0.3"/>
+          <text x="300" y="48" text-anchor="middle" fill="#A5B4FC" font-size="11" font-weight="700" opacity="0.5" font-family="Plus Jakarta Sans">HR = 1.0</text>
+
+          <!-- Unadjusted: HR 2.86 -->
+          <text x="90" y="110" fill="#F9A8D4" font-size="12" font-weight="600" opacity="0.85" font-family="Plus Jakarta Sans">Unadjusted</text>
+          <line x1="420" y1="120" x2="520" y2="120" stroke="#F472B6" stroke-width="2.4" opacity="0.6"/>
+          <circle cx="470" cy="120" r="8" fill="#F472B6" stroke="#1E1B4B" stroke-width="2"/>
+          <text x="532" y="125" fill="#F9A8D4" font-size="12" font-weight="700" font-family="Plus Jakarta Sans">2.86</text>
+
+          <!-- PS-Matched: HR 1.24 -->
+          <text x="90" y="190" fill="#C7D2FE" font-size="12" font-weight="600" opacity="0.85" font-family="Plus Jakarta Sans">PS‑Matched</text>
+          <line x1="305" y1="200" x2="360" y2="200" stroke="#A5B4FC" stroke-width="2.4" opacity="0.6"/>
+          <circle cx="330" cy="200" r="8" fill="#A5B4FC" stroke="#1E1B4B" stroke-width="2"/>
+          <text x="372" y="205" fill="#C7D2FE" font-size="12" font-weight="700" font-family="Plus Jakarta Sans">1.24</text>
+
+          <!-- IPTW: HR 1.02 -->
+          <text x="90" y="260" fill="#6EE7B7" font-size="12" font-weight="600" opacity="0.9" font-family="Plus Jakarta Sans">IPTW</text>
+          <line x1="282" y1="270" x2="320" y2="270" stroke="#34D399" stroke-width="2.4" opacity="0.7"/>
+          <circle cx="305" cy="270" r="8" fill="#34D399" stroke="#1E1B4B" stroke-width="2"/>
+          <text x="332" y="275" fill="#6EE7B7" font-size="12" font-weight="700" font-family="Plus Jakarta Sans">1.02</text>
+
+          <!-- Arrow showing confounding resolved -->
+          <path d="M460,140 C430,160 350,180 335,195" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+          <text x="300" y="335" text-anchor="middle" fill="#A5B4FC" font-size="12" font-weight="700" letter-spacing="2" opacity="0.55" font-family="Plus Jakarta Sans">CONFOUNDING RESOLVED</text>
         </svg>
+        <span class="hero-label">HR · unadjusted → adjusted</span>
         <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17L17 7"/></svg></div>
       </div>
       <div class="case-meta">
@@ -371,8 +427,32 @@
 
     <a href="medicare-analysis.html" class="case-card t-blue rv stagger-1">
       <div class="case-card-visual theme-blue">
-        <span class="hero-label">State markup variation</span>
-        <div class="hero-big">9.5×<br><span style="font-weight:300;font-style:italic;opacity:0.8;font-size:20px;">spread across states</span></div>
+        <svg class="case-card-art" viewBox="0 0 600 360" fill="none" preserveAspectRatio="xMidYMid slice">
+          <text x="300" y="75" text-anchor="middle" fill="#93C5FD" font-size="16" font-weight="800" letter-spacing="2" opacity="0.85" font-family="Plus Jakarta Sans">9.5× MARKUP SPREAD</text>
+          <!-- State stacked bars: MD low, US mid, CA mid-high, NV high -->
+          <!-- MD -->
+          <text x="105" y="320" text-anchor="middle" fill="#93C5FD" font-size="12" font-weight="700" opacity="0.6" font-family="Plus Jakarta Sans">MD</text>
+          <rect x="80" y="260" width="50" height="35" rx="3" fill="#3B82F6" opacity="0.85"/>
+          <rect x="80" y="228" width="50" height="30" rx="3" fill="#93C5FD" opacity="0.3"/>
+          <!-- US -->
+          <text x="235" y="320" text-anchor="middle" fill="#93C5FD" font-size="12" font-weight="700" opacity="0.6" font-family="Plus Jakarta Sans">US</text>
+          <rect x="210" y="195" width="50" height="100" rx="3" fill="#3B82F6" opacity="0.85"/>
+          <rect x="210" y="95" width="50" height="98" rx="3" fill="#93C5FD" opacity="0.3"/>
+          <!-- CA -->
+          <text x="365" y="320" text-anchor="middle" fill="#93C5FD" font-size="12" font-weight="700" opacity="0.6" font-family="Plus Jakarta Sans">CA</text>
+          <rect x="340" y="175" width="50" height="120" rx="3" fill="#3B82F6" opacity="0.85"/>
+          <rect x="340" y="85" width="50" height="88" rx="3" fill="#93C5FD" opacity="0.3"/>
+          <!-- NV -->
+          <text x="495" y="320" text-anchor="middle" fill="#93C5FD" font-size="12" font-weight="700" opacity="0.6" font-family="Plus Jakarta Sans">NV</text>
+          <rect x="470" y="155" width="50" height="140" rx="3" fill="#3B82F6" opacity="0.85"/>
+          <rect x="470" y="65" width="50" height="88" rx="3" fill="#93C5FD" opacity="0.3"/>
+          <!-- Legend -->
+          <rect x="175" y="340" width="12" height="8" rx="2" fill="#3B82F6" opacity="0.85"/>
+          <text x="192" y="348" fill="#93C5FD" font-size="10" opacity="0.6" font-family="Plus Jakarta Sans">Payment</text>
+          <rect x="335" y="340" width="12" height="8" rx="2" fill="#93C5FD" opacity="0.3"/>
+          <text x="352" y="348" fill="#93C5FD" font-size="10" opacity="0.6" font-family="Plus Jakarta Sans">Charges</text>
+        </svg>
+        <span class="hero-label">State markup · CY 2022</span>
         <span class="live-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>Live Dashboard</span>
         <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17L17 7"/></svg></div>
       </div>
@@ -389,8 +469,22 @@
 
     <a href="i2db-datathon.html" class="case-card t-pink rv">
       <div class="case-card-visual theme-pink">
+        <svg class="case-card-art" viewBox="0 0 600 360" fill="none" preserveAspectRatio="xMidYMid slice">
+          <text x="300" y="55" text-anchor="middle" fill="#F9A8D4" font-size="15" font-weight="800" letter-spacing="1.5" opacity="0.8" font-family="Plus Jakarta Sans">AUC = 0.852</text>
+          <!-- Axes -->
+          <line x1="80" y1="300" x2="520" y2="300" stroke="#F9A8D4" stroke-width="1" opacity="0.3"/>
+          <line x1="80" y1="300" x2="80" y2="80" stroke="#F9A8D4" stroke-width="1" opacity="0.3"/>
+          <!-- Diagonal reference -->
+          <line x1="80" y1="300" x2="520" y2="80" stroke="#F9A8D4" stroke-width="1" stroke-dasharray="6,4" opacity="0.2"/>
+          <!-- ROC curve -->
+          <path d="M80,300 Q110,140 200,105 Q340,75 520,80" fill="none" stroke="#F472B6" stroke-width="2.8" opacity="0.95"/>
+          <!-- Fill under ROC -->
+          <path d="M80,300 Q110,140 200,105 Q340,75 520,80 L520,300 Z" fill="#F472B6" opacity="0.1"/>
+          <!-- Axis labels -->
+          <text x="300" y="330" text-anchor="middle" fill="#F9A8D4" font-size="11" opacity="0.5" font-family="Plus Jakarta Sans">False positive rate</text>
+          <text x="50" y="190" text-anchor="middle" fill="#F9A8D4" font-size="11" opacity="0.5" font-family="Plus Jakarta Sans" transform="rotate(-90,50,190)">True positive rate</text>
+        </svg>
         <span class="hero-label">ROC · AUC</span>
-        <div class="hero-big">0.852<br><span style="font-weight:300;font-style:italic;opacity:0.8;font-size:20px;">model AUC</span></div>
         <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17L17 7"/></svg></div>
       </div>
       <div class="case-meta">
@@ -406,8 +500,29 @@
 
     <div class="case-card t-green rv stagger-1">
       <div class="case-card-visual theme-green">
-        <span class="hero-label">Turnaround analysis</span>
-        <div class="hero-big">$24M<br><span style="font-weight:300;font-style:italic;opacity:0.8;font-size:20px;">opportunities identified</span></div>
+        <svg class="case-card-art" viewBox="0 0 600 360" fill="none" preserveAspectRatio="xMidYMid slice">
+          <text x="300" y="55" text-anchor="middle" fill="#6EE7B7" font-size="15" font-weight="800" letter-spacing="2" opacity="0.85" font-family="Plus Jakarta Sans">$24M IDENTIFIED</text>
+          <!-- Ascending bars -->
+          <rect x="60" y="260" width="80" height="60" rx="4" fill="#10B981" opacity="0.25"/>
+          <rect x="160" y="220" width="80" height="100" rx="4" fill="#10B981" opacity="0.38"/>
+          <rect x="260" y="170" width="80" height="150" rx="4" fill="#10B981" opacity="0.5"/>
+          <rect x="360" y="115" width="80" height="205" rx="4" fill="#10B981" opacity="0.68"/>
+          <rect x="460" y="70" width="80" height="250" rx="4" fill="#10B981" opacity="0.85"/>
+          <!-- Trend line on top -->
+          <polyline points="100,255 200,215 300,165 400,110 500,65" fill="none" stroke="#6EE7B7" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.8"/>
+          <circle cx="100" cy="255" r="4" fill="#6EE7B7"/>
+          <circle cx="200" cy="215" r="4" fill="#6EE7B7"/>
+          <circle cx="300" cy="165" r="4" fill="#6EE7B7"/>
+          <circle cx="400" cy="110" r="4" fill="#6EE7B7"/>
+          <circle cx="500" cy="65" r="5" fill="#6EE7B7" stroke="#064E3B" stroke-width="2"/>
+          <!-- Axis labels -->
+          <text x="100" y="345" text-anchor="middle" fill="#6EE7B7" font-size="10" opacity="0.5" font-family="Plus Jakarta Sans">Supply</text>
+          <text x="200" y="345" text-anchor="middle" fill="#6EE7B7" font-size="10" opacity="0.5" font-family="Plus Jakarta Sans">Labor</text>
+          <text x="300" y="345" text-anchor="middle" fill="#6EE7B7" font-size="10" opacity="0.5" font-family="Plus Jakarta Sans">Payer</text>
+          <text x="400" y="345" text-anchor="middle" fill="#6EE7B7" font-size="10" opacity="0.5" font-family="Plus Jakarta Sans">Svc line</text>
+          <text x="500" y="345" text-anchor="middle" fill="#6EE7B7" font-size="10" opacity="0.5" font-family="Plus Jakarta Sans">Total</text>
+        </svg>
+        <span class="hero-label">Turnaround opportunities</span>
         <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17L17 7"/></svg></div>
       </div>
       <div class="case-meta">
@@ -423,8 +538,26 @@
 
     <div class="case-card t-amber rv">
       <div class="case-card-visual theme-amber">
+        <svg class="case-card-art" viewBox="0 0 600 360" fill="none" preserveAspectRatio="xMidYMid slice">
+          <text x="300" y="80" text-anchor="middle" fill="#FCD34D" font-size="15" font-weight="800" letter-spacing="2" opacity="0.8" font-family="Plus Jakarta Sans">MARKET ENTRY</text>
+          <!-- St. Louis node -->
+          <circle cx="180" cy="190" r="9" fill="#F59E0B"/>
+          <circle cx="180" cy="190" r="22" fill="none" stroke="#F59E0B" stroke-width="1.5" opacity="0.35"/>
+          <circle cx="180" cy="190" r="38" fill="none" stroke="#F59E0B" stroke-width="1" opacity="0.18"/>
+          <text x="180" y="250" text-anchor="middle" fill="#FCD34D" font-size="13" font-weight="700" opacity="0.8" font-family="Plus Jakarta Sans">ST. LOUIS</text>
+          <text x="180" y="268" text-anchor="middle" fill="#FCD34D" font-size="11" font-weight="500" opacity="0.5" font-family="Plus Jakarta Sans">Home base</text>
+          <!-- Barcelona node -->
+          <circle cx="420" cy="170" r="11" fill="#FCD34D"/>
+          <circle cx="420" cy="170" r="26" fill="none" stroke="#FCD34D" stroke-width="1.5" opacity="0.35"/>
+          <circle cx="420" cy="170" r="44" fill="none" stroke="#FCD34D" stroke-width="1" opacity="0.18"/>
+          <text x="420" y="230" text-anchor="middle" fill="#FCD34D" font-size="13" font-weight="700" opacity="0.8" font-family="Plus Jakarta Sans">BARCELONA</text>
+          <text x="420" y="248" text-anchor="middle" fill="#FCD34D" font-size="11" font-weight="500" opacity="0.5" font-family="Plus Jakarta Sans">Entry market</text>
+          <!-- Connection -->
+          <line x1="199" y1="185" x2="401" y2="173" stroke="#FCD34D" stroke-width="1.5" stroke-dasharray="8,6" opacity="0.55"/>
+          <!-- Pro forma stat -->
+          <text x="300" y="320" text-anchor="middle" fill="#FCD34D" font-size="12" font-weight="700" letter-spacing="1.5" opacity="0.7" font-family="Plus Jakarta Sans">3‑YEAR PRO FORMA · €192K</text>
+        </svg>
         <span class="hero-label">Market entry · EU</span>
-        <div class="hero-big">€192K<br><span style="font-weight:300;font-style:italic;opacity:0.8;font-size:20px;">3‑year pro forma</span></div>
         <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17L17 7"/></svg></div>
       </div>
       <div class="case-meta">

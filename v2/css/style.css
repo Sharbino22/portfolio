@@ -550,6 +550,16 @@ section { position: relative; overflow: hidden; }
   display: grid; place-items: center;
   padding: 28px;
 }
+.case-card-art {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.case-card-visual > .hero-label,
+.case-card-visual > .live-badge,
+.case-card-visual > .case-arrow { z-index: 3; }
+.case-card-visual > .hero-big { position: relative; z-index: 2; }
 .case-card-visual.theme-indigo { background: linear-gradient(135deg, #1E1B4B, #4338CA); }
 .case-card-visual.theme-pink   { background: linear-gradient(135deg, #4C1D95, #BE185D); }
 .case-card-visual.theme-green  { background: linear-gradient(135deg, #064E3B, #047857); }
