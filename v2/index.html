@@ -163,6 +163,23 @@
 </section>
 
 <!-- =======================================================
+     REFLECTIONS — rotating quotes interlude
+     ======================================================= -->
+<section id="reflections" class="s-dark">
+  <div class="reflections-inner">
+    <div class="eyebrow rv">In the margins</div>
+    <figure class="quote-rotator rv" id="quote-rotator">
+      <svg class="quote-mark" viewBox="0 0 40 32" fill="none" aria-hidden="true">
+        <path d="M0 32V18.5C0 8.5 5 2.5 14 0L17 5C11 7 8 10 8 15H16V32H0ZM23 32V18.5C23 8.5 28 2.5 37 0L40 5C34 7 31 10 31 15H39V32H23Z" fill="currentColor"/>
+      </svg>
+      <blockquote class="quote-text">&nbsp;</blockquote>
+      <figcaption class="quote-by">&nbsp;</figcaption>
+      <div class="quote-dots" role="tablist" aria-label="Choose a quote"></div>
+    </figure>
+  </div>
+</section>
+
+<!-- =======================================================
      PROCESS — How I work with AI
      ======================================================= -->
 <section id="process" class="s-cream-2">
@@ -1004,6 +1021,80 @@
      ======================================================= -->
 <script src="js/globe.js"></script>
 <script src="js/main.js"></script>
+
+<!-- Quote rotator (#reflections) -->
+<script>
+(function () {
+  var root = document.getElementById('quote-rotator');
+  if (!root) return;
+  var text = root.querySelector('.quote-text');
+  var by = root.querySelector('.quote-by');
+  var dotsWrap = root.querySelector('.quote-dots');
+
+  var QUOTES = [
+    { q: "The important thing is not to stop questioning.", by: "Albert Einstein" },
+    { q: "The first principle is that you must not fool yourself, and you are the easiest person to fool.", by: "Richard Feynman" },
+    { q: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.", by: "Will Durant" },
+    { q: "In God we trust. All others must bring data.", by: "W. Edwards Deming" },
+    { q: "Cure sometimes, treat often, comfort always.", by: "Hippocrates" },
+    { q: "The unexamined life is not worth living.", by: "Socrates" },
+    { q: "Tell me, what is it you plan to do with your one wild and precious life?", by: "Mary Oliver" },
+    { q: "It's not that I'm so smart, it's just that I stay with problems longer.", by: "Albert Einstein" }
+  ];
+
+  var idx = 0;
+  var timer;
+  var INTERVAL = 7500;
+  var FADE_MS = 400;
+
+  // Build dot controls
+  QUOTES.forEach(function (_, i) {
+    var d = document.createElement('button');
+    d.className = 'quote-dot' + (i === 0 ? ' active' : '');
+    d.type = 'button';
+    d.setAttribute('aria-label', 'Quote ' + (i + 1) + ' of ' + QUOTES.length);
+    d.addEventListener('click', function () { goTo(i, true); });
+    dotsWrap.appendChild(d);
+  });
+  var dots = dotsWrap.querySelectorAll('.quote-dot');
+
+  function render(i) {
+    text.textContent = '“' + QUOTES[i].q + '”';
+    by.textContent = QUOTES[i].by;
+    dots.forEach(function (d, j) { d.classList.toggle('active', j === i); });
+  }
+
+  function goTo(i, manual) {
+    if (i === idx) return;
+    root.classList.add('fading');
+    setTimeout(function () {
+      idx = i;
+      render(idx);
+      root.classList.remove('fading');
+    }, FADE_MS);
+    if (manual) { clearInterval(timer); timer = setInterval(next, INTERVAL); }
+  }
+
+  function next() { goTo((idx + 1) % QUOTES.length); }
+
+  render(0);
+  timer = setInterval(next, INTERVAL);
+
+  // Pause when the section is off-screen to save cycles
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          if (!timer) timer = setInterval(next, INTERVAL);
+        } else {
+          clearInterval(timer); timer = null;
+        }
+      });
+    }, { threshold: 0.2 });
+    io.observe(document.getElementById('reflections'));
+  }
+})();
+</script>
 
 <!-- Live local-time in nav (St. Louis / America/Chicago) — ticks every second -->
 <script>
