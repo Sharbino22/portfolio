@@ -6,104 +6,18 @@
 <title>Propensity Score Analysis - Shri</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/cs.css?v=1">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1E1B4B;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:68px;background:#F5F0EA;}
-body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(0,0,0,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.04) 1px,transparent 1px);
-  background-size:40px 40px;}
-
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 3rem;backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);background:rgba(245,240,234,0.8);border-bottom:1px solid rgba(0,0,0,0.06);transition:background 0.3s,box-shadow 0.3s;}
-.nav.scrolled{background:rgba(245,240,234,0.95);box-shadow:0 1px 16px rgba(0,0,0,0.04);}
-.nav-logo{font-size:15px;font-weight:700;color:#0F0F14;letter-spacing:-0.02em;text-decoration:none;}
-.nav-links{display:flex;gap:2.5rem;align-items:center;}
-.nav-links a{font-size:13px;font-weight:500;color:#6B6880;text-decoration:none;transition:color 0.2s;}
-.nav-links a:hover{color:#0F0F14;}
-.nav-cta{font-size:11px;font-weight:600;padding:6px 16px;background:transparent;color:#6366F1;border:1.5px solid #6366F1;border-radius:18px;text-decoration:none;transition:all 0.2s ease;letter-spacing:0.3px;}
-.nav-cta:hover{background:#6366F1;color:#fff;transform:translateY(-1px);}
-
-.rv{opacity:0;transform:translateY(20px);transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1);}
-.rv.vis{opacity:1;transform:translateY(0);}
-
-/* Hero - deep indigo */
-.cs-hero{position:relative;z-index:2;background:linear-gradient(135deg,#1A0C2E,#2D1B4E);padding:60px 2rem 40px;}
-.cs-hero-inner{max-width:800px;margin:0 auto;}
-.cs-back{font-size:13px;color:#C4B5FD;text-decoration:none;display:inline-block;margin-bottom:20px;transition:opacity 0.2s;}
-.cs-back:hover{opacity:0.7;}
-.cs-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,0.08);margin-bottom:12px;}
-.cs-badge-dot{width:6px;height:6px;border-radius:50%;background:#818CF8;}
-.cs-badge span{font-size:12px;color:#C4B5FD;font-weight:600;}
-.cs-title{font-size:44px;font-weight:800;color:#EDE9FE;letter-spacing:-0.03em;margin-bottom:12px;line-height:1.1;}
-.cs-subtitle{font-size:16px;color:#C4B5FD;line-height:1.55;max-width:580px;margin-bottom:12px;}
-.cs-meta{font-size:13px;color:#A78BFA;font-weight:500;}
-
-.cs-content{position:relative;z-index:2;max-width:800px;margin:0 auto;padding:0 2rem;}
-
-.cs-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:24px 0;}
-.cs-stat{background:rgba(255,255,255,0.8);border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:20px;text-align:center;backdrop-filter:blur(12px);}
-.cs-stat-n{font-size:28px;font-weight:800;color:#0F0F14;}
-.cs-stat-l{font-size:11px;color:#6B6880;margin-top:4px;font-weight:500;}
-
-.cs-section{padding:40px 0;border-top:1px solid rgba(0,0,0,0.06);}
-.cs-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#818CF8;}
-.cs-section-title{font-size:24px;font-weight:700;color:#0F0F14;margin:8px 0 14px;letter-spacing:-0.01em;}
-.cs-text{font-size:15px;color:#4B5563;line-height:1.65;}
-
-.cs-highlight{background:linear-gradient(135deg,#EDE9FE,#DDD6FE);border-radius:14px;padding:24px;margin:16px 0;}
-.cs-highlight-title{font-size:18px;font-weight:700;color:#3B1F8A;margin-bottom:8px;}
-.cs-highlight-text{font-size:14px;color:#5B21B6;line-height:1.55;}
-
-.cs-figure{margin:20px 0;background:rgba(255,255,255,0.6);border:1px solid rgba(0,0,0,0.06);border-radius:14px;overflow:hidden;}
-.cs-figure img{width:100%;display:block;}
-.cs-figure-cap{padding:10px 16px;font-size:12px;color:#6B6880;font-style:italic;}
-
-.cs-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
-.cs-card{background:rgba(255,255,255,0.8);border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:20px;}
-.cs-card-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#818CF8;margin-bottom:6px;}
-.cs-card-title{font-size:16px;font-weight:700;color:#0F0F14;margin-bottom:6px;}
-.cs-card-text{font-size:13px;color:#4B5563;line-height:1.55;}
-
-.cs-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;}
-.cs-table th{text-align:left;padding:10px 14px;background:rgba(129,140,248,0.08);color:#3B1F8A;font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid rgba(129,140,248,0.15);}
-.cs-table td{padding:10px 14px;border-bottom:1px solid rgba(0,0,0,0.05);color:#4B5563;line-height:1.45;}
-.cs-table tr:last-child td{border-bottom:none;}
-
-/* HR comparison - custom styled */
-.hr-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.05);}
-.hr-row:last-child{border-bottom:none;}
-.hr-label{width:120px;font-size:13px;font-weight:600;color:#0F0F14;flex-shrink:0;}
-.hr-bar-bg{flex:1;height:6px;background:rgba(0,0,0,0.04);border-radius:3px;position:relative;}
-.hr-bar{height:100%;border-radius:3px;transition:width 1s cubic-bezier(0.16,1,0.3,1);}
-.hr-value{width:100px;text-align:right;font-size:13px;font-weight:700;color:#0F0F14;flex-shrink:0;}
-.hr-ci{font-size:11px;color:#6B6880;font-weight:400;}
-
-.cs-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
-.cs-pill{padding:6px 14px;border-radius:8px;background:rgba(255,255,255,0.85);border:1px solid rgba(0,0,0,0.06);font-size:12px;color:#4B5563;font-weight:500;}
-
-.cs-cta{padding:48px 0 60px;text-align:center;}
-.cs-cta-text{font-size:15px;color:#6B6880;margin-bottom:16px;}
-.cs-cta-btn{display:inline-block;padding:14px 32px;border-radius:12px;background:#1A0C2E;color:#C4B5FD;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.3s cubic-bezier(0.16,1,0.3,1);}
-.cs-cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(26,12,46,0.3);}
-.cs-footer{font-size:12px;color:#9CA3AF;margin-top:24px;}
-
-@media(max-width:768px){
-  .nav{padding:1rem 1.25rem;}.nav-links{display:none;}
-  .cs-hero{padding:40px 1.25rem 30px;}.cs-title{font-size:30px;}
-  .cs-content{padding:0 1.25rem;}
-  .cs-stats{grid-template-columns:1fr 1fr;}
-  .cs-cards{grid-template-columns:1fr;}
-  .cs-section-title{font-size:20px;}
-  .hr-label{width:90px;font-size:12px;}.hr-value{width:80px;}
-}
-.js-transitions body{opacity:0;transition:opacity 380ms cubic-bezier(0.16,1,0.3,1);}
-.js-transitions body.page-ready{opacity:1;}
-.js-transitions body.page-leaving{opacity:0;transition:opacity 220ms cubic-bezier(0.4,0,1,1);}
+  :root{
+    --cs-hero-1:#1A0C2E; --cs-hero-2:#2D1B4E;
+    --cs-accent:#A78BFA; --cs-accent-soft:#C4B5FD; --cs-accent-bright:#EDE9FE;
+    --cs-hl-1:#EDE9FE; --cs-hl-2:#DDD6FE; --cs-hl-title:#3B1F8A; --cs-hl-text:#5B21B6;
+    --cs-launch-1:#8B5CF6; --cs-launch-2:#A78BFA; --cs-launch-text:#1A0C2E;
+  }
 </style>
 <script src="js/transitions.js"></script>
 </head>
 <body>
-
 <nav class="nav">
   <a href="index.html" class="nav-logo">Shri</a>
   <div class="nav-links">
@@ -177,7 +91,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     <h2 class="cs-section-title">Strong confounding signal confirmed</h2>
     <p class="cs-text">The propensity score model achieves 81% accuracy, reflecting the systematic differences between treated and untreated groups. The distributions overlap but are clearly separated: treated patients cluster at higher PS values (median 0.87 vs 0.59).</p>
     <div class="cs-figure rv">
-      <img src="Projects/propensity-score-analysis/figures/ps_distribution.png" alt="Propensity score distribution">
+      <img src="Projects/propensity-score-analysis/figures/ps_distribution.png" alt="Propensity score distribution" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
       <div class="cs-figure-cap">Propensity score distribution by treatment group</div>
     </div>
   </div>
@@ -188,7 +102,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     <h2 class="cs-section-title">Covariate balance achieved</h2>
     <p class="cs-text">The Love plot is the diagnostic that regulators and journal reviewers look for. Age, the strongest confounder (SMD 0.70 unadjusted), drops below 0.1 after both matching and IPTW. All covariates fall below the conventional 0.1 threshold.</p>
     <div class="cs-figure rv">
-      <img src="Projects/propensity-score-analysis/figures/love_plot.png" alt="Covariate balance Love plot">
+      <img src="Projects/propensity-score-analysis/figures/love_plot.png" alt="Covariate balance Love plot" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
       <div class="cs-figure-cap">Standardized mean differences before and after adjustment</div>
     </div>
   </div>
@@ -199,7 +113,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     <h2 class="cs-section-title">Survival curves converge after matching</h2>
     <p class="cs-text">The unadjusted Kaplan-Meier shows dramatic separation (treated patients dying faster because they are sicker). After PS matching, the curves converge substantially. The remaining gap is small and may reflect residual confounding by unmeasured variables like medication adherence and specific drug classes.</p>
     <div class="cs-figure rv">
-      <img src="Projects/propensity-score-analysis/figures/km_curves.png" alt="Kaplan-Meier survival curves">
+      <img src="Projects/propensity-score-analysis/figures/km_curves.png" alt="Kaplan-Meier survival curves" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
       <div class="cs-figure-cap">KM curves for CV mortality: unadjusted (left) and PS-matched (right)</div>
     </div>
   </div>
@@ -234,7 +148,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     </div>
 
     <div class="cs-figure rv">
-      <img src="Projects/propensity-score-analysis/figures/hr_forest_plot.png" alt="HR forest plot">
+      <img src="Projects/propensity-score-analysis/figures/hr_forest_plot.png" alt="HR forest plot" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
       <div class="cs-figure-cap">Treatment effect on CV mortality across PS methods</div>
     </div>
 
@@ -250,7 +164,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     <h2 class="cs-section-title">Treatment effect varies over time</h2>
     <p class="cs-text">The proportional hazards assumption is borderline violated for treatment (p=0.035). The HR is higher in early follow-up and attenuates over time, consistent with the clinical expectation: sicker patients start treatment, but the protective effect of BP control accrues gradually over years.</p>
     <div class="cs-figure rv">
-      <img src="Projects/propensity-score-analysis/figures/ph_test_plot.png" alt="PH assumption test">
+      <img src="Projects/propensity-score-analysis/figures/ph_test_plot.png" alt="PH assumption test" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
       <div class="cs-figure-cap">Treatment HR over follow-up time (rolling window)</div>
     </div>
   </div>
@@ -261,7 +175,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     <h2 class="cs-section-title">Consistent across subgroups</h2>
     <p class="cs-text">The subgroup forest plot tests whether the treatment effect varies by age, sex, diabetes, and smoking status. Consistent effect direction across subgroups strengthens the primary analysis and can inform targeted treatment strategies.</p>
     <div class="cs-figure rv">
-      <img src="Projects/propensity-score-analysis/figures/subgroup_forest_plot.png" alt="Subgroup forest plot">
+      <img src="Projects/propensity-score-analysis/figures/subgroup_forest_plot.png" alt="Subgroup forest plot" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
       <div class="cs-figure-cap">Subgroup analysis in PS-matched cohort</div>
     </div>
   </div>
@@ -297,10 +211,26 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     </div>
   </div>
 
+  <div class="cs-section rv">
+    <div class="cs-label">Tech Stack</div>
+    <h2 class="cs-section-title">Built with</h2>
+    <p class="cs-text">Propensity score methods in R. Matching, IPTW, and doubly‑robust IPTW with sensitivity analyses across balance diagnostics, PH tests, and subgroup effects.</p>
+    <div class="cs-pills">
+      <span class="cs-pill">R</span>
+      <span class="cs-pill">MatchIt</span>
+      <span class="cs-pill">WeightIt</span>
+      <span class="cs-pill">survey</span>
+      <span class="cs-pill">survival</span>
+      <span class="cs-pill">cobalt</span>
+      <span class="cs-pill">tidyverse</span>
+      <span class="cs-pill">Quarto</span>
+    </div>
+  </div>
+
   <!-- CTA -->
   <div class="cs-cta rv">
     <p class="cs-cta-text">Interested in causal inference, comparative effectiveness, or HEOR methods?</p>
-    <a href="mailto:g.sridharan@wustl.edu" class="cs-cta-btn">Get in touch</a>
+    <a href="mailto:drsridhar22@gmail.com" class="cs-cta-btn">Get in touch</a>
     <div class="cs-footer">Shri 2026</div>
   </div>
 </div>
@@ -311,6 +241,5 @@ document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
 var nav=document.querySelector('.nav');
 window.addEventListener('scroll',function(){if(window.scrollY>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled');},{passive:true});
 </script>
-
 </body>
 </html>

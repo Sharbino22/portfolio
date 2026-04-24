@@ -6,110 +6,18 @@
 <title>Medicare Rate Analysis - Shri</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/cs.css?v=1">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1E1B4B;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:68px;background:#F5F0EA;}
-body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(0,0,0,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.04) 1px,transparent 1px);
-  background-size:40px 40px;}
-
-/* Nav */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 3rem;backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);background:rgba(245,240,234,0.8);border-bottom:1px solid rgba(0,0,0,0.06);transition:background 0.3s,box-shadow 0.3s;}
-.nav.scrolled{background:rgba(245,240,234,0.95);box-shadow:0 1px 16px rgba(0,0,0,0.04);}
-.nav-logo{font-size:15px;font-weight:700;color:#0F0F14;letter-spacing:-0.02em;text-decoration:none;}
-.nav-links{display:flex;gap:2.5rem;align-items:center;}
-.nav-links a{font-size:13px;font-weight:500;color:#6B6880;text-decoration:none;transition:color 0.2s;}
-.nav-links a:hover{color:#0F0F14;}
-.nav-cta{font-size:11px;font-weight:600;padding:6px 16px;background:transparent;color:#6366F1;border:1.5px solid #6366F1;border-radius:18px;text-decoration:none;transition:all 0.2s ease;letter-spacing:0.3px;}
-.nav-cta:hover{background:#6366F1;color:#fff;transform:translateY(-1px);}
-
-/* Scroll reveal */
-.rv{opacity:0;transform:translateY(20px);transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1);}
-.rv.vis{opacity:1;transform:translateY(0);}
-
-/* Hero */
-.cs-hero{position:relative;z-index:2;background:linear-gradient(135deg,#0C1B2E,#142840);padding:60px 2rem 40px;}
-.cs-hero-inner{max-width:800px;margin:0 auto;}
-.cs-back{font-size:13px;color:#93C5FD;text-decoration:none;display:inline-block;margin-bottom:20px;transition:opacity 0.2s;}
-.cs-back:hover{opacity:0.7;}
-.cs-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,0.08);margin-bottom:12px;}
-.cs-badge-dot{width:6px;height:6px;border-radius:50%;background:#3B82F6;}
-.cs-badge span{font-size:12px;color:#93C5FD;font-weight:600;}
-.cs-title{font-size:44px;font-weight:800;color:#EFF6FF;letter-spacing:-0.03em;margin-bottom:12px;line-height:1.1;}
-.cs-subtitle{font-size:16px;color:#93C5FD;line-height:1.55;max-width:580px;margin-bottom:12px;}
-.cs-meta{font-size:13px;color:#60A5FA;font-weight:500;}
-
-/* Content wrapper */
-.cs-content{position:relative;z-index:2;max-width:800px;margin:0 auto;padding:0 2rem;}
-
-/* Stats */
-.cs-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:24px 0;}
-.cs-stat{background:rgba(255,255,255,0.8);border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:20px;text-align:center;backdrop-filter:blur(12px);}
-.cs-stat-n{font-size:28px;font-weight:800;color:#0F0F14;}
-.cs-stat-l{font-size:11px;color:#6B6880;margin-top:4px;font-weight:500;}
-
-/* Section */
-.cs-section{padding:40px 0;border-top:1px solid rgba(0,0,0,0.06);}
-.cs-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#3B82F6;}
-.cs-section-title{font-size:24px;font-weight:700;color:#0F0F14;margin:8px 0 14px;letter-spacing:-0.01em;}
-.cs-text{font-size:15px;color:#4B5563;line-height:1.65;}
-
-/* Highlight card */
-.cs-highlight{background:linear-gradient(135deg,#EFF6FF,#DBEAFE);border-radius:14px;padding:24px;margin:16px 0;}
-.cs-highlight-title{font-size:18px;font-weight:700;color:#1E3A5F;margin-bottom:8px;}
-.cs-highlight-text{font-size:14px;color:#1E40AF;line-height:1.55;}
-
-/* Figure */
-.cs-figure{margin:20px 0;background:rgba(255,255,255,0.6);border:1px solid rgba(0,0,0,0.06);border-radius:14px;overflow:hidden;}
-.cs-figure img{width:100%;display:block;}
-.cs-figure-cap{padding:10px 16px;font-size:12px;color:#6B6880;font-style:italic;}
-
-/* Two-col cards */
-.cs-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
-.cs-card{background:rgba(255,255,255,0.8);border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:20px;}
-.cs-card-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#3B82F6;margin-bottom:6px;}
-.cs-card-title{font-size:16px;font-weight:700;color:#0F0F14;margin-bottom:6px;}
-.cs-card-text{font-size:13px;color:#4B5563;line-height:1.55;}
-
-/* Implications table */
-.cs-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;}
-.cs-table th{text-align:left;padding:10px 14px;background:rgba(59,130,246,0.06);color:#1E3A5F;font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid rgba(59,130,246,0.15);}
-.cs-table td{padding:10px 14px;border-bottom:1px solid rgba(0,0,0,0.05);color:#4B5563;line-height:1.45;}
-.cs-table tr:last-child td{border-bottom:none;}
-
-/* Skills pills */
-.cs-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
-.cs-pill{padding:6px 14px;border-radius:8px;background:rgba(255,255,255,0.85);border:1px solid rgba(0,0,0,0.06);font-size:12px;color:#4B5563;font-weight:500;}
-
-/* CTA */
-.cs-cta{padding:48px 0 60px;text-align:center;}
-.cs-cta-text{font-size:15px;color:#6B6880;margin-bottom:16px;}
-.cs-cta-btn{display:inline-block;padding:14px 32px;border-radius:12px;background:#0C1B2E;color:#93C5FD;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.3s cubic-bezier(0.16,1,0.3,1);}
-.cs-cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(12,27,46,0.25);}
-.cs-launch{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:14px 24px;border-radius:12px;background:linear-gradient(135deg,#F59E0B,#F97316);color:#0F0D2A;font-size:14px;font-weight:700;text-decoration:none;letter-spacing:0.01em;transition:transform 0.3s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s cubic-bezier(0.16,1,0.3,1);box-shadow:0 8px 30px rgba(245,158,11,0.25);}
-.cs-launch:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(249,115,22,0.4);}
-.cs-launch svg{width:16px;height:16px;}
-.cs-launch-tag{display:inline-block;margin-top:18px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#F59E0B;}
-.cs-footer{font-size:12px;color:#9CA3AF;margin-top:24px;}
-
-/* Responsive */
-@media(max-width:768px){
-  .nav{padding:1rem 1.25rem;}.nav-links{display:none;}
-  .cs-hero{padding:40px 1.25rem 30px;}.cs-title{font-size:30px;}
-  .cs-content{padding:0 1.25rem;}
-  .cs-stats{grid-template-columns:1fr 1fr;}
-  .cs-cards{grid-template-columns:1fr;}
-  .cs-section-title{font-size:20px;}
-}
-.js-transitions body{opacity:0;transition:opacity 380ms cubic-bezier(0.16,1,0.3,1);}
-.js-transitions body.page-ready{opacity:1;}
-.js-transitions body.page-leaving{opacity:0;transition:opacity 220ms cubic-bezier(0.4,0,1,1);}
+  :root{
+    --cs-hero-1:#0C1B2E; --cs-hero-2:#142840;
+    --cs-accent:#60A5FA; --cs-accent-soft:#93C5FD; --cs-accent-bright:#DBEAFE;
+    --cs-hl-1:#EFF6FF; --cs-hl-2:#DBEAFE; --cs-hl-title:#1E3A5F; --cs-hl-text:#1E40AF;
+    --cs-launch-1:#F59E0B; --cs-launch-2:#F97316; --cs-launch-text:#0F0D2A;
+  }
 </style>
 <script src="js/transitions.js"></script>
 </head>
 <body>
-
 <nav class="nav">
   <a href="index.html" class="nav-logo">Shri</a>
   <div class="nav-links">
@@ -187,7 +95,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     <h2 class="cs-section-title">Septicemia drives 11% of all inpatient volume</h2>
     <p class="cs-text">The top 5 DRGs account for over 25% of all Medicare inpatient discharges. Septicemia alone represents 550,000 stays. Any value-based contract that doesn't address these conditions is leaving the highest-volume diagnoses unmanaged.</p>
     <div class="cs-figure rv">
-      <img src="Projects/medicare-claims-analysis/figures/top15_drg_volume.png" alt="Top 15 DRGs by discharge volume">
+      <img src="Projects/medicare-claims-analysis/figures/top15_drg_volume.png" alt="Top 15 DRGs by discharge volume" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
       <div class="cs-figure-cap">Top 15 DRGs by discharge volume, CY 2022</div>
     </div>
   </div>
@@ -198,7 +106,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     <h2 class="cs-section-title">Heart transplants cost $295K per case</h2>
     <p class="cs-text">The costliest DRGs are surgical and transplant-related. For commercial payers benchmarking against Medicare, these are the procedures where a 10% rate difference translates to $20K-$30K per case.</p>
     <div class="cs-figure rv">
-      <img src="Projects/medicare-claims-analysis/figures/top15_drg_cost.png" alt="Top 15 costliest DRGs">
+      <img src="Projects/medicare-claims-analysis/figures/top15_drg_cost.png" alt="Top 15 costliest DRGs" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
       <div class="cs-figure-cap">Top 15 costliest DRGs by average Medicare payment</div>
     </div>
   </div>
@@ -210,11 +118,11 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     <p class="cs-text">Nationally, hospitals charge 5.4x what Medicare pays (median). The scatter plot shows a nonlinear relationship: lower-cost procedures have the widest markup spread, while high-cost DRGs compress toward smaller ratios. The distribution is right-skewed, with a minority of hospitals charging 8-12x Medicare rates.</p>
     <div class="cs-cards">
       <div class="cs-figure rv" style="margin:0;">
-        <img src="Projects/medicare-claims-analysis/figures/inpatient_charges_vs_payment.png" alt="Charges vs payment scatter">
+        <img src="Projects/medicare-claims-analysis/figures/inpatient_charges_vs_payment.png" alt="Charges vs payment scatter" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
         <div class="cs-figure-cap">Submitted charges vs. Medicare payment</div>
       </div>
       <div class="cs-figure rv" style="margin:0;transition-delay:0.1s">
-        <img src="Projects/medicare-claims-analysis/figures/inpatient_markup_distribution.png" alt="Markup distribution">
+        <img src="Projects/medicare-claims-analysis/figures/inpatient_markup_distribution.png" alt="Markup distribution" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
         <div class="cs-figure-cap">Distribution of inpatient markup ratios</div>
       </div>
     </div>
@@ -230,11 +138,11 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     <h2 class="cs-section-title">Maryland 1.2x vs. Nevada 10.7x</h2>
     <p class="cs-text">The 9.5x spread in median markup between Maryland and Nevada is not random. Maryland's all-payer rate-setting system compresses the charge-to-payment gap by regulation. States without rate controls show far higher markups. California, Texas, and Florida combine high volume with above-median markups, making them priority markets for rate renegotiation.</p>
     <div class="cs-figure rv">
-      <img src="Projects/medicare-claims-analysis/figures/state_markup_variation.png" alt="State markup variation">
+      <img src="Projects/medicare-claims-analysis/figures/state_markup_variation.png" alt="State markup variation" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
       <div class="cs-figure-cap">Inpatient markup ratio by state with IQR whiskers</div>
     </div>
     <div class="cs-figure rv">
-      <img src="Projects/medicare-claims-analysis/figures/state_volume_payment.png" alt="State volume and payment">
+      <img src="Projects/medicare-claims-analysis/figures/state_volume_payment.png" alt="State volume and payment" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
       <div class="cs-figure-cap">Discharge volume and average payment by state</div>
     </div>
   </div>
@@ -246,11 +154,11 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     <p class="cs-text">On the physician side, the volume-cost mismatch is a strategic signal. Lab and radiology drive spend through utilization; surgery drives it through unit price. Different levers apply: utilization management for the former, rate negotiation for the latter.</p>
     <div class="cs-cards">
       <div class="cs-figure rv" style="margin:0;">
-        <img src="Projects/medicare-claims-analysis/figures/specialty_markup_ratio.png" alt="Specialty markup ratios">
+        <img src="Projects/medicare-claims-analysis/figures/specialty_markup_ratio.png" alt="Specialty markup ratios" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
         <div class="cs-figure-cap">Markup ratio by specialty (top 20)</div>
       </div>
       <div class="cs-figure rv" style="margin:0;transition-delay:0.1s">
-        <img src="Projects/medicare-claims-analysis/figures/hcpcs_payment_variation.png" alt="HCPCS variation">
+        <img src="Projects/medicare-claims-analysis/figures/hcpcs_payment_variation.png" alt="HCPCS variation" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
         <div class="cs-figure-cap">Highest payment variation by procedure</div>
       </div>
     </div>
@@ -285,10 +193,25 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     </div>
   </div>
 
+  <div class="cs-section rv">
+    <div class="cs-label">Tech Stack</div>
+    <h2 class="cs-section-title">Built with</h2>
+    <p class="cs-text">CMS Inpatient and Physician PUFs, 10M+ records. Pandas‑driven aggregation, volume‑weighted state and procedure metrics, and a state‑drilldown Plotly.js choropleth.</p>
+    <div class="cs-pills">
+      <span class="cs-pill">Python</span>
+      <span class="cs-pill">pandas</span>
+      <span class="cs-pill">NumPy</span>
+      <span class="cs-pill">Plotly.js</span>
+      <span class="cs-pill">SQL</span>
+      <span class="cs-pill">Jupyter</span>
+      <span class="cs-pill">Claude</span>
+    </div>
+  </div>
+
   <!-- CTA -->
   <div class="cs-cta rv">
     <p class="cs-cta-text">Interested in payer analytics, rate benchmarking, or claims data?</p>
-    <a href="mailto:g.sridharan@wustl.edu" class="cs-cta-btn">Get in touch</a>
+    <a href="mailto:drsridhar22@gmail.com" class="cs-cta-btn">Get in touch</a>
     <div class="cs-footer">Shri 2026</div>
   </div>
 </div>
@@ -299,6 +222,5 @@ document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
 var nav=document.querySelector('.nav');
 window.addEventListener('scroll',function(){if(window.scrollY>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled');},{passive:true});
 </script>
-
 </body>
 </html>

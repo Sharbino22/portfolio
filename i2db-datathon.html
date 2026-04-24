@@ -6,107 +6,18 @@
 <title>I2DB Datathon - Diabetes Risk Prediction - Shri</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/cs.css?v=1">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1E1B4B;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:68px;background:#F5F0EA;}
-body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(0,0,0,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.04) 1px,transparent 1px);
-  background-size:40px 40px;}
-
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 3rem;backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);background:rgba(245,240,234,0.8);border-bottom:1px solid rgba(0,0,0,0.06);transition:background 0.3s,box-shadow 0.3s;}
-.nav.scrolled{background:rgba(245,240,234,0.95);box-shadow:0 1px 16px rgba(0,0,0,0.04);}
-.nav-logo{font-size:15px;font-weight:700;color:#0F0F14;letter-spacing:-0.02em;text-decoration:none;}
-.nav-links{display:flex;gap:2.5rem;align-items:center;}
-.nav-links a{font-size:13px;font-weight:500;color:#6B6880;text-decoration:none;transition:color 0.2s;}
-.nav-links a:hover{color:#0F0F14;}
-.nav-cta{font-size:11px;font-weight:600;padding:6px 16px;background:transparent;color:#6366F1;border:1.5px solid #6366F1;border-radius:18px;text-decoration:none;transition:all 0.2s ease;letter-spacing:0.3px;}
-.nav-cta:hover{background:#6366F1;color:#fff;transform:translateY(-1px);}
-
-.rv{opacity:0;transform:translateY(20px);transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1);}
-.rv.vis{opacity:1;transform:translateY(0);}
-
-/* Hero - deep amber/warm */
-.cs-hero{position:relative;z-index:2;background:linear-gradient(135deg,#451A03,#78350F);padding:60px 2rem 40px;}
-.cs-hero-inner{max-width:800px;margin:0 auto;}
-.cs-back{font-size:13px;color:#FCD34D;text-decoration:none;display:inline-block;margin-bottom:20px;transition:opacity 0.2s;}
-.cs-back:hover{opacity:0.7;}
-.cs-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,0.08);margin-bottom:12px;}
-.cs-badge-dot{width:6px;height:6px;border-radius:50%;background:#F59E0B;}
-.cs-badge span{font-size:12px;color:#FCD34D;font-weight:600;}
-.cs-title{font-size:44px;font-weight:800;color:#FFFBEB;letter-spacing:-0.03em;margin-bottom:12px;line-height:1.1;}
-.cs-subtitle{font-size:16px;color:#FCD34D;line-height:1.55;max-width:580px;margin-bottom:12px;}
-.cs-meta{font-size:13px;color:#FBBF24;font-weight:500;}
-
-.cs-content{position:relative;z-index:2;max-width:800px;margin:0 auto;padding:0 2rem;}
-
-.cs-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:24px 0;}
-.cs-stat{background:rgba(255,255,255,0.8);border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:20px;text-align:center;backdrop-filter:blur(12px);}
-.cs-stat-n{font-size:28px;font-weight:800;color:#0F0F14;}
-.cs-stat-l{font-size:11px;color:#6B6880;margin-top:4px;font-weight:500;}
-
-.cs-section{padding:40px 0;border-top:1px solid rgba(0,0,0,0.06);}
-.cs-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#D97706;}
-.cs-section-title{font-size:24px;font-weight:700;color:#0F0F14;margin:8px 0 14px;letter-spacing:-0.01em;}
-.cs-text{font-size:15px;color:#4B5563;line-height:1.65;}
-
-.cs-highlight{background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border-radius:14px;padding:24px;margin:16px 0;}
-.cs-highlight-title{font-size:18px;font-weight:700;color:#78350F;margin-bottom:8px;}
-.cs-highlight-text{font-size:14px;color:#92400E;line-height:1.55;}
-
-.cs-figure{margin:20px 0;background:rgba(255,255,255,0.6);border:1px solid rgba(0,0,0,0.06);border-radius:14px;overflow:hidden;}
-.cs-figure img{width:100%;display:block;}
-.cs-figure-cap{padding:10px 16px;font-size:12px;color:#6B6880;font-style:italic;}
-
-.cs-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
-.cs-card{background:rgba(255,255,255,0.8);border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:20px;}
-.cs-card-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#D97706;margin-bottom:6px;}
-.cs-card-title{font-size:16px;font-weight:700;color:#0F0F14;margin-bottom:6px;}
-.cs-card-text{font-size:13px;color:#4B5563;line-height:1.55;}
-
-.cs-three-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
-
-.cs-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;}
-.cs-table th{text-align:left;padding:10px 14px;background:rgba(217,119,6,0.08);color:#78350F;font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid rgba(217,119,6,0.15);}
-.cs-table td{padding:10px 14px;border-bottom:1px solid rgba(0,0,0,0.05);color:#4B5563;line-height:1.45;}
-.cs-table tr:last-child td{border-bottom:none;}
-.cs-table .win{color:#0F0F14;font-weight:700;background:rgba(217,119,6,0.04);}
-
-.cs-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
-.cs-pill{padding:6px 14px;border-radius:8px;background:rgba(255,255,255,0.85);border:1px solid rgba(0,0,0,0.06);font-size:12px;color:#4B5563;font-weight:500;}
-
-/* Model progression bars */
-.model-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.04);}
-.model-row:last-child{border-bottom:none;}
-.model-name{width:130px;font-size:13px;font-weight:600;color:#0F0F14;flex-shrink:0;}
-.model-bar-bg{flex:1;height:8px;background:rgba(0,0,0,0.04);border-radius:4px;overflow:hidden;}
-.model-bar{height:100%;border-radius:4px;}
-.model-val{width:60px;text-align:right;font-size:13px;font-weight:700;color:#0F0F14;flex-shrink:0;}
-
-.cs-cta{padding:48px 0 60px;text-align:center;}
-.cs-cta-text{font-size:15px;color:#6B6880;margin-bottom:16px;}
-.cs-cta-btn{display:inline-block;padding:14px 32px;border-radius:12px;background:#451A03;color:#FCD34D;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.3s cubic-bezier(0.16,1,0.3,1);}
-.cs-cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(69,26,3,0.3);}
-.cs-footer{font-size:12px;color:#9CA3AF;margin-top:24px;}
-
-@media(max-width:768px){
-  .nav{padding:1rem 1.25rem;}.nav-links{display:none;}
-  .cs-hero{padding:40px 1.25rem 30px;}.cs-title{font-size:30px;}
-  .cs-content{padding:0 1.25rem;}
-  .cs-stats{grid-template-columns:1fr 1fr;}
-  .cs-cards{grid-template-columns:1fr;}
-  .cs-three-cards{grid-template-columns:1fr;}
-  .cs-section-title{font-size:20px;}
-  .model-name{width:100px;font-size:12px;}
-}
-.js-transitions body{opacity:0;transition:opacity 380ms cubic-bezier(0.16,1,0.3,1);}
-.js-transitions body.page-ready{opacity:1;}
-.js-transitions body.page-leaving{opacity:0;transition:opacity 220ms cubic-bezier(0.4,0,1,1);}
+  :root{
+    --cs-hero-1:#451A03; --cs-hero-2:#78350F;
+    --cs-accent:#F59E0B; --cs-accent-soft:#FCD34D; --cs-accent-bright:#FFFBEB;
+    --cs-hl-1:#FFFBEB; --cs-hl-2:#FEF3C7; --cs-hl-title:#78350F; --cs-hl-text:#92400E;
+    --cs-launch-1:#F59E0B; --cs-launch-2:#FCD34D; --cs-launch-text:#451A03;
+  }
 </style>
 <script src="js/transitions.js"></script>
 </head>
 <body>
-
 <nav class="nav">
   <a href="index.html" class="nav-logo">Shri</a>
   <div class="nav-links">
@@ -173,7 +84,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
       </div>
     </div>
     <div class="cs-figure rv">
-      <img src="Projects/I2DB_Datathon/plots/pres_2_risk_by_a1c.png" alt="Risk by A1c level">
+      <img src="Projects/I2DB_Datathon/plots/pres_2_risk_by_a1c.png" alt="Risk by A1c level" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
       <div class="cs-figure-cap">Uncontrolled rate by current A1c level. Risk plateaus around A1c 9-10.</div>
     </div>
   </div>
@@ -233,7 +144,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     <p class="cs-text">Tuning: RandomizedSearchCV with 80 parameter combinations across 5-fold CV (400 fits). Key insight: smaller learning rate (0.01 vs 0.1) + more trees (800) + regularization (gamma=0.3, subsample=0.7) produced the best generalization.</p>
 
     <div class="cs-figure rv">
-      <img src="Projects/I2DB_Datathon/plots/pres_3_model_roc.png" alt="ROC curve">
+      <img src="Projects/I2DB_Datathon/plots/pres_3_model_roc.png" alt="ROC curve" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
       <div class="cs-figure-cap">ROC curve for final tuned XGBoost model (AUC = 0.852)</div>
     </div>
   </div>
@@ -255,11 +166,11 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
 
     <div class="cs-cards">
       <div class="cs-figure rv" style="margin:0;">
-        <img src="Projects/I2DB_Datathon/plots/pres_4_confusion.png" alt="Confusion matrix">
+        <img src="Projects/I2DB_Datathon/plots/pres_4_confusion.png" alt="Confusion matrix" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
         <div class="cs-figure-cap">Confusion matrix at threshold 0.5</div>
       </div>
       <div class="cs-figure rv" style="margin:0;transition-delay:0.1s">
-        <img src="Projects/I2DB_Datathon/plots/pres_7_metrics.png" alt="Performance metrics">
+        <img src="Projects/I2DB_Datathon/plots/pres_7_metrics.png" alt="Performance metrics" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
         <div class="cs-figure-cap">Comprehensive performance metrics</div>
       </div>
     </div>
@@ -271,7 +182,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     <h2 class="cs-section-title">What's driving the predictions?</h2>
     <p class="cs-text">SHAP values reveal that mean A1c is by far the strongest driver, followed by max A1c and the most recent reading. But clinically meaningful engineered features like treatment resistance and A1c variability earn their place in the top 10.</p>
     <div class="cs-figure rv">
-      <img src="Projects/I2DB_Datathon/plots/pres_5_shap.png" alt="SHAP values">
+      <img src="Projects/I2DB_Datathon/plots/pres_5_shap.png" alt="SHAP values" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
       <div class="cs-figure-cap">SHAP feature importance: what drives the model's predictions</div>
     </div>
     <div class="cs-highlight rv">
@@ -286,7 +197,7 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     <h2 class="cs-section-title">No fairness red flags across subgroups</h2>
     <p class="cs-text">The model performs consistently (AUC 0.83-0.90) across all demographic subgroups. It actually catches more uncontrolled patients in minority groups (Black: 85% recall, Asian: 87%) than White patients (79%). Medicaid patients have the highest recall at 91-93%.</p>
     <div class="cs-figure rv">
-      <img src="Projects/I2DB_Datathon/plots/pres_6_fairness.png" alt="Fairness analysis">
+      <img src="Projects/I2DB_Datathon/plots/pres_6_fairness.png" alt="Fairness analysis" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
       <div class="cs-figure-cap">Model performance across race, gender, age, and insurance subgroups</div>
     </div>
   </div>
@@ -344,10 +255,25 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-inde
     </div>
   </div>
 
+  <div class="cs-section rv">
+    <div class="cs-label">Tech Stack</div>
+    <h2 class="cs-section-title">Built with</h2>
+    <p class="cs-text">XGBoost over 20 engineered features from EHR data. SHAP for feature attribution, fairness metrics stratified by race, sex, age, and insurance. Full model card shipped alongside.</p>
+    <div class="cs-pills">
+      <span class="cs-pill">Python</span>
+      <span class="cs-pill">XGBoost</span>
+      <span class="cs-pill">scikit‑learn</span>
+      <span class="cs-pill">SHAP</span>
+      <span class="cs-pill">pandas</span>
+      <span class="cs-pill">matplotlib</span>
+      <span class="cs-pill">Jupyter</span>
+    </div>
+  </div>
+
   <!-- CTA -->
   <div class="cs-cta rv">
     <p class="cs-cta-text">Interested in predictive modeling, clinical ML, or health data science?</p>
-    <a href="mailto:g.sridharan@wustl.edu" class="cs-cta-btn">Get in touch</a>
+    <a href="mailto:drsridhar22@gmail.com" class="cs-cta-btn">Get in touch</a>
     <div class="cs-footer">Shri 2026</div>
   </div>
 </div>
@@ -358,6 +284,5 @@ document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
 var nav=document.querySelector('.nav');
 window.addEventListener('scroll',function(){if(window.scrollY>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled');},{passive:true});
 </script>
-
 </body>
 </html>
