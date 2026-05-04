@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Madera Hospital Turnaround Memo · Shri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/cs.css?v=1">
+<style>
+  :root{
+    --cs-hero-1:#062D20; --cs-hero-2:#0A4A35;
+    --cs-accent:#10B981; --cs-accent-soft:#34D399; --cs-accent-bright:#D1FAE5;
+    --cs-hl-1:#ECFDF5; --cs-hl-2:#D1FAE5; --cs-hl-title:#064E3B; --cs-hl-text:#065F46;
+    --cs-launch-1:#10B981; --cs-launch-2:#34D399; --cs-launch-text:#04342C;
+  }
+  /* Madera-specific small chart helpers */
+  .mc-chart{background:rgba(255,255,255,0.7);border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:24px;margin:18px 0;}
+  .mc-chart svg{width:100%;height:auto;display:block;}
+  .mc-chart-cap{font-size:13px;color:#6B7280;text-align:center;margin-top:10px;font-weight:500;}
+  .mc-bridge-row{display:grid;grid-template-columns:140px 1fr 80px;align-items:center;gap:12px;margin-bottom:8px;font-size:14px;}
+  .mc-bridge-label{font-weight:600;color:#1F2937;}
+  .mc-bridge-bar-bg{background:rgba(16,185,129,0.10);height:18px;border-radius:6px;overflow:hidden;}
+  .mc-bridge-bar{height:100%;border-radius:6px;}
+  .mc-bridge-val{font-weight:700;text-align:right;color:#1F2937;}
+  .mc-lever-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px;}
+  .mc-lever{background:rgba(255,255,255,0.65);border:1px solid rgba(16,185,129,0.18);border-radius:12px;padding:16px;}
+  .mc-lever-num{font-size:11px;font-weight:800;letter-spacing:1.5px;color:#047857;margin-bottom:6px;}
+  .mc-lever-name{font-size:15px;font-weight:700;color:#064E3B;margin-bottom:4px;}
+  .mc-lever-impact{font-size:13px;color:#065F46;}
+  @media (max-width:640px){
+    .mc-lever-grid{grid-template-columns:1fr;}
+    .mc-bridge-row{grid-template-columns:110px 1fr 70px;font-size:12px;}
+  }
+</style>
+<script src="js/transitions.js"></script>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Shri</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#contact" class="nav-cta">Connect</a>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="cs-hero-inner">
+    <a href="index.html#projects" class="cs-back rv">&larr; Back to projects</a>
+    <div class="cs-badge rv"><div class="cs-badge-dot"></div><span>Healthcare Strategy &middot; Olin course case</span></div>
+    <h1 class="cs-title rv">Madera Hospital<br>Turnaround Memo</h1>
+    <p class="cs-subtitle rv">A solo strategic memo for Madera Community Hospital, the only general hospital serving 160,000 residents in Madera County, California. Closed January 2023, reopening 2025 on a $57M state bridge loan with hard solvency checkpoints. Authored using only public data sources for an Olin healthcare management course.</p>
+    <p class="cs-meta rv">IRS Form 990 (EIN 23-7429117) &middot; California HCAI &middot; Distressed Hospital Loan Program filings</p>
+  </div>
+</section>
+
+<div class="cs-content">
+  <div class="cs-stats">
+    <div class="cs-stat rv"><div class="cs-stat-n">$27M</div><div class="cs-stat-l">FY2023 operating loss</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.1s"><div class="cs-stat-n">$3M</div><div class="cs-stat-l">Year 1 EBITDA target</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.2s"><div class="cs-stat-n">$57M</div><div class="cs-stat-l">State bridge loan, 0% interest</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.3s"><div class="cs-stat-n">4</div><div class="cs-stat-l">Coordinated interventions</div></div>
+  </div>
+
+  <!-- THE CONTEXT -->
+  <div class="cs-section rv">
+    <div class="cs-label">THE CONTEXT</div>
+    <h2 class="cs-section-title">A 106-bed county hospital that ran out of cash</h2>
+    <p class="cs-text">Madera Community Hospital (MCH) closed in January 2023 after its monthly operating losses hit $2 to $2.5 million. It was the only general hospital in Madera County. Closure pushed local emergency volume to Fresno hospitals 30 minutes away, which absorbed 20 to 30 extra patients per day at up to 130% of capacity. In April 2024, California extended a $57 million bridge loan at 0% interest under the Distressed Hospital Loan Program, conditioned on positive operating cash flow and a funded seismic plan by October 2025. The question this memo answers: given those constraints, what does a defensible 12-month operating plan look like?</p>
+    <div class="cs-highlight rv">
+      <div class="cs-highlight-title">Why it matters strategically</div>
+      <div class="cs-highlight-text">MCH is a high-stakes test of whether a single rural hospital can be rescued through public capital plus operating discipline, or whether the structural economics of rural Medi-Cal-heavy facilities require system affiliation. The memo treats this as a strategy question, not a clinical one.</div>
+    </div>
+  </div>
+
+  <!-- ROOT CAUSE -->
+  <div class="cs-section rv">
+    <div class="cs-label">ROOT CAUSE</div>
+    <h2 class="cs-section-title">Four causes, not one</h2>
+    <p class="cs-text">From the IRS Form 990 trajectory and California HCAI data, the deterioration is not a single shock. Revenue fell 50% from FY2019 to FY2023 while expenses fell only 18%, driving the operating margin from -3.3% to -37.4%. The decisive factors stack: a payer mix where roughly 50% of discharges were Medi-Cal (reimbursed at 70 to 100% of Medicare), commercial contracts that paid only 51% of cost of care versus 141% at comparable hospitals, agency nurse premiums that doubled from $4.2M to $8.4M, and a $30M unfunded SB 1953 seismic mandate.</p>
+
+    <div class="mc-chart">
+      <svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="rev" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#10B981" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#10B981" stop-opacity="0.55"/>
+          </linearGradient>
+          <linearGradient id="exp" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#F87171" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#F87171" stop-opacity="0.55"/>
+          </linearGradient>
+        </defs>
+        <!-- Y axis grid + labels -->
+        <line x1="60" y1="40" x2="580" y2="40" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="3,3"/>
+        <line x1="60" y1="100" x2="580" y2="100" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="3,3"/>
+        <line x1="60" y1="160" x2="580" y2="160" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="3,3"/>
+        <line x1="60" y1="220" x2="580" y2="220" stroke="#E5E7EB" stroke-width="1"/>
+        <text x="50" y="44" text-anchor="end" fill="#9CA3AF" font-size="10" font-family="Plus Jakarta Sans">$120M</text>
+        <text x="50" y="104" text-anchor="end" fill="#9CA3AF" font-size="10" font-family="Plus Jakarta Sans">$80M</text>
+        <text x="50" y="164" text-anchor="end" fill="#9CA3AF" font-size="10" font-family="Plus Jakarta Sans">$40M</text>
+        <text x="50" y="224" text-anchor="end" fill="#9CA3AF" font-size="10" font-family="Plus Jakarta Sans">$0</text>
+        <!-- FY2019: Rev 93.3, Exp 90.0, margin -3.3% -->
+        <rect x="105" y="80" width="55" height="140" rx="3" fill="url(#rev)"/>
+        <rect x="170" y="85" width="55" height="135" rx="3" fill="url(#exp)"/>
+        <text x="190" y="245" text-anchor="middle" fill="#374151" font-size="12" font-weight="700" font-family="Plus Jakarta Sans">FY2019</text>
+        <text x="190" y="262" text-anchor="middle" fill="#DC2626" font-size="11" font-weight="600" font-family="Plus Jakarta Sans">margin -3.3%</text>
+        <!-- FY2021: Rev 101.9, Exp 104.4, margin -2.5% -->
+        <rect x="270" y="67" width="55" height="153" rx="3" fill="url(#rev)"/>
+        <rect x="335" y="63" width="55" height="157" rx="3" fill="url(#exp)"/>
+        <text x="355" y="245" text-anchor="middle" fill="#374151" font-size="12" font-weight="700" font-family="Plus Jakarta Sans">FY2021</text>
+        <text x="355" y="262" text-anchor="middle" fill="#DC2626" font-size="11" font-weight="600" font-family="Plus Jakarta Sans">margin -2.5%</text>
+        <!-- FY2023: Rev 46.3, Exp 74.0, margin -37.4% -->
+        <rect x="435" y="151" width="55" height="69" rx="3" fill="url(#rev)"/>
+        <rect x="500" y="109" width="55" height="111" rx="3" fill="url(#exp)"/>
+        <text x="520" y="245" text-anchor="middle" fill="#374151" font-size="12" font-weight="700" font-family="Plus Jakarta Sans">FY2023</text>
+        <text x="520" y="262" text-anchor="middle" fill="#DC2626" font-size="11" font-weight="700" font-family="Plus Jakarta Sans">margin -37.4%</text>
+        <!-- Legend -->
+        <rect x="380" y="14" width="14" height="10" rx="2" fill="#10B981"/>
+        <text x="400" y="23" fill="#374151" font-size="11" font-family="Plus Jakarta Sans">Revenue</text>
+        <rect x="465" y="14" width="14" height="10" rx="2" fill="#F87171"/>
+        <text x="485" y="23" fill="#374151" font-size="11" font-family="Plus Jakarta Sans">Expenses</text>
+      </svg>
+      <div class="mc-chart-cap">MCH revenue vs expenses, FY2019 to FY2023. Source: IRS Form 990 filings (EIN 23-7429117)</div>
+    </div>
+
+    <table class="cs-table">
+      <tr><th>Cause</th><th>Evidence</th></tr>
+      <tr><td>Payer mix</td><td>~50% Medi-Cal discharges; commercial reimbursed at 51% of cost vs 141% at peers</td></tr>
+      <tr><td>Labor cost shock</td><td>Agency nurse spend doubled from $4.2M (FY2019) to $8.4M (FY2023)</td></tr>
+      <tr><td>Regulatory burden</td><td>SB 1953 seismic mandate required $30M retrofit by 2030, unfunded</td></tr>
+      <tr><td>Failed rescues</td><td>Trinity Health pulled out Nov 2022 over seismic and charity-care terms; Adventist Health withdrew after auditor review</td></tr>
+    </table>
+  </div>
+
+  <!-- THE STRATEGY -->
+  <div class="cs-section rv">
+    <div class="cs-label">THE STRATEGY</div>
+    <h2 class="cs-section-title">Four interventions, sequenced against the loan checkpoints</h2>
+    <p class="cs-text">The Distressed Hospital Loan terms force the plan: positive operating cash flow and a funded seismic plan by October 2025. The four interventions below are picked because each contributes margin within that window, and none requires capital outside the existing $57M envelope.</p>
+
+    <div class="cs-cards">
+      <div class="cs-card rv">
+        <div class="cs-card-label">Intervention 1</div>
+        <div class="cs-card-title">Reopen ED and 6-bed OB in 6 months</div>
+        <div class="cs-card-text">No full-service ED or OB exists within 25 miles of Madera City. Reclaim approximately 1,400 births and 28,000 ED visits diverted to Fresno during the closure. Projected $8M net margin contribution over two years. Year 1 KPI: 80% of 2019 ED volume, 60% of prior births.</div>
+      </div>
+      <div class="cs-card rv" style="transition-delay:0.1s">
+        <div class="cs-card-label">Intervention 2</div>
+        <div class="cs-card-title">Renegotiate commercial contracts to 90 to 95% of Fresno DRG rates</div>
+        <div class="cs-card-text">MCH is the only full-service hospital within 25 miles, which is the negotiating anchor. Six-month negotiations with Anthem, Aetna, and Blue Shield. Projected $5 to $6M in incremental net revenue in year 1, more than 2x the loan's $2M annual amortization.</div>
+      </div>
+      <div class="cs-card rv">
+        <div class="cs-card-label">Intervention 3</div>
+        <div class="cs-card-title">Build a 15 to 20 person internal float pool</div>
+        <div class="cs-card-text">Wages set 20% above staff but 30% below agency invoices. Lean 5S "standardize" applied to staffing. Upfront $2M in bonuses and salary, offset by $2.5M in annual savings once agency hours drop to 40% of FY2023 baseline. Reduces turnover risk, since nursing turnover spikes when agency staff exceed 30% of total hours.</div>
+      </div>
+      <div class="cs-card rv" style="transition-delay:0.1s">
+        <div class="cs-card-label">Intervention 4</div>
+        <div class="cs-card-title">Stand up a Community Partnership Council</div>
+        <div class="cs-card-text">Quarterly transparency reports, county and faith-based co-chairs. ~$40K annual cost (two community liaison stipends and translation). The 2023 closure was announced before community leadership was briefed; this rebuilds the political capital required to land contract negotiations and any future capital ask.</div>
+      </div>
+    </div>
+
+    <p class="cs-text" style="margin-top:24px;">The four interventions are the operating spine. Each opens a sharper question that determines whether the plan actually clears the loan checkpoints. Three extensions below:</p>
+
+    <div class="cs-three-cards rv">
+      <div class="cs-card">
+        <div class="cs-card-label">Sharper &middot; Intervention 2</div>
+        <div class="cs-card-title">What proves value to commercial payers?</div>
+        <div class="cs-card-text">"Pay us more because we exist" is not a negotiation. The argument is that the alternative costs more. Three proofs to put on the table: (1) total-cost-of-care math from the closure period, when Anthem and Blue Shield paid Fresno's 141%-of-cost rates for the same Madera County enrollees; (2) a pay-for-performance kicker tied to specific quality measures (30-day readmissions, ED median LWBS, HCAHPS top-box) rather than a flat rate ask; (3) Knox-Keene network adequacy exposure, since commercial plans were arguably non-compliant for Madera County during the 14-month closure.</div>
+      </div>
+      <div class="cs-card" style="transition-delay:0.1s">
+        <div class="cs-card-label">Sharper &middot; Intervention 1</div>
+        <div class="cs-card-title">Where the positive margin actually lives</div>
+        <div class="cs-card-text">The ED is structurally low-margin (7.8% average) and functions as a feeder. The real margin sits in admitted patients (21.8%) and four outpatient lines: (1) ASC-class outpatient surgery (cataract, GI scopes, ortho arthroscopy, hernias) on existing OR capacity; (2) outpatient imaging (MRI, CT, mammography) on already-amortized equipment; (3) infusion services (oncology, rheumatology) that build a sticky commercial panel; (4) skilled nursing or swing-bed, where Medicare per-diem exceeds marginal cost. ED is the front door, OB is the trust play, these four lines are the margin engine.</div>
+      </div>
+      <div class="cs-card" style="transition-delay:0.2s">
+        <div class="cs-card-label">Sharper &middot; Patient acquisition</div>
+        <div class="cs-card-title">Beyond "in network": actually attracting commercial patients</div>
+        <div class="cs-card-text">Being in-network is necessary but not sufficient. Habit is the enemy after 70%+ of commercially-insured patients migrated to Fresno. Tactics: (1) recruit 2 to 4 employed PCPs (a single PCP drives 200 to 400 admits per year through their referral pipeline); (2) treat OB as a structural acquisition channel, since a 9-month relationship converts the family for pediatrics, primary care, and ED loyalty; (3) direct contracts with self-insured employers (county government, school district, Foster Farms) on bundled procedures, bypassing payers; (4) lean into CMS price transparency as a marketing tool; (5) lease campus space to commercial-friendly specialty groups (orthopedics, cardiology, dermatology) that convert clinic visits to MCH for imaging, surgery, and lab.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE NUMBERS -->
+  <div class="cs-section rv">
+    <div class="cs-label">THE NUMBERS</div>
+    <h2 class="cs-section-title">Loss to EBITDA: the bridge the plan has to cross</h2>
+    <p class="cs-text">Each intervention contributes to a $30M swing from a $27M operating loss to a $3M EBITDA target in the first full fiscal year. Reopening fundamental services restores the baseline operating revenue. The four interventions above add the marginal contributions that move the needle from break-even into the green and satisfy the bridge loan's solvency clause.</p>
+
+    <div class="mc-chart">
+      <div class="mc-bridge-row">
+        <div class="mc-bridge-label">FY2023 actual</div>
+        <div class="mc-bridge-bar-bg" style="background:rgba(248,113,113,0.18);"><div class="mc-bridge-bar" style="width:90%;background:#F87171;"></div></div>
+        <div class="mc-bridge-val" style="color:#B91C1C;">-$27M</div>
+      </div>
+      <div class="mc-bridge-row">
+        <div class="mc-bridge-label">+ ED &amp; OB reopen</div>
+        <div class="mc-bridge-bar-bg"><div class="mc-bridge-bar" style="width:30%;background:#10B981;"></div></div>
+        <div class="mc-bridge-val" style="color:#047857;">~$4M (Yr 1 share)</div>
+      </div>
+      <div class="mc-bridge-row">
+        <div class="mc-bridge-label">+ Contract realignment</div>
+        <div class="mc-bridge-bar-bg"><div class="mc-bridge-bar" style="width:38%;background:#10B981;"></div></div>
+        <div class="mc-bridge-val" style="color:#047857;">$5 to $6M</div>
+      </div>
+      <div class="mc-bridge-row">
+        <div class="mc-bridge-label">+ Nursing insourcing</div>
+        <div class="mc-bridge-bar-bg"><div class="mc-bridge-bar" style="width:18%;background:#10B981;"></div></div>
+        <div class="mc-bridge-val" style="color:#047857;">$2.5M</div>
+      </div>
+      <div class="mc-bridge-row">
+        <div class="mc-bridge-label">+ Reopened operations</div>
+        <div class="mc-bridge-bar-bg"><div class="mc-bridge-bar" style="width:62%;background:#34D399;"></div></div>
+        <div class="mc-bridge-val" style="color:#047857;">balance of swing</div>
+      </div>
+      <div class="mc-bridge-row" style="margin-top:14px;border-top:1px dashed rgba(0,0,0,0.12);padding-top:12px;">
+        <div class="mc-bridge-label" style="font-weight:800;">Year 1 plan</div>
+        <div class="mc-bridge-bar-bg"><div class="mc-bridge-bar" style="width:18%;background:#059669;"></div></div>
+        <div class="mc-bridge-val" style="color:#065F46;font-weight:800;">+$3M EBITDA</div>
+      </div>
+      <div class="mc-chart-cap">Year 1 bridge from FY2023 actual to plan target. Bar widths are directional, not to scale; intervention values are the memo's stated contributions.</div>
+    </div>
+
+    <div class="mc-chart">
+      <svg viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg">
+        <!-- Donut: Medi-Cal 49% (slate green), Commercial 15% (emerald), Other (Medicare/self-pay) 36% (light) -->
+        <text x="300" y="22" text-anchor="middle" fill="#064E3B" font-size="13" font-weight="800" letter-spacing="1.5" font-family="Plus Jakarta Sans">MADERA COUNTY DISCHARGE PAYER MIX</text>
+        <!-- background ring -->
+        <circle cx="200" cy="130" r="70" fill="none" stroke="#E5E7EB" stroke-width="28"/>
+        <!-- Medi-Cal arc, 49% -->
+        <circle cx="200" cy="130" r="70" fill="none" stroke="#059669" stroke-width="28"
+                stroke-dasharray="215.5 439.8" transform="rotate(-90 200 130)" stroke-linecap="butt"/>
+        <!-- Commercial arc, 15%, starts after Medi-Cal -->
+        <circle cx="200" cy="130" r="70" fill="none" stroke="#34D399" stroke-width="28"
+                stroke-dasharray="65.97 439.8" stroke-dashoffset="-215.5" transform="rotate(-90 200 130)" stroke-linecap="butt"/>
+        <text x="200" y="128" text-anchor="middle" fill="#064E3B" font-size="22" font-weight="800" font-family="Plus Jakarta Sans">49%</text>
+        <text x="200" y="148" text-anchor="middle" fill="#047857" font-size="11" font-weight="600" letter-spacing="1" font-family="Plus Jakarta Sans">MEDI-CAL</text>
+        <!-- Right side legend + numbers -->
+        <rect x="340" y="80" width="14" height="14" rx="2" fill="#059669"/>
+        <text x="362" y="92" fill="#064E3B" font-size="14" font-weight="700" font-family="Plus Jakarta Sans">Medi-Cal · 49%</text>
+        <text x="362" y="110" fill="#6B7280" font-size="11" font-family="Plus Jakarta Sans">Reimburses 70 to 100% of Medicare</text>
+        <rect x="340" y="130" width="14" height="14" rx="2" fill="#34D399"/>
+        <text x="362" y="142" fill="#064E3B" font-size="14" font-weight="700" font-family="Plus Jakarta Sans">Commercial · 15%</text>
+        <text x="362" y="160" fill="#6B7280" font-size="11" font-family="Plus Jakarta Sans">MCH paid 51% of cost (peers: 141%)</text>
+        <rect x="340" y="180" width="14" height="14" rx="2" fill="#E5E7EB"/>
+        <text x="362" y="192" fill="#064E3B" font-size="14" font-weight="700" font-family="Plus Jakarta Sans">Medicare + other · 36%</text>
+        <text x="362" y="210" fill="#6B7280" font-size="11" font-family="Plus Jakarta Sans">Including self-pay and dual-eligibles</text>
+      </svg>
+      <div class="mc-chart-cap">Source: California HCAI hospital annual financial data, Madera County 2021</div>
+    </div>
+  </div>
+
+  <!-- 12-MONTH ACTION PLAN -->
+  <div class="cs-section rv">
+    <div class="cs-label">12-MONTH ACTION PLAN</div>
+    <h2 class="cs-section-title">Sequenced to clear each loan checkpoint</h2>
+    <div class="cs-timeline">
+      <div class="cs-phase rv">
+        <div class="cs-phase-marker"><div class="cs-phase-dot"></div><div class="cs-phase-line"></div></div>
+        <div class="cs-phase-content">
+          <div class="cs-phase-date">Months 0 to 3</div>
+          <div class="cs-phase-name">Foundation</div>
+          <div class="cs-phase-desc">Board approves $4M for OB and ED capital. Existing AAM executive assigned to oversee build (no new overhead). CFO opens contract renegotiation with Blue Shield, Anthem, Aetna. Community Partnership Council announced with county and faith-based co-chairs.</div>
+        </div>
+      </div>
+      <div class="cs-phase rv" style="transition-delay:0.08s">
+        <div class="cs-phase-marker"><div class="cs-phase-dot"></div><div class="cs-phase-line"></div></div>
+        <div class="cs-phase-content">
+          <div class="cs-phase-date">Months 3 to 6</div>
+          <div class="cs-phase-name">Service restoration</div>
+          <div class="cs-phase-desc">50% reconstruction by week 18. ED reopens 24/7. OB resumes limited service by week 22. Marketing campaign in Madera ZIPs leans on proximity. First 30 days of operating: target 700 birth-equivalents annualized and 1,500 ED visits, roughly 40% of 2019 baseline.</div>
+        </div>
+      </div>
+      <div class="cs-phase rv" style="transition-delay:0.16s">
+        <div class="cs-phase-marker"><div class="cs-phase-dot"></div><div class="cs-phase-line"></div></div>
+        <div class="cs-phase-content">
+          <div class="cs-phase-date">Months 6 to 9</div>
+          <div class="cs-phase-name">Revenue stabilization</div>
+          <div class="cs-phase-desc">Commercial contracts signed, +$5M YTD net revenue. 15 to 20 RNs and LVNs hired full-time, agency spend down $1M YTD. Architectural drawings for the $30M seismic retrofit complete and submitted to OSHPD for review.</div>
+        </div>
+      </div>
+      <div class="cs-phase rv" style="transition-delay:0.24s">
+        <div class="cs-phase-marker"><div class="cs-phase-dot" style="background:#34D399;"></div></div>
+        <div class="cs-phase-content">
+          <div class="cs-phase-date">Months 9 to 12</div>
+          <div class="cs-phase-name">Operational sustainability</div>
+          <div class="cs-phase-desc">ED volume reaches 80% of 2019. Births at 60% of 2019. Agency spend below $4M annualized. CPC survey records meet community-benefit target. HCAI releases the second tranche for seismic construction. Year 1 public report compiles financial, quality, and community metrics, satisfying the loan's public-benefit clause.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPLICATIONS -->
+  <div class="cs-section rv">
+    <div class="cs-label">SO WHAT</div>
+    <h2 class="cs-section-title">What the memo argues, beyond the numbers</h2>
+    <table class="cs-table">
+      <tr><th>Finding</th><th>Strategic implication</th></tr>
+      <tr><td>50% Medi-Cal mix at 70 to 100% of Medicare rates</td><td>Rural hospitals cannot cost-cut their way to solvency from a payer mix that is structurally below cost. The plan must move the commercial side of the contract book.</td></tr>
+      <tr><td>Commercial contracts paid 51% of cost while peers were paid 141%</td><td>The single highest-leverage operating fix is rate, not volume. Renegotiation alone can fund the loan amortization.</td></tr>
+      <tr><td>Agency labor doubled in 4 years</td><td>Agency reliance is a self-reinforcing loop: high agency hours drive turnover, which drives more agency hours. Insourcing is the only durable lever.</td></tr>
+      <tr><td>Trinity and Adventist both walked away</td><td>The structural fix for rural distressed hospitals is system affiliation. Independent operation works only with a clear path to break-even within the loan window.</td></tr>
+      <tr><td>Closure communicated before community briefed</td><td>Political capital is an operating asset for distressed hospitals. The CPC line item is small dollars but high return.</td></tr>
+      <tr><td>ED is structurally a feeder, not a profit center (7.8% margin)</td><td>Margin recovery has to come from outpatient surgery, imaging, infusion, and swing-bed. The ED's job is to load the inpatient and outpatient pipeline.</td></tr>
+    </table>
+  </div>
+
+  <!-- METHODS -->
+  <div class="cs-section rv">
+    <div class="cs-label">METHODS</div>
+    <h2 class="cs-section-title">Public data, no hospital-supplied internal data</h2>
+    <p class="cs-text">All numbers in this memo come from public sources: IRS Form 990 filings (EIN 23-7429117) for the FY2019, FY2021, FY2023 financials; California HCAI hospital annual financial data for payer mix and reimbursement comparisons; Distressed Hospital Loan Program filings and HCAI announcements for the $57M loan terms; California SB 1953 statutory text for the seismic mandate; Becker's Hospital Review for the ED profitability benchmarks; and contemporaneous news coverage from CalMatters, KVPR, Fresnoland, and the Washington Post for closure timeline and community impact. The memo is a synthesis exercise, not a consulting engagement, and does not include any hospital-supplied internal financials.</p>
+    <div class="cs-pills rv">
+      <span class="cs-pill">IRS Form 990</span>
+      <span class="cs-pill">California HCAI</span>
+      <span class="cs-pill">Distressed Hospital Loan Program</span>
+      <span class="cs-pill">SB 1953</span>
+      <span class="cs-pill">SWOT &amp; Fishbone</span>
+      <span class="cs-pill">Lean 5S</span>
+      <span class="cs-pill">Triple Aim</span>
+    </div>
+  </div>
+
+  <!-- DISCLOSURE -->
+  <div class="cs-section rv">
+    <div class="cs-label">DISCLOSURE</div>
+    <h2 class="cs-section-title">Course context and tools</h2>
+    <p class="cs-text">Authored solo as a final case for an Olin Business School healthcare management course. Madera Community Hospital was the assigned subject. Drafting and editing used R for the financial trajectory checks, plus Grammarly, ChatGPT, Claude, and QuillBot for prose review. All quantitative claims and citations were independently sourced and verified against the references cited in the full memo.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cs-cta rv">
+    <p class="cs-cta-text">Interested in healthcare strategy, distressed-hospital turnarounds, or rural health economics?</p>
+    <a href="mailto:drsridhar22@gmail.com" class="cs-cta-btn">Get in touch</a>
+    <div class="cs-footer">Shri 2026</div>
+  </div>
+</div>
+
+<script>
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
+var nav=document.querySelector('.nav');
+window.addEventListener('scroll',function(){if(window.scrollY>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled');},{passive:true});
+</script>
+</body>
+</html>
