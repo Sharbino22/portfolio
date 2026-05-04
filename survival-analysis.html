@@ -156,8 +156,8 @@
   <!-- FINDING 5: DIAGNOSTICS -->
   <div class="cs-section rv">
     <div class="cs-label">FINDING 5</div>
-    <h2 class="cs-section-title">Proportional hazards assumption holds</h2>
-    <p class="cs-text">Schoenfeld residual tests confirm the PH assumption is met for all primary exposures. The log-log plots show parallel curves. This validates the Cox model specification and supports the stability of the reported hazard ratios over the full follow-up period.</p>
+    <h2 class="cs-section-title">PH assumption: mostly met, mild violations flagged</h2>
+    <p class="cs-text">Schoenfeld residual tests support the proportional hazards assumption for the primary exposures of interest (diabetes, hypertension, smoking). Mild violations are present for age and obesity, which is unsurprising given that both effects evolve non-proportionally over a 20-year follow-up window. The diabetes effect estimate is stable across the sensitivity analyses below, so the flagged violations are noted rather than rebuilt with time-varying coefficients in this version.</p>
     <div class="cs-cards">
       <div class="cs-figure rv" style="margin:0;">
         <img src="Projects/nhanes-cancer-survival/figures/schoenfeld_residuals.png" alt="Schoenfeld residuals" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
