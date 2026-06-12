@@ -21,7 +21,13 @@ Projects/nhanes-cancer-survival/docs/.Rhistory
 AGENTS.md
 GEMINI.md
 .claude/skills/
+.vscode/
 Projects/Portfolio_Projects_Plan.docx
+
+# Private / local-only files (never deploy)
+build_gupta_dossier.py
+gupta_meeting_project_dossier.docx
+Shader wallpapers.zip
 
 # Medicare claims data (too large for git, download via download_data.py)
 Projects/medicare-claims-analysis/data/raw/
