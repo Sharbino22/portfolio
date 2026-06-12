@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Revenue Realization - Shri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/cs.css?v=1">
+<style>
+  :root{
+    --cs-hero-1:#0A1F22; --cs-hero-2:#0F2D30;
+    --cs-accent:#2DD4BF; --cs-accent-soft:#5EEAD4; --cs-accent-bright:#CCFBF1;
+    --cs-hl-1:#ECFEFF; --cs-hl-2:#CFFAFE; --cs-hl-title:#134E4A; --cs-hl-text:#0F766E;
+    --cs-launch-1:#F59E0B; --cs-launch-2:#F97316; --cs-launch-text:#0F0D2A;
+  }
+</style>
+<script src="js/transitions.js"></script>
+<script defer src="js/motion.js"></script>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Shri</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#contact" class="nav-cta">Connect</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="cs-hero vt-revenue-cycle">
+  <div class="cs-hero-inner">
+    <a href="index.html#projects" class="cs-back rv">&larr; Back to projects</a>
+    <div class="cs-badge rv"><div class="cs-badge-dot"></div><span>Revenue Cycle Analytics</span></div>
+    <h1 class="cs-title rv">Hospital Revenue<br>Realization &amp; the<br>Contractual Gap</h1>
+    <p class="cs-subtitle rv">Of every dollar a U.S. hospital bills, how much actually lands as net revenue, and what explains the gap? A 5,657-hospital cross-section of CMS cost-report data, segmented the way a hospital CFO would slice it.</p>
+    <p class="cs-meta rv">CMS Hospital Provider Cost Report PUF (CMS-2552-10), FY2021&ndash;FY2023</p>
+    <div class="rv">
+      <div class="cs-launch-tag">Now Live</div><br>
+      <a href="Projects/revenue-cycle/dashboard.html" class="cs-launch">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+        Launch Interactive Dashboard
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="cs-content">
+  <div class="cs-stats">
+    <div class="cs-stat rv"><div class="cs-stat-n">$4.3T</div><div class="cs-stat-l">FY2023 contractual write-down</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.1s"><div class="cs-stat-n">24.3&cent;</div><div class="cs-stat-l">Net realized per $1 billed (system)</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.2s"><div class="cs-stat-n">5,657</div><div class="cs-stat-l">Hospitals analyzed (FY2023)</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.3s"><div class="cs-stat-n">R&sup2; 0.45</div><div class="cs-stat-l">Driver regression fit</div></div>
+  </div>
+
+  <!-- THE PROBLEM -->
+  <div class="cs-section rv">
+    <div class="cs-label">THE PROBLEM</div>
+    <h2 class="cs-section-title">A hospital&rsquo;s billed charges and its bank balance are two different worlds</h2>
+    <p class="cs-text">U.S. hospitals bill gross charges off a chargemaster that no payer pays in full. Commercial insurers, Medicare, and Medicaid each settle for a contracted fraction; the difference is written off as a contractual allowance. What hospital CFOs actually care about is the residue: net patient revenue. The ratio of net to gross &mdash; revenue realization &mdash; is the headline number for the revenue cycle, but it varies by an order of magnitude across hospitals. The question is which structural features of a hospital drive that variation, and which folk explanations (&ldquo;Medicaid pays badly&rdquo;, &ldquo;for-profits collect more&rdquo;) survive controls.</p>
+  </div>
+
+  <!-- HONEST SCOPING -->
+  <div class="cs-section rv">
+    <div class="cs-label">SCOPING</div>
+    <h2 class="cs-section-title">What this analysis can and can&rsquo;t say</h2>
+    <p class="cs-text">Operational revenue-cycle metrics &mdash; denial rates, days in AR, clean-claim rate, charge-capture accuracy &mdash; are proprietary and do not live in public data. They are not in this dataset, and nothing here pretends otherwise. What the CMS cost report does capture, and what this project rigorously analyzes, is the <em>financial result</em> of the revenue cycle: how much of billed charges hospitals realize as net revenue, the contractual gap between charges and net, payer-mix exposure, uncompensated-care burden, and operating margin. Calling this out up front is the point &mdash; analytics work for a consulting client is judged on knowing exactly what the data does and does not cover.</p>
+    <div class="cs-highlight rv">
+      <div class="cs-highlight-title">Headline derivation, audited against the dictionary</div>
+      <div class="cs-highlight-text">Net patient revenue = Total patient revenue &minus; Contractual allowances &amp; discounts (CMS-2552-10 Worksheet G3, lines 1&ndash;3). The identity Net = Gross &minus; Contractual was checked on all 5,793 FY2023 rows with the three fields present: 100% exact match, median residual $0. Realization = Net &divide; Gross is real arithmetic, not a model.</div>
+    </div>
+  </div>
+
+  <!-- APPROACH -->
+  <div class="cs-section rv">
+    <div class="cs-label">APPROACH</div>
+    <h2 class="cs-section-title">One PUF, three fiscal years, a 12-step gated workflow</h2>
+    <p class="cs-text">Three CMS Hospital Provider Cost Report files (FY2021&ndash;FY2023, ~6,000 hospitals each, 117 identical columns) joined into an 18,220-row panel. Phase&nbsp;1: explore, map missingness, clean, engineer ratio metrics. Phase&nbsp;2: five gated analyses &mdash; national realization, the contractual gap, payer-mix vs realization, segmentation deep-dive, and a regression capstone that disentangles the confounded raw segment gaps.</p>
+    <div class="cs-cards">
+      <div class="cs-card rv">
+        <div class="cs-card-label">Source</div>
+        <div class="cs-card-title">CMS-2552-10 PUF</div>
+        <div class="cs-card-text">Hospital Provider Cost Report PUF, three fiscal years, identical column set across years for clean panel joins.</div>
+      </div>
+      <div class="cs-card rv" style="transition-delay:0.1s">
+        <div class="cs-card-label">Panel</div>
+        <div class="cs-card-title">18,220 rows</div>
+        <div class="cs-card-text">FY2021/22/23 stacked. FY2023 primary cross-section (5,657 valid hospitals); FY2021&ndash;22 used for stability and trend checks.</div>
+      </div>
+      <div class="cs-card rv" style="transition-delay:0.2s">
+        <div class="cs-card-label">Capstone</div>
+        <div class="cs-card-title">OLS, HC3 SE, R&sup2; 0.447</div>
+        <div class="cs-card-text">Driver regression on FY2023 n=4,765; parallel operating-margin model; signs stable across four robustness specs.</div>
+      </div>
+    </div>
+    <div class="cs-pills rv">
+      <span class="cs-pill">Python</span>
+      <span class="cs-pill">pandas</span>
+      <span class="cs-pill">NumPy</span>
+      <span class="cs-pill">statsmodels</span>
+      <span class="cs-pill">scikit-learn</span>
+      <span class="cs-pill">matplotlib</span>
+      <span class="cs-pill">Plotly.js</span>
+      <span class="cs-pill">CMS Public Data</span>
+    </div>
+  </div>
+
+  <!-- FINDING 1: REALIZATION -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 1</div>
+    <h2 class="cs-section-title">The typical hospital realizes 33&cent;; the system realizes 24&cent;</h2>
+    <p class="cs-text">FY2023 hospital-weighted median realization is <strong>0.327</strong> &mdash; the typical hospital nets ~33&cent; of each $1 billed, with the other 67&cent; written off as contractual allowance. But the dollar-weighted aggregate &mdash; the system view a payer would see &mdash; falls to <strong>0.243</strong>. That ~8&cent; gap is not noise. Large hospitals realize less and dominate total dollars, so the system as a whole runs below the typical hospital. The aggregate scale: <strong>$5.7T billed &rarr; $1.4T net &rarr; $4.3T contractual write-down</strong>. The two-weighting tension is the headline cut: a CFO benchmarking a single hospital uses the median; a payer modeling network spend uses the dollar weight.</p>
+    <div class="cs-figure rv">
+      <img src="Projects/revenue-cycle/figures/step8_realization_national_segment.png" alt="National realization distribution and by-segment breakdown" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">National realization distribution (hospital-weighted vs dollar-weighted) and by-segment medians, FY2023</div>
+    </div>
+    <div class="cs-highlight rv">
+      <div class="cs-highlight-title">Finance translation</div>
+      <div class="cs-highlight-text">Realization is the hospital&rsquo;s gross-to-net yield &mdash; what every chargemaster dollar collapses to after the contracted payer discount. Hospital-weighted median asks &ldquo;what does the typical hospital realize?&rdquo; Dollar-weighted asks &ldquo;what fraction of the country&rsquo;s billed dollars end up as net?&rdquo; They diverge whenever bigger units behave differently from smaller ones, which is exactly what shows up here.</div>
+    </div>
+  </div>
+
+  <!-- FINDING 2: CONTRACTUAL GAP -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 2</div>
+    <h2 class="cs-section-title">The contractual gap is a markup story, not a payer-leverage story</h2>
+    <p class="cs-text">The contractual ratio (1 &minus; realization) is mechanically the same view from the other side, so its real value is what the mirror reveals: <strong>Spearman(markup, contractual ratio) = +0.905</strong>, and log10(markup) alone explains <strong>R&sup2;=0.74</strong> of contractual-ratio variance. Translation &mdash; the gap between gross charges and net revenue is overwhelmingly driven by how aggressively a hospital sets its chargemaster, not by how hard its payers squeeze. Net-to-cost &mdash; net revenue divided by total cost &mdash; is far tighter (CV 0.25 vs realization&rsquo;s 0.52, median ~1.14): once charge-setting noise is stripped out, most hospitals recover roughly cost on patient services. The CFO-grade benchmark for collections discipline is net-to-cost, not realization.</p>
+    <div class="cs-figure rv">
+      <img src="Projects/revenue-cycle/figures/step9_contractual_gap.png" alt="Contractual gap vs markup, net-to-cost stability" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Contractual ratio vs markup, and the net-to-cost stability cut, FY2023</div>
+    </div>
+    <div class="cs-highlight rv">
+      <div class="cs-highlight-title">The inversion that reads opposite to the naive story</div>
+      <div class="cs-highlight-text">For-profit hospitals realize the LEAST per charge (0.30) but recover the MOST against cost (1.17, markup 3.81). Government hospitals realize the MOST per charge (0.42) but recover the LEAST vs cost (1.01, markup 2.27). The headline &ldquo;Government realizes more&rdquo; is a low-markup artifact &mdash; not superior collections.</div>
+    </div>
+  </div>
+
+  <!-- FINDING 3: PAYER MIX -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 3</div>
+    <h2 class="cs-section-title">The Medicaid penalty isn&rsquo;t where the folk story put it</h2>
+    <p class="cs-text">A standard cliche says more public-payer load &mdash; more Medicaid, more Medicare &mdash; pulls realization down because public rates are lean. The data flatly contradicts the headline version: Medicare day-share against realization is <strong>+0.33</strong> raw, public-pay share <strong>+0.38</strong>. Higher public-payer share goes with <em>higher</em> realization, because high-public hospitals skew small, rural, and Critical Access (which are cost-reimbursed at modest markups). Once size is partialled out the effect shrinks (+0.10 / +0.18) but stays positive &mdash; not negative. The real Medicaid pressure shows up in operating margin, not realization: raw Medicaid&ndash;margin correlation &minus;0.09, and critically, partialling out size <strong>strengthens</strong> it to &minus;0.127. Medicaid (not Medicare, not public pay broadly) carries a size-robust negative margin signal consistent with Medicaid paying furthest below cost.</p>
+    <div class="cs-figure rv">
+      <img src="Projects/revenue-cycle/figures/step10_payer_mix.png" alt="Payer mix vs realization and margin" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Realization and operating margin vs Medicare / Medicaid / public-pay day-share, FY2023</div>
+    </div>
+  </div>
+
+  <!-- FINDING 4: SEGMENTATION -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 4</div>
+    <h2 class="cs-section-title">Realization and margin point in opposite directions</h2>
+    <p class="cs-text">Two-way ownership &times; bed-size grids surface the cleanest client takeaway in the project: the two ratios point opposite ways. <strong>For-profit is the only ownership class with positive patient-care margins, and the margin <em>rises</em> with size: +4% (small) &rarr; +11% (250&ndash;499 beds) &rarr; +22% (500+).</strong> Nonprofit hovers near &minus;3% across the board (break-even by mission). Government is deeply negative everywhere, worst at the small CAH end (&minus;15%) and still &minus;5% at 500+ beds. So Government &ldquo;realizes most per charge&rdquo; (0.60 in the top cell) but <em>loses</em> the most on patient care; For-profit &ldquo;realizes least&rdquo; (0.10 in the bottom cell) but <em>earns</em> the most. The implication for a consulting deliverable: benchmark on margin, not realization.</p>
+    <div class="cs-figure rv">
+      <img src="Projects/revenue-cycle/figures/step11_segmentation_deepdive.png" alt="Segmentation grids by ownership and size" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Ownership &times; bed-size grids for realization, operating margin, and uncompensated-care burden, FY2023</div>
+    </div>
+    <div class="cs-highlight rv">
+      <div class="cs-highlight-title">Missingness guardrail honored</div>
+      <div class="cs-highlight-text">Worksheet S10 (uncompensated care) is informatively missing &mdash; For-profit S10 coverage is only 46% vs 91&ndash;93% for Nonprofit/Government. The grids report uncompensated-care figures only on the reporting subset, with coverage printed on each bar and no raw cross-ownership ranking drawn. Missing data is shown, not hidden.</div>
+    </div>
+  </div>
+
+  <!-- FINDING 5: DRIVER REGRESSION -->
+  <div class="cs-section rv">
+    <div class="cs-label">FINDING 5</div>
+    <h2 class="cs-section-title">Regression capstone: which raw gaps survive, which dissolve</h2>
+    <p class="cs-text">OLS with HC3-robust standard errors, FY2023 n=4,765, <strong>R&sup2; = 0.447</strong>, VIF&lt;2.7 throughout. Predictors: size, ownership, teaching, rural, region, provider type (CAH / specialty / general), and payer mix &mdash; deliberately excluding markup and cost-to-charge because Step&nbsp;5 flagged them as mechanical co-derivatives of realization. Critical Access Hospitals <strong>+0.151</strong> and Specialty (psych / rehab) <strong>+0.190</strong> dominate. Size&rsquo;s raw effect (&minus;0.092 without CAH in the model) collapses to <strong>&minus;0.030 per 10&times;</strong> once CAH is controlled &mdash; the size effect was partly CAH all along. <strong>Government&rsquo;s raw ~11-point realization edge (Steps&nbsp;3 / 8) shrinks to +3 points net of size and CAH</strong>; teaching (~0) and rural (+0.005) dissolve entirely. For-profit lands at &minus;0.070 (the markup signature). The Medicare day-share coefficient is <strong>+0.239</strong> and Medicaid <strong>+0.198</strong> &mdash; net of everything, more public-payer load goes with <em>higher</em> realization, decisively busting the folk story.</p>
+    <p class="cs-text">A parallel operating-margin model confirms the ownership flip rigorously: net of controls, For-profit <strong>+0.198</strong> and Government <strong>&minus;0.323</strong> versus Nonprofit. For-profits realize least but earn most; Government realize most but lose most. The real ownership story lives in margin, not realization.</p>
+    <div class="cs-figure rv">
+      <img src="Projects/revenue-cycle/figures/step12_driver_regression.png" alt="Driver regression coefficient forest plot" onerror="this.closest('.cs-figure').classList.add('missing');this.remove();">
+      <div class="cs-figure-cap">Realization-driver regression coefficients with 95% CI (left) and parallel operating-margin model (right), FY2023</div>
+    </div>
+    <div class="cs-highlight rv">
+      <div class="cs-highlight-title">Honest reconciliation, not buried</div>
+      <div class="cs-highlight-text">The Step-10 Medicaid&rarr;margin pressure (partial &minus;0.127, size-only control) does NOT survive the full-control regression (coef +0.027). Logged as suggestive, not established. Reporting findings I cannot fully defend &mdash; with the caveat in line &mdash; is part of the deliverable, not against it.</div>
+    </div>
+  </div>
+
+  <!-- IMPLICATIONS -->
+  <div class="cs-section rv">
+    <div class="cs-label">SO WHAT</div>
+    <h2 class="cs-section-title">Strategic implications</h2>
+    <table class="cs-table">
+      <tr><th>Finding</th><th>Implication for a consulting deliverable</th></tr>
+      <tr><td>Median realization 0.327 vs dollar-weighted 0.243</td><td>Benchmark single hospitals on the hospital median; benchmark networks and payer spend on the dollar weight &mdash; they answer different questions.</td></tr>
+      <tr><td>Contractual gap is 74% explained by markup</td><td>Net-to-cost (median ~1.14, CV 0.25) is a cleaner CFO benchmark than realization for collections discipline.</td></tr>
+      <tr><td>Public-payer share &rarr; higher realization (net of size)</td><td>The &ldquo;Medicaid pays badly&rdquo; story belongs on operating margin, not realization. Don&rsquo;t misdiagnose payer-mix exposure on the wrong metric.</td></tr>
+      <tr><td>For-profit: realization 0.10, margin +22% at 500+ beds</td><td>Realization measures discount depth, not profitability. Aggressive chargemasters at scale couple low realization with the highest patient-care margins in the system.</td></tr>
+      <tr><td>Government&rsquo;s raw realization edge shrinks 11pt &rarr; 3pt</td><td>Half the &ldquo;Government realizes more&rdquo; story is bed-size and CAH composition. Apples-to-apples segment comparisons need ownership&nbsp;&times;&nbsp;size grids, not raw ownership medians.</td></tr>
+    </table>
+  </div>
+
+  <!-- METHODS -->
+  <div class="cs-section rv">
+    <div class="cs-label">METHODS</div>
+    <h2 class="cs-section-title">How I built this</h2>
+    <p class="cs-text">All scripts are plain .py files run in numbered order, not notebooks &mdash; every step is reproducible end-to-end from the CMS source CSVs. Phase&nbsp;1 (Steps 1&ndash;7): load and inventory by data-dictionary code, distribution of the headline metric, raw segment breakdowns ranked by Kruskal&ndash;Wallis effect size, missingness audit with chi-square tests on every segment dimension (the &ldquo;informative missingness&rdquo; check that protects the Phase-2 ownership comparisons), tag-don&rsquo;t-drop cleaning with a validity flag (gross&nbsp;&ge;&nbsp;$100k, realization &isin; (0, 0.99]), correlation / redundancy analysis (which surfaced contractual-ratio, cost-to-charge, and markup as mechanical co-derivatives of realization and disqualified them as predictors), and 15 justified engineered features. Phase&nbsp;2 (Steps 8&ndash;12): the five analyses above, each gated, each with a written &ldquo;what to look for&rdquo; note saved alongside its figure. Phase&nbsp;3 (Steps 13&ndash;16): pre-aggregated JSON exported to the dashboard, then a single self-contained Plotly file (~349&nbsp;KB) with live cross-filtering and a regression toggle, then this case-study wrapper.</p>
+    <div class="cs-pills rv">
+      <span class="cs-pill">Tag-don&rsquo;t-drop cleaning</span>
+      <span class="cs-pill">Informative-missingness audit</span>
+      <span class="cs-pill">HC3 robust SE</span>
+      <span class="cs-pill">VIF collinearity check</span>
+      <span class="cs-pill">Partial correlation</span>
+      <span class="cs-pill">Two-weighting analysis</span>
+      <span class="cs-pill">Cross-filtered dashboard</span>
+    </div>
+  </div>
+
+  <div class="cs-section rv">
+    <div class="cs-label">Tech Stack</div>
+    <h2 class="cs-section-title">Built with</h2>
+    <p class="cs-text">CMS Hospital Provider Cost Report PUF, 18,220-row 3-year panel. Pandas-driven cleaning and feature engineering, statsmodels OLS with HC3 robust standard errors for the capstone, a single self-contained Plotly.js dashboard with the per-hospital record array inlined for live re-aggregation under user filters.</p>
+    <div class="cs-pills">
+      <span class="cs-pill">Python 3.12</span>
+      <span class="cs-pill">pandas</span>
+      <span class="cs-pill">NumPy</span>
+      <span class="cs-pill">statsmodels</span>
+      <span class="cs-pill">scikit-learn</span>
+      <span class="cs-pill">matplotlib</span>
+      <span class="cs-pill">Plotly.js</span>
+      <span class="cs-pill">Claude</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cs-cta rv">
+    <p class="cs-cta-text">Interested in revenue-cycle analytics, hospital financial benchmarking, or healthcare consulting work?</p>
+    <a href="mailto:drsridhar22@gmail.com" class="cs-cta-btn">Get in touch</a>
+    <div class="cs-footer">Shri 2026</div>
+  </div>
+</div>
+
+<script>
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
+var nav=document.querySelector('.nav');
+window.addEventListener('scroll',function(){if(window.scrollY>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled');},{passive:true});
+</script>
+</body>
+</html>

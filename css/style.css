@@ -8,10 +8,54 @@
              .btn-primary, .btn-outline
    ============================================================ */
 
-/* ---------- PAGE TRANSITIONS (unchanged hook for transitions.js) ---------- */
+/* ---------- PAGE TRANSITIONS ---------- */
+/* Native cross-document View Transitions (Chrome/Edge/Safari 18+).
+   Firefox falls back to the manual fade below via transitions.js. */
+@view-transition { navigation: auto; }
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+::view-transition-old(root) {
+  animation-name: vt-fade-out;
+}
+::view-transition-new(root) {
+  animation-name: vt-fade-in;
+}
+@keyframes vt-fade-out { to { opacity: 0; } }
+@keyframes vt-fade-in  { from { opacity: 0; } }
+
+/* Manual fade fallback (Firefox today). transitions.js feature-detects and
+   uses this only when native VT is unavailable. */
 .js-transitions body { opacity: 0; transition: opacity 380ms cubic-bezier(0.16, 1, 0.3, 1); }
 .js-transitions body.page-ready { opacity: 1; }
 .js-transitions body.page-leaving { opacity: 0; transition: opacity 220ms cubic-bezier(0.4, 0, 1, 1); }
+
+/* Named VT pairs: card on home morphs into hero on case-study page. */
+.vt-survival     { view-transition-name: card-survival; }
+.vt-cvrisk       { view-transition-name: card-cvrisk; }
+.vt-propensity   { view-transition-name: card-propensity; }
+.vt-medicare     { view-transition-name: card-medicare; }
+.vt-i2db         { view-transition-name: card-i2db; }
+.vt-madera       { view-transition-name: card-madera; }
+.vt-nyrocare     { view-transition-name: card-nyrocare; }
+
+/* ---------- SCROLL PROGRESS BAR ---------- */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, #818CF8, #F472B6 60%, #F59E0B);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  z-index: 9999;
+  pointer-events: none;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { display: none; }
+}
 
 /* ---------- TOKENS ---------- */
 :root {
@@ -537,11 +581,26 @@ section { position: relative; overflow: hidden; }
   border: 1px solid var(--hairline);
   border-radius: 20px;
   overflow: hidden;
+  /* 3D tilt: motion.js writes --tilt-x/--tilt-y on cursor move; CSS composes
+     them with the existing hover lift so both effects coexist. */
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --tilt-lift: 0px;
+  transform: perspective(1200px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(var(--tilt-lift));
+  transform-style: preserve-3d;
   transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+  will-change: transform;
+}
+.case-card.tilting {
+  transition: transform 80ms linear, box-shadow 0.5s var(--ease-out);
 }
 .case-card:hover {
-  transform: translateY(-4px);
+  --tilt-lift: -4px;
   box-shadow: 0 30px 60px -20px rgba(8,8,18,0.15);
+}
+@media (prefers-reduced-motion: reduce) {
+  .case-card { transform: none; }
+  .case-card:hover { transform: translateY(-4px); }
 }
 .case-card-visual {
   aspect-ratio: 5/3;
