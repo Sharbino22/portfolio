@@ -40,6 +40,7 @@
 .vt-i2db         { view-transition-name: card-i2db; }
 .vt-madera       { view-transition-name: card-madera; }
 .vt-nyrocare     { view-transition-name: card-nyrocare; }
+.vt-revenue-cycle { view-transition-name: card-revenue-cycle; }
 
 /* ---------- SCROLL PROGRESS BAR ---------- */
 .scroll-progress {
@@ -85,6 +86,7 @@
   --green:  #10B981;
   --amber:  #F59E0B;
   --blue:   #3B82F6;
+  --teal:   #2DD4BF;
 
   /* Motion */
   --spring: cubic-bezier(0.16, 1, 0.3, 1);
@@ -624,6 +626,7 @@ section { position: relative; overflow: hidden; }
 .case-card-visual.theme-green  { background: linear-gradient(135deg, #064E3B, #047857); }
 .case-card-visual.theme-amber  { background: linear-gradient(135deg, #78350F, #D97706); }
 .case-card-visual.theme-blue   { background: linear-gradient(135deg, #172554, #1D4ED8); }
+.case-card-visual.theme-teal   { background: linear-gradient(135deg, #042F2E, #0F766E); }
 
 .case-card-visual .hero-label {
   font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
@@ -647,6 +650,7 @@ section { position: relative; overflow: hidden; }
 .case-card.t-green  .case-kicker { color: var(--green); }
 .case-card.t-amber  .case-kicker { color: var(--amber); }
 .case-card.t-blue   .case-kicker { color: var(--blue); }
+.case-card.t-teal   .case-kicker { color: var(--teal); }
 
 .case-title {
   font-size: 26px; font-weight: 700; letter-spacing: -0.02em;
@@ -711,6 +715,7 @@ section { position: relative; overflow: hidden; }
 .case-card-visual.theme-amber  .live-badge { --badge-from: #FCD34D; --badge-to: #F59E0B; }
 .case-card-visual.theme-blue   .live-badge { --badge-from: #93C5FD; --badge-to: #3B82F6; }
 .case-card-visual.theme-pink   .live-badge { --badge-from: #F9A8D4; --badge-to: #EC4899; }
+.case-card-visual.theme-teal   .live-badge { --badge-from: #5EEAD4; --badge-to: #2DD4BF; }
 
 /* ===========================================================
    EXPERIENCE — dark, timeline
