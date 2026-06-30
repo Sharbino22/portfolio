@@ -1,0 +1,15 @@
+# local environment
+.venv/
+
+# generated artifacts -- reproducible from scripts/generate_data.py + sql/
+data/raw/*.csv
+data/clean/*.csv
+*.db
+*.sqlite
+
+# keep folder structure
+!data/raw/.gitkeep
+!data/clean/.gitkeep
+
+# excel build output is regenerated; keep the tracked deliverable only if desired
+~$*.xlsx

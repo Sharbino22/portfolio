@@ -318,6 +318,71 @@
   <!-- PROJECTS GRID -->
   <div class="projects-grid">
 
+    <a href="revenue-cycle-sql.html" class="case-card t-blue rv vt-rcsql">
+      <div class="case-card-visual theme-blue">
+        <svg class="case-card-art" viewBox="0 0 600 360" fill="none" preserveAspectRatio="xMidYMid slice">
+          <text x="300" y="56" text-anchor="middle" fill="#93C5FD" font-size="15" font-weight="800" letter-spacing="2" opacity="0.85" font-family="Plus Jakarta Sans">DENIAL RATE BY CLAIM PATH</text>
+          <!-- Clean bar: 3.9% (short) -->
+          <text x="180" y="300" text-anchor="middle" fill="#93C5FD" font-size="12" font-weight="700" opacity="0.6" font-family="Plus Jakarta Sans">Clean</text>
+          <rect x="130" y="278" width="100" height="36" rx="4" fill="#3B82F6" opacity="0.9"/>
+          <text x="180" y="268" text-anchor="middle" fill="#DBEAFE" font-size="14" font-weight="800" font-family="Plus Jakarta Sans">3.9%</text>
+          <!-- Reworked bar: 55.7% (tall) -->
+          <text x="420" y="300" text-anchor="middle" fill="#F9A8D4" font-size="12" font-weight="700" opacity="0.75" font-family="Plus Jakarta Sans">Reworked</text>
+          <rect x="370" y="110" width="100" height="204" rx="4" fill="#F472B6" opacity="0.85"/>
+          <text x="420" y="100" text-anchor="middle" fill="#FBCFE8" font-size="14" font-weight="800" font-family="Plus Jakarta Sans">55.7%</text>
+          <!-- 14x callout -->
+          <text x="300" y="180" text-anchor="middle" fill="#93C5FD" font-size="26" font-weight="800" font-family="Plus Jakarta Sans">14&#215;</text>
+          <text x="300" y="200" text-anchor="middle" fill="#93C5FD" font-size="11" font-weight="600" letter-spacing="1.5" opacity="0.7" font-family="Plus Jakarta Sans">MORE DENIALS</text>
+        </svg>
+        <span class="hero-label">Clean vs reworked claims</span>
+        <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17L17 7"/></svg></div>
+      </div>
+      <div class="case-meta">
+        <div class="case-kicker">Revenue Cycle · SQL</div>
+        <h3 class="case-title">Revenue cycle claims analytics in SQL</h3>
+        <p class="case-desc">End-to-end SQL workflow on 5,000 synthetic claims: data-quality checks through five revenue cycle metrics (denials, reason mix, AR aging, net collection, clean claim rate). Reworked claims deny at 55.7% vs 3.9% for clean, a 14× gap. Synthetic data modeled on real revenue cycle structure (claims are PHI).</p>
+        <div class="case-tags">
+          <span class="case-tag">SQL</span>
+          <span class="case-tag">SQLite</span>
+          <span class="case-tag">Claims data</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="revenue-cycle.html" class="case-card t-teal rv vt-revenue-cycle">
+      <div class="case-card-visual theme-teal">
+        <svg class="case-card-art" viewBox="0 0 600 360" fill="none" preserveAspectRatio="xMidYMid slice">
+          <text x="300" y="60" text-anchor="middle" fill="#5EEAD4" font-size="15" font-weight="800" letter-spacing="2" opacity="0.85" font-family="Plus Jakarta Sans">24.3¢ REALIZED PER $1 BILLED</text>
+          <!-- Gross charges bar (full height, faint) -->
+          <text x="170" y="335" text-anchor="middle" fill="#5EEAD4" font-size="11" font-weight="700" opacity="0.55" font-family="Plus Jakarta Sans">Gross charges</text>
+          <rect x="120" y="100" width="100" height="215" rx="4" fill="#5EEAD4" opacity="0.22"/>
+          <text x="170" y="92" text-anchor="middle" fill="#CCFBF1" font-size="12" font-weight="700" opacity="0.7" font-family="Plus Jakarta Sans">$1.00</text>
+          <!-- Contractual gap (write-down) -->
+          <line x1="240" y1="100" x2="360" y2="100" stroke="#5EEAD4" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+          <line x1="240" y1="263" x2="360" y2="263" stroke="#5EEAD4" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+          <text x="300" y="185" text-anchor="middle" fill="#5EEAD4" font-size="11" font-weight="700" opacity="0.75" font-family="Plus Jakarta Sans">Contractual</text>
+          <text x="300" y="200" text-anchor="middle" fill="#5EEAD4" font-size="11" font-weight="700" opacity="0.75" font-family="Plus Jakarta Sans">write-down</text>
+          <text x="300" y="218" text-anchor="middle" fill="#CCFBF1" font-size="14" font-weight="800" opacity="0.9" font-family="Plus Jakarta Sans">75.7¢</text>
+          <!-- Net realized bar (small, solid) -->
+          <text x="430" y="335" text-anchor="middle" fill="#5EEAD4" font-size="11" font-weight="700" opacity="0.85" font-family="Plus Jakarta Sans">Net realized</text>
+          <rect x="380" y="263" width="100" height="52" rx="4" fill="#2DD4BF" opacity="0.95"/>
+          <text x="430" y="255" text-anchor="middle" fill="#CCFBF1" font-size="12" font-weight="800" opacity="0.95" font-family="Plus Jakarta Sans">$0.24</text>
+        </svg>
+        <span class="hero-label">Realization · CMS cost reports</span>
+        <span class="live-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>Live Dashboard</span>
+        <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17L17 7"/></svg></div>
+      </div>
+      <div class="case-meta">
+        <div class="case-kicker">Revenue Cycle</div>
+        <h3 class="case-title">Hospital revenue realization</h3>
+        <p class="case-desc">5,657 hospitals, three fiscal years of CMS cost reports. What drives the 9-out-of-10-cents gap between billed charges and net revenue.</p>
+        <div class="case-tags">
+          <span class="case-tag">CMS PUF</span>
+          <span class="case-tag">Regression</span>
+        </div>
+      </div>
+    </a>
+
     <a href="survival-analysis.html" class="case-card rv vt-survival">
       <div class="case-card-visual theme-indigo">
         <svg class="case-card-art" viewBox="0 0 600 360" fill="none" preserveAspectRatio="xMidYMid slice">
@@ -510,40 +575,6 @@
         <div class="case-tags">
           <span class="case-tag">Claims data</span>
           <span class="case-tag">Policy</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="revenue-cycle.html" class="case-card t-teal rv vt-revenue-cycle">
-      <div class="case-card-visual theme-teal">
-        <svg class="case-card-art" viewBox="0 0 600 360" fill="none" preserveAspectRatio="xMidYMid slice">
-          <text x="300" y="60" text-anchor="middle" fill="#5EEAD4" font-size="15" font-weight="800" letter-spacing="2" opacity="0.85" font-family="Plus Jakarta Sans">24.3¢ REALIZED PER $1 BILLED</text>
-          <!-- Gross charges bar (full height, faint) -->
-          <text x="170" y="335" text-anchor="middle" fill="#5EEAD4" font-size="11" font-weight="700" opacity="0.55" font-family="Plus Jakarta Sans">Gross charges</text>
-          <rect x="120" y="100" width="100" height="215" rx="4" fill="#5EEAD4" opacity="0.22"/>
-          <text x="170" y="92" text-anchor="middle" fill="#CCFBF1" font-size="12" font-weight="700" opacity="0.7" font-family="Plus Jakarta Sans">$1.00</text>
-          <!-- Contractual gap (write-down) -->
-          <line x1="240" y1="100" x2="360" y2="100" stroke="#5EEAD4" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
-          <line x1="240" y1="263" x2="360" y2="263" stroke="#5EEAD4" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
-          <text x="300" y="185" text-anchor="middle" fill="#5EEAD4" font-size="11" font-weight="700" opacity="0.75" font-family="Plus Jakarta Sans">Contractual</text>
-          <text x="300" y="200" text-anchor="middle" fill="#5EEAD4" font-size="11" font-weight="700" opacity="0.75" font-family="Plus Jakarta Sans">write-down</text>
-          <text x="300" y="218" text-anchor="middle" fill="#CCFBF1" font-size="14" font-weight="800" opacity="0.9" font-family="Plus Jakarta Sans">75.7¢</text>
-          <!-- Net realized bar (small, solid) -->
-          <text x="430" y="335" text-anchor="middle" fill="#5EEAD4" font-size="11" font-weight="700" opacity="0.85" font-family="Plus Jakarta Sans">Net realized</text>
-          <rect x="380" y="263" width="100" height="52" rx="4" fill="#2DD4BF" opacity="0.95"/>
-          <text x="430" y="255" text-anchor="middle" fill="#CCFBF1" font-size="12" font-weight="800" opacity="0.95" font-family="Plus Jakarta Sans">$0.24</text>
-        </svg>
-        <span class="hero-label">Realization · CMS cost reports</span>
-        <span class="live-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>Live Dashboard</span>
-        <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17L17 7"/></svg></div>
-      </div>
-      <div class="case-meta">
-        <div class="case-kicker">Revenue Cycle</div>
-        <h3 class="case-title">Hospital revenue realization</h3>
-        <p class="case-desc">5,657 hospitals, three fiscal years of CMS cost reports. What drives the 9-out-of-10-cents gap between billed charges and net revenue.</p>
-        <div class="case-tags">
-          <span class="case-tag">CMS PUF</span>
-          <span class="case-tag">Regression</span>
         </div>
       </div>
     </a>
