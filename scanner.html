@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCANNER · Shri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/cs.css?v=1">
+<style>
+  :root{
+    --cs-hero-1:#3A1D02; --cs-hero-2:#7C3D0A;
+    --cs-accent:#F59E0B; --cs-accent-soft:#FCD34D; --cs-accent-bright:#FFFBEB;
+    --cs-hl-1:#FFFBEB; --cs-hl-2:#FEF3C7; --cs-hl-title:#78350F; --cs-hl-text:#92400E;
+    --cs-launch-1:#F59E0B; --cs-launch-2:#FBBF24; --cs-launch-text:#3A1D02;
+  }
+</style>
+<script src="js/transitions.js"></script>
+<script defer src="js/motion.js"></script>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Shri</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#contact" class="nav-cta">Connect</a>
+  </div>
+</nav>
+
+<section class="cs-hero vt-scanner">
+  <div class="cs-hero-inner">
+    <a href="index.html#projects" class="cs-back rv">← Back to projects</a>
+    <div class="cs-badge rv"><div class="cs-badge-dot"></div><span>Health Tech · In active development</span></div>
+    <h1 class="cs-title rv">SCANNER</h1>
+    <p class="cs-subtitle rv">A condition-aware food-scanner app that gives adults managing type 2 diabetes, hypertension, and weight a personalized Good, Caution, or Skip verdict on any packaged food, calibrated to their specific conditions, not a generic health score.</p>
+    <p class="cs-meta rv">Nyrascanner · clinical engine complete, in active development · a wellness tool, not a medical device</p>
+  </div>
+</section>
+
+<div class="cs-content">
+  <div class="cs-stats">
+    <div class="cs-stat rv"><div class="cs-stat-n">812</div><div class="cs-stat-l">Tests passing, 0 failures</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.08s"><div class="cs-stat-n">19</div><div class="cs-stat-l">Test suites, 160 describe blocks</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.16s"><div class="cs-stat-n">0</div><div class="cs-stat-l">AI models at runtime</div></div>
+    <div class="cs-stat rv" style="transition-delay:0.24s"><div class="cs-stat-n">3</div><div class="cs-stat-l">Nutrition data sources cascaded</div></div>
+  </div>
+
+  <div class="cs-section rv">
+    <div class="cs-label">The problem</div>
+    <h2 class="cs-section-title">A generic health score ignores your actual condition</h2>
+    <p class="cs-text">People managing chronic conditions get generic nutrition scores that treat every body the same. But what is fine for one condition can be dangerous for another. A potassium-chloride salt substitute looks like a healthy swap, yet it is genuinely harmful for someone on certain blood-pressure medications. No mainstream scanner calibrates its verdict to the user's specific clinical profile, so the one number they see can be confidently wrong for them.</p>
+    <div class="cs-cards">
+      <div class="cs-card rv">
+        <div class="cs-card-label">The gap</div>
+        <div class="cs-card-title">One score for everyone</div>
+        <div class="cs-card-text">Mainstream scanners grade a food against a population average. They do not know whether you are managing diabetes, hypertension, weight, or a combination, so the verdict is not actually about you.</div>
+      </div>
+      <div class="cs-card rv" style="transition-delay:0.1s">
+        <div class="cs-card-label">The danger</div>
+        <div class="cs-card-title">Fine for one, harmful for another</div>
+        <div class="cs-card-text">The same product can be a good pick for one condition and a real risk for another. Without condition calibration and a safety layer, a scanner can quietly recommend exactly the wrong thing.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-section rv">
+    <div class="cs-label">The solution</div>
+    <h2 class="cs-section-title">A verdict calibrated to your conditions</h2>
+    <p class="cs-text">The user sets their conditions once, and whether they take blood-pressure medication. From then on, each barcode scan returns a three-tier verdict, a per-condition fit score, a calorie-awareness label, and a hard safety override, all calibrated to that clinical profile. It is positioned deliberately as a wellness tool, not a medical device.</p>
+    <div class="cs-three-cards rv">
+      <div class="cs-card">
+        <div class="cs-card-label">Verdict</div>
+        <div class="cs-card-title">Good · Caution · Skip</div>
+        <div class="cs-card-text">A clear three-tier call on any packaged food, calibrated to the user's specific conditions rather than a one-size-fits-all grade.</div>
+      </div>
+      <div class="cs-card" style="transition-delay:0.1s">
+        <div class="cs-card-label">Fit score</div>
+        <div class="cs-card-title">0 to 100, per condition</div>
+        <div class="cs-card-text">A transparent score for each condition, so a food can read differently for diabetes than it does for hypertension, plus a calorie-awareness label.</div>
+      </div>
+      <div class="cs-card" style="transition-delay:0.2s">
+        <div class="cs-card-label">Safety override</div>
+        <div class="cs-card-title">A hard stop when it matters</div>
+        <div class="cs-card-text">A priority safety check flags potassium-chloride salt substitutes for users on blood-pressure medication and short-circuits straight to Skip, no matter how the rest scores.</div>
+      </div>
+    </div>
+    <div class="cs-highlight rv">
+      <div class="cs-highlight-title">Wellness tool, not a medical device</div>
+      <div class="cs-highlight-text">SCANNER is designed and positioned as a wellness aid to support everyday food choices. It does not diagnose, treat, or replace clinical care, and it is scoped accordingly.</div>
+    </div>
+  </div>
+
+  <div class="cs-section rv">
+    <div class="cs-label">How it works</div>
+    <h2 class="cs-section-title">Deterministic, condition-specific, strictest wins</h2>
+    <p class="cs-text">The engine takes two inputs: a normalized product (nutrients per 100g) and the user's condition profile. It runs condition-specific evaluators for diabetes, hypertension, and general wellness, a calorie-density label, and a safety check. The results aggregate on a strictest-wins basis, so the most conservative signal drives the final verdict. Each nutrient earns a 0 to 100 piecewise sub-score, combined into a weighted per-condition fit score, for example diabetes weights added sugar most and hypertension weights sodium most. Trans fat above zero hard-caps the score. Every clinical threshold is a named constant I defined from published guidelines. No AI runs at any point in this pipeline; it is a hand-specified rules-and-scoring system.</p>
+    <div class="cs-cards">
+      <div class="cs-card rv">
+        <div class="cs-card-label">01 · Inputs</div>
+        <div class="cs-card-title">Product + profile</div>
+        <div class="cs-card-text">A normalized product record (nutrients per 100g) and the user's conditions and blood-pressure-medication flag.</div>
+      </div>
+      <div class="cs-card rv" style="transition-delay:0.08s">
+        <div class="cs-card-label">02 · Evaluate</div>
+        <div class="cs-card-title">Condition evaluators + safety</div>
+        <div class="cs-card-text">Diabetes, hypertension, and general-wellness evaluators, a calorie-density label, and a priority safety check run over the product.</div>
+      </div>
+      <div class="cs-card rv" style="transition-delay:0.16s">
+        <div class="cs-card-label">03 · Aggregate</div>
+        <div class="cs-card-title">Strictest wins</div>
+        <div class="cs-card-text">Per-nutrient piecewise sub-scores combine into weighted per-condition fit scores, and the most conservative result sets the verdict.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-section rv">
+    <div class="cs-label">Technical highlights</div>
+    <h2 class="cs-section-title">The engineering decisions that make the verdict trustworthy</h2>
+    <div class="cs-cards">
+      <div class="cs-card numbered rv">
+        <div class="cs-card-title">01</div>
+        <div class="cs-card-text"><strong>Lint-enforced portability boundary.</strong> The clinical engine is a fully headless TypeScript module with no React or UI dependencies, enforced by ESLint rules, so it could lift into a web app or server unchanged.</div>
+      </div>
+      <div class="cs-card numbered rv" style="transition-delay:0.08s">
+        <div class="cs-card-title">02</div>
+        <div class="cs-card-text"><strong>Exception-free, null-means-unknown.</strong> The verdict engine has zero throw statements. Every data-quality problem becomes a flag, never a crash, and missing data is never defaulted to zero, so incomplete label data yields a clearly labeled "insufficient data" verdict instead of a confidently wrong one.</div>
+      </div>
+      <div class="cs-card numbered rv" style="transition-delay:0.16s">
+        <div class="cs-card-title">03</div>
+        <div class="cs-card-text"><strong>Profile-aware three-source cascade.</strong> FatSecret is primary, USDA FoodData Central gap-fills only when the user's conditions require fields FatSecret is missing, and Open Food Facts is tertiary, merged field-by-field, with API keys hidden behind Supabase edge-function proxies.</div>
+      </div>
+      <div class="cs-card numbered rv" style="transition-delay:0.24s">
+        <div class="cs-card-title">04</div>
+        <div class="cs-card-text"><strong>Sodium unit-reconciliation.</strong> Open Food Facts stores sodium in grams even when labels show mg, so everything is normalized to mg with assumptions flagged, backed by the largest test file at 81 cases. This is exactly the class of silent bug that would produce dangerously wrong verdicts.</div>
+      </div>
+      <div class="cs-card numbered rv" style="transition-delay:0.32s">
+        <div class="cs-card-title">05</div>
+        <div class="cs-card-text"><strong>Potassium-chloride safety override.</strong> The clinical reasoning that potassium loading is dangerous for people on certain blood-pressure medications is encoded as deterministic, testable, priority-hoisted logic that short-circuits to a hard Skip.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-section rv">
+    <div class="cs-label">Quality and testing</div>
+    <h2 class="cs-section-title">812 tests, 19 suites, zero failures</h2>
+    <p class="cs-text">Correctness is enforced by tests, not hoped for. Coverage spans all verdict evaluators and the full data pipeline across 812 passing tests in 19 suites and 160 describe blocks, with zero failures. The discipline is built into the toolchain: an ESLint-enforced portability boundary keeps the engine headless, Prettier keeps the code uniform, and strict TypeScript keeps the types honest.</p>
+    <div class="cs-highlight rv">
+      <div class="cs-highlight-title">Tested where a wrong answer would hurt</div>
+      <div class="cs-highlight-text">The heaviest tests sit on the highest-risk logic: 81 cases on sodium unit-reconciliation alone, plus dedicated coverage for the potassium-chloride safety override and every condition evaluator. The failure modes that would produce dangerously wrong verdicts are the ones most heavily pinned down.</div>
+    </div>
+    <div class="cs-pills rv">
+      <span class="cs-pill">Jest</span>
+      <span class="cs-pill">Strict TypeScript</span>
+      <span class="cs-pill">ESLint portability rule</span>
+      <span class="cs-pill">Prettier</span>
+      <span class="cs-pill">Exception-free engine</span>
+    </div>
+  </div>
+
+  <div class="cs-section rv">
+    <div class="cs-label">My role</div>
+    <h2 class="cs-section-title">Clinical logic and direction, implementation through AI tooling</h2>
+    <p class="cs-text">I am not a software engineer, and this page should not imply otherwise. What I own is the clinical and product thinking. I defined the clinical logic and thresholds from published guidelines, designed the product and its condition-calibrated verdict model, and architected the system as a portable clinical engine cleanly separated from the UI. I directed the full build through AI coding tools, Claude Code and Codex, selecting models via OpenRouter, working from written specs and the clinical logic I defined myself. I also set the quality discipline: portability enforced by linting, an exception-free engine, and comprehensive tests. The implementation was built through AI tooling under my direction, and the app itself runs no AI at runtime.</p>
+    <div class="cs-quote rv"><p>Clinical logic, product decisions, architecture direction, and quality discipline are mine. The implementation was built through AI tooling under my direction.</p></div>
+    <div class="cs-cards rv">
+      <div class="cs-card">
+        <div class="cs-card-label">What I owned</div>
+        <div class="cs-pills" style="margin-top:10px;">
+          <span class="cs-pill">Clinical logic</span><span class="cs-pill">Threshold definition</span>
+          <span class="cs-pill">Product decisions</span><span class="cs-pill">Verdict model design</span>
+          <span class="cs-pill">Architecture direction</span><span class="cs-pill">Quality discipline</span>
+        </div>
+      </div>
+      <div class="cs-card" style="transition-delay:0.1s">
+        <div class="cs-card-label">How it was built</div>
+        <div class="cs-pills" style="margin-top:10px;">
+          <span class="cs-pill">Claude Code</span><span class="cs-pill">Codex</span>
+          <span class="cs-pill">OpenRouter model selection</span><span class="cs-pill">Written specs</span>
+          <span class="cs-pill">Directed AI implementation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-section rv">
+    <div class="cs-label">Tech Stack</div>
+    <h2 class="cs-section-title">Built with</h2>
+    <p class="cs-text">A managed React Native stack on the New Architecture, with a deterministic clinical engine at its core. Monetization through RevenueCat is planned, not yet wired, and there is no runtime AI or ML anywhere in the app.</p>
+    <div class="cs-pills">
+      <span class="cs-pill">TypeScript (strict)</span>
+      <span class="cs-pill">React Native 0.81</span>
+      <span class="cs-pill">Expo SDK 54</span>
+      <span class="cs-pill">expo-router</span>
+      <span class="cs-pill">expo-camera</span>
+      <span class="cs-pill">react-native-mmkv v4</span>
+      <span class="cs-pill">Supabase edge functions (Deno)</span>
+      <span class="cs-pill">Jest</span>
+    </div>
+  </div>
+
+  <div class="cs-section rv">
+    <div class="cs-label">Status and roadmap</div>
+    <h2 class="cs-section-title">Engine complete, in active development</h2>
+    <p class="cs-text">The entire portable engine is complete and fully tested. Real barcode scanning is wired to the three-source data cascade and renders the full verdict card. It is in active development and not yet published.</p>
+    <div class="cs-cards">
+      <div class="cs-card rv">
+        <div class="cs-card-label">Done</div>
+        <div class="cs-card-title">The clinical core</div>
+        <div class="cs-card-text">Complete, fully tested verdict engine, the three-source data cascade, and real barcode scanning rendering the full verdict card.</div>
+      </div>
+      <div class="cs-card rv" style="transition-delay:0.1s">
+        <div class="cs-card-label">Remaining before ship</div>
+        <div class="cs-card-title">Around the core</div>
+        <div class="cs-card-text">Onboarding flow, paywall and RevenueCat, analytics, and App Store submission. No release date claimed; it is not yet published.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-cta rv">
+    <p class="cs-cta-text">Want to discuss condition-aware nutrition tools or clinically grounded product design?</p>
+    <a href="mailto:drsridhar22@gmail.com" class="cs-cta-btn">Get in touch</a>
+    <div class="cs-footer">Shri · 2026</div>
+  </div>
+</div>
+
+<script>
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
+var nav=document.querySelector('.nav');
+window.addEventListener('scroll',function(){if(window.scrollY>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled');},{passive:true});
+</script>
+
+</body>
+</html>
